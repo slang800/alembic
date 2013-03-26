@@ -10,7 +10,6 @@
 	<link rel="shortcut icon" href="<?php echo stripslashes(get_option('s_favicon')); ?>" />	
 	<?php endif; ?>	
 
-
 	<?php 
 		$rss=get_bloginfo('rss2_url');
 		if(get_option('s_rss_url') and get_option('s_rss_url')!="")
@@ -38,17 +37,15 @@
 	<![endif]-->
 
 	<script type="text/javascript">
-		var ajaxurl='<?php echo admin_url('admin-ajax.php'); ?>';		
+		var ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>";		
 	</script>
 		
 	<?php 
 		if(get_option('s_css_code')=="true")
-			echo '<style type="text/css">'
-				.stripslashes(get_option('s_custom_css'))
-				.'</style>';
+			echo '<style type="text/css">' . stripslashes(get_option('s_custom_css')) . '</style>';
 
 		if(get_option('s_child_stylesheet')=="true")
-			echo '<link rel="stylesheet" href="'.stripslashes(get_option('s_child_css')).'" />';
+			echo '<link rel="stylesheet" href="' . stripslashes(get_option('s_child_css')) . '" />';
 
 		if(get_option('s_header_js_code')=="true")
 			echo stripslashes(get_option('s_header_js'));

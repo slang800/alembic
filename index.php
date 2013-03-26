@@ -7,7 +7,8 @@
 					<?php 
 						global $query_string; //We now have access to the original WordPress Query
 						$exclude = s_build_cat_exclude(); //Build the list of categories to exclude
-						if($exclude) $exclude = '&cat=' . $exclude;
+						if($exclude)
+							$exclude = '&cat=' . $exclude;
 						$posts = query_posts($query_string . $exclude); //Tell WordPress to exclude some categories, if required.
 						if(have_posts()) : while(have_posts()) : the_post();
 					?>

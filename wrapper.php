@@ -25,7 +25,10 @@ ob_clean();
 					</div>
 					<div class="grid-55">
 						<nav class="main-nav">
-							<?php //Menu call s_menu(); ?>
+							<?php
+								//Menu call
+								s_menu();
+							?>
 						</nav>
 					</div>
 					<div class="grid-25 social">
