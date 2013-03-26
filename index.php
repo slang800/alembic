@@ -21,6 +21,7 @@
 					</div>				
 					<?php endif; ?>
 					<?php include (S_INCLUDES . 'pagination.php'); ?>
+					 <?php	if(function_exists('dynamic_sidebar') && dynamic_sidebar('Blog Second')) : endif; ?>
 				</div>		
 			</div>
         </div>

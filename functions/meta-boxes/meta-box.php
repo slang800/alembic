@@ -30,22 +30,24 @@ function promo_meta_box_init() {
 	add_action('save_post','promo_save_meta_box');
 }
 function promo_meta_box($post,$box) {
-	$featured = get_post_meta($post->ID,'_promo_type',true);
 	$promo_area = get_post_meta($post->ID,'_promo_area',true);
 	$place = get_post_meta($post->ID,'_place',true);
+	$price = get_post_meta($post->ID,'_price',true);
 	$date = get_post_meta($post->ID,'_date',true);
 	
 	echo '<p>' .__('Promo box:<br>','promo-plugin'). ' <textarea style="width: 100%; min-height: 100px;"
 	name="promo_area">'.$promo_area.'</textarea></p>';
-	echo '<p>' .__('Place:','promo-plugin'). ' <input type="text" name="place" value="'.$place.'"></p>';
+	echo '<p>' .__('Place:','promo-plugin'). ' <input type="text" name="place" value="'.esc_attr($place).'"></p>';
 	echo '<p>' .__('Date:','promo-plugin'). ' <input type="text" name="date" value="'.$date.'"></p>';
-}
+	echo '<p>' .__('Price:','promo-plugin'). ' <input type="text" name="price" value="'.$price.'"></p>';
+	}
 
 function promo_save_meta_box($post_id) {
 	if($post->post_type == 'revision') { return; } 
 	update_post_meta($post_id,'_promo_area', $_POST['promo_area']);
-	update_post_meta($post_id,'_place', $_POST['place']);
+	update_post_meta($post_id,'_place', esc_attr($_POST['place']));
 	update_post_meta($post_id,'_date', $_POST['date']);
+	update_post_meta($post_id,'_price', $_POST['price']);
 	} 
 
 

@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 
 <head>
 
 	
 	<title><?php s_titles(); ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	
@@ -65,7 +66,12 @@
 		if(get_option('s_header_js_code')=="true")
 			echo stripslashes(get_option('s_header_js'));
 	?>
-	
+	<?php
+	$header_bg = get_option('h_bg');
+	if(! $header_bg == ''){
+		echo '<style>header{background-image:url('.$header_bg.');background-repeat: repeat;}</style>';
+	}
+	?>
 	<?php wp_head(); ?>
 
 </head>
@@ -77,7 +83,7 @@
 		<div class="logo"><a href="<?php bloginfo('url'); ?>" ><img src="<?php echo stripslashes(get_option('s_logo', S_THEME_LOGO)); ?>" alt="<?php bloginfo('title'); ?>"></a></div>
 	  </div>
 	  <div class="grid-55">
-		<nav class="main-nav">
+		<nav class="main-nav default">
 		  <?php
 			//Menu call
 			s_menu();

@@ -16,6 +16,12 @@ array(
 	"desc" => "Paste the URL to your logo, or upload it here.",
 	"default" => get_bloginfo('template_directory')."/assets/img/logo.jpg" ),
 
+array(
+	"type" => "image",
+	"name" => "Header background",
+	"id" => "h_bg",
+	"desc" => "Paste the URL to here, or upload it here.",
+	"default" => ""),
 	
 array(
 	"type" => "image",

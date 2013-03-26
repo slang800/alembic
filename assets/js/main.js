@@ -29,6 +29,7 @@ jQuery(function(){
 		jQuery(window).scroll(function () {
 			if (jQuery(this).scrollTop() > 100) {
 				jQuery('#back-top').fadeIn();
+				
 			} else {
 				jQuery('#back-top').fadeOut();
 			}
@@ -42,6 +43,22 @@ jQuery(function(){
 			return false;
 		});
 	});
+
+	//function to stay menu top when scroll down
+		var menu = jQuery('.main-nav'),
+		pos = menu.offset();
+		
+		jQuery(window).scroll(function(){
+			if(jQuery(this).scrollTop() > pos.top+menu.height() && menu.hasClass('default')){
+				menu.fadeOut('fast', function(){
+					jQuery(this).removeClass('default').addClass('fixed').fadeIn('fast');
+				});
+			} else if(jQuery(this).scrollTop() <= pos.top && menu.hasClass('fixed')){
+				menu.fadeOut('fast', function(){
+					jQuery(this).removeClass('fixed').addClass('default').fadeIn('fast');
+				});
+			}
+		});
 
 	
 });

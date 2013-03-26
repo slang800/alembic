@@ -13,6 +13,8 @@ body{
 	color: #484747;
 	background: #eae7dc url(../img/bg.gif) no-repeat ;
 	border-top: 8px solid #d0b312 !important;
+	margin:0;
+	padding: 0;
 }
 
 .container{
@@ -66,7 +68,7 @@ a:link, a:visited{
 }
 
 	#page .inner{
-		padding: 20px 30px 20px 30px;
+		padding: 20px 0;
 	}
 
 	#page .entry{
@@ -771,7 +773,61 @@ div[class*="pull-"] section {
 .dynamic-px-width {
   display: block;
 }
-
+.entry-content img {
+	margin: 0 0 1.5em 0;
+	}
+.alignleft, img.alignleft {
+	margin-right: 1.5em;
+	display: inline;
+	float: left;
+	}
+.alignright, img.alignright {
+	margin-left: 1.5em;
+	display: inline;
+	float: right;
+	}
+.aligncenter, img.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	clear: both;
+	}
+.alignnone, img.alignnone {
+	/* not sure about this one */
+	}
+.wp-caption {
+	margin-bottom: 1.5em;
+	text-align: center;
+	padding-top: 5px;
+	}
+.wp-caption img {
+	border: 0 none;
+	padding: 0;
+	margin: 0;
+	}
+.wp-caption p.wp-caption-text {
+	line-height: 1.5;
+	font-size: 10px;
+	margin: 0;
+	}
+.wp-smiley {
+	margin: 0 !important;
+	max-height: 1em;
+	}
+blockquote.left {
+	margin-right: 20px;
+	text-align: right;
+	margin-left: 0;
+	width: 33%;
+	float: left;
+	}
+blockquote.right {
+	margin-left: 20px;
+	text-align: left;
+	margin-right: 0;
+	width: 33%;
+	float: right;
+	}
 /*----------------------------------------------------------------*/
 /*-------------------------------Heading style ------------------*/
 h1,h2,h2,h3,h4,h5,h6{
@@ -813,7 +869,7 @@ section#content{
 header{ padding: 10px 0; background:#000000;}	
 .logo {
     float: left;
-    margin: 8px 0 0 26px;
+    margin:4px 0 4px 0;
 }
 .main-nav li{
 	list-style: none;
@@ -956,6 +1012,7 @@ img{ max-width:100%; height: auto;}
 .blog .entry{
 	float: left;
 	width:80%;
+	overflow: hidden;
 }
 .promotion p{ font-size: 1em;}
 .promotion {
@@ -963,8 +1020,10 @@ img{ max-width:100%; height: auto;}
     margin-bottom: 20px;
     padding: 10px;
     position: relative;
-	display : inline-block;
+	display : table;
 }
+.main-nav.fixed{ position: fixed; top: 0; left:0; width:100%; background: rgba(0,0,0,0.8); z-index: 1000;}
+.main-nav.fixed ul.sf-menu{ width:940px; margin-left: auto; margin-right: auto; }
 .overlay-wrap{
 	position:relative;
 	display:inline-block;
@@ -989,17 +1048,17 @@ img{ max-width:100%; height: auto;}
 
 .overlay .con {
 	color: #FFFFFF;
-	margin-top: -15px;
+	margin-top: -25px;
 	position: relative;
 	top: -50px;
 	text-align: center;
 	background: url(../img/plus.png) no-repeat center center #222;
-	height: 30px;
-	width: 30px;
+	height: 50px;
+	width: 50px;
 	display: block;
 	text-indent: -10000px;
 	left: 50%;
-	margin-left: -15px;
+	margin-left: -25px;
 	border-radius: 100px;
 	padding: 10px;
 }
@@ -1076,6 +1135,7 @@ padding-top: 5px;
 }
 .data p {
 margin-bottom: 0;
+font-size: 14px;
 }
 
 .gallery .element .data:hover a, .gallery .element .data:hover { color: #fff;}
@@ -1145,7 +1205,8 @@ div.title h1 {
     margin-left: -65px;
     position: absolute;
 }
-.tagcloud a{ background: #ccc; border-radius: 25px; display: inline-block; padding: 5px 10px;}
+.tagcloud a{ background: #ccc; border-radius: 25px; display: inline-block; padding: 5px 10px; text-decoration: none;}
+.tagcloud a:hover{ background:#666; color: #fff;}
 .gal-thumb li{
 	width:auto;
 	margin-left:0;
@@ -1153,6 +1214,7 @@ div.title h1 {
 	}
 .promotion2{
 	margin-top: 20px;
+	display: table;
 }	
 .gal-info{
 	background:#ebebeb;
@@ -1164,7 +1226,7 @@ div.title h1 {
 	margin-bottom: 35px;
 	}
 .gal-thumb img{ border: 25px solid #ebebeb}
-.gal-slide{ height: 90px;}
+
 .welcome{
 	background:#f0f0f0;
 	text-align:center;
@@ -1185,6 +1247,9 @@ background: #e9c42e;
 border-radius: 100px;
 line-height: 160px;
 text-align: center;
+display: block;
+margin-left: auto;
+margin-right: auto;
 }	
 .circle:hover{
 cursor: pointer;
@@ -1204,6 +1269,23 @@ color: #fff;
 .three .footer-cols{
 	width: 33%;
 }
+.portfolio-title{ border-top: 1px solid #90816E; border-bottom: 1px solid #90816E;}
+.portfolio-title {
+border-top: 1px solid #E0E1CD;
+border-bottom: 1px solid #E0E1CD;
+display: block;
+margin-top: 15px;
+padding-top: 0;
+line-height: 2;
+}
+.wp-showcase li{ border: 5px solid #eeeeee;}
+.portfolio-content{ padding: 30px;}
+.side-info{
+	background: #ebebeb;
+	padding: 20px;
+}
+.contact *{ text-align: center;}
+.gal-slide{ margin-top: 20px;}
 /*-----------------------------form----------------------------------------*/
 input[type=text], input[type=email], input[type=url]{ border: none; padding:10px; min-width: 200px; border: 1px solid #ccc; margin: 4px 0;}
 textarea{ padding: 10px;border: 1px solid #ccc;}	
@@ -1221,6 +1303,7 @@ footer a:link, footer a:visited{ color: #fff;}
 
 .sponsor{
 background: url(../img/sponsor-bg.jpg);
+text-align: center;
 }
 .sponsor a{
 margin: 0 10px;
@@ -1254,7 +1337,57 @@ background: url(../img/sponsor-bg.jpg);
 #back-top a:hover {
 	color: #000;
 }
+i.promotion-btn{
+  position: absolute;
+  top: 0;
+  left: 1px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: none;
+  border: 2px solid #000;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 275ms;
+  -moz-transition-duration: 275ms;
+  -o-transition-duration: 275ms;
+  transition-duration: 275ms;
+  -webkit-transition-timing-function: cubic-bezier(0.53, -0.67, 0.73, 0.74);
+  -moz-transition-timing-function: cubic-bezier(0.53, -0.67, 0.73, 0.74);
+  -o-transition-timing-function: cubic-bezier(0.53, -0.67, 0.73, 0.74);
+  transition-timing-function: cubic-bezier(0.53, -0.67, 0.73, 0.74);
+  border-radius: 1000px;
+}
+a:hover i.promotion-btn{  opacity: 1;
+  -webkit-transform: scale(1.15);
+  -moz-transform: scale(1.15);
+  -ms-transform: scale(1.15);
+  -o-transform: scale(1.15);
+  transform: scale(1.15);
+  -webkit-transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  -moz-transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  -o-transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);
+  transition-timing-function: cubic-bezier(0.37, 0.74, 0.15, 1.65);}
+a.crl{
+width: 100px;
+height: 100px;
+background: #000;
+display: inline-block;
+position: absolute;
+border-radius: 1000px;
+position: absolute;
+bottom: -50px;
+left: 50%;
+-webkit-transition-duration: 0.3s;
+transition-duration: 0.3s;
+border-radius: 1000px;
+margin-left: -50px;
+}
+}
 
+body{max-width: 100%;}
 /* arrow icon (span tag) */
 #back-top span {
 	width: 50px;
@@ -1276,6 +1409,9 @@ background: url(../img/sponsor-bg.jpg);
 #back-top a:hover span {
 	background-color: #333;
 }
+	.home-top{
+	box-sizing: content-box;
+	}
 
 /* Responsive
 -------------------------------------------------- */
@@ -1290,13 +1426,14 @@ body{
 
 /* Desktop
 ------------------------- */
-@media (max-width: 980px) {
-body{ margin: 0 20px;}
+@media only screen and (max-width: 980px) {
+.main-nav.fixed ul.sf-menu{ width:auto; }
 }
 
 /* Tablet to desktop
 ------------------------- */
 @media (min-width: 768px) and (max-width: 979px) {
+
 }
 
 /* Tablet
@@ -1309,7 +1446,23 @@ body{ margin: 0 20px;}
 		max-width: 40%;
 		padding: 25px 2%;
 		width: 40%;
+		
 	}
+	.home-top{
+	margin-left: 0;
+	box-sizing: border-box;
+	}
+	.blog .date{
+	float: none;
+	}
+	.blog .entry{
+	float: none;
+	width: auto;
+	}
+	#page .inner{
+	padding: 20px 0;
+	}
+	.grid-container{ overflow: hidden;}
 	.home .grid-container{ padding: 0;}
 	.social ul {
 		border-left;
@@ -1317,15 +1470,18 @@ body{ margin: 0 20px;}
 	.responsiveMenuSelect{ width: 90%; margin-top: 20px;}
 	.home .inner{ padding-top:0;}
 	.cols .footer-cols{ width: 50%;}
+	.sidebar{ margin-bottom: 20px; margin-top: 20px;}	
 }
 
 /* Landscape phones
 ------------------------- */
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
 	.gallery li{ display:block; float: none; width:auto; max-width:none;}
 	.home .gallery .element{ width: auto; float: none !important; clear: both; display: block; clear: both;}
 	.gallery .element { width: auto; float: none; float: none; display: block;}
 	.cols .footer-cols{ width: 100%;}
+	.one-fourth, .two-fourth, .three-fourth, .one-third, .two-third{ width: auto; float: none; clear: both: display: block;}
+	
 	
 }
 
@@ -1342,5 +1498,4 @@ body{ margin: 0 20px;}
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 
-@media print {
-}
+

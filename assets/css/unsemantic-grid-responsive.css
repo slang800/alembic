@@ -1,7 +1,7 @@
 /* ============================================ */
 /* This file has a mobile-to-desktop breakpoint */
 /* ============================================ */
-@media screen and (max-width: 400px) {
+@media only screen and (max-width: 400px) {
   @-ms-viewport {
     width: 320px;
 }
