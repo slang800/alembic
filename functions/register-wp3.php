@@ -63,7 +63,7 @@ function s_portfolio_custom_columns($column){
 
 
 //Nav Menus
-if(function_exists('register_nav_menu')):	
+if(function_exists('register_nav_menu')):
 	register_nav_menu( 'main_menu', __( 'Main Menu', 's' ));
 endif;
 
@@ -86,8 +86,8 @@ function s_taxonomies(){
 		'update_item' => __( 'Update Portfolio Category', 's' ),
 		'add_new_item' => __( 'Add New Portfolio Category', 's' ),
 		'new_item_name' => __( 'New Portfolio Category Name', 's' )
-	); 	
-	
+	); 
+
 	register_taxonomy('portfolio_cat',array('portfolio'), array(
 		'hierarchical' => true,
 		'labels' => $labels,

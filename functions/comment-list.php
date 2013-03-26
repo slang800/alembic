@@ -1,11 +1,11 @@
 <?php
 function s_comments($comment, $args, $depth) {
 
-		
+
    $GLOBALS['comment'] = $comment; ?>
    
 						<li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
-						
+
 							<div id="comment-<?php comment_ID(); ?>" class="user_info">
 								<h3><?php comment_author_link()?></h3> <small><?php _e('Says', 's'); ?></small>
 								<?php echo get_avatar($comment,$size='70'); ?>
@@ -15,8 +15,8 @@ function s_comments($comment, $args, $depth) {
 							<div class="comment">
 							<?php if ($comment->comment_approved == '0') : ?>
 								<em>Your comment is awaiting moderation</em>
-							<?php endif; ?>							
-								<?php echo get_comment_text(); ?>	
+							<?php endif; ?>
+								<?php echo get_comment_text(); ?>
 							</div>
 
 <?php

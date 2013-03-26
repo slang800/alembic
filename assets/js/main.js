@@ -1,15 +1,13 @@
-
 jQuery(function(){
-	
+
 	// initialise plugins
 		jQuery('.sf-menu').superfish({
 			//useClick: true
 		});
 		jQuery("#tabs").tabs();
-		
-		
+
 		jQuery('ul.columns li:last-child').addClass('last');
-		
+
 	//portfolio style
 	jQuery('.data').hover(function(){
 		link = jQuery(this).find('.con');
@@ -19,17 +17,15 @@ jQuery(function(){
 		link.animate({top: '-50px', opacity: '0'},200);
 	}
 	);
-	
-	
+
 	// hide #back-top first
 	jQuery("#back-top").hide();
-	
+
 	// fade in #back-top
 	jQuery(function () {
 		jQuery(window).scroll(function () {
 			if (jQuery(this).scrollTop() > 100) {
 				jQuery('#back-top').fadeIn();
-				
 			} else {
 				jQuery('#back-top').fadeOut();
 			}
@@ -59,6 +55,4 @@ jQuery(function(){
 				});
 			}
 		});
-
-	
 });

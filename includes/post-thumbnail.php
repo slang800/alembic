@@ -1,9 +1,9 @@
 <?php
-	$image_url = s_post_image();	
-	
+	$image_url = s_post_image();
+
 	if(!$image_url)
 		return;
-		
+
 	$image_url = s_build_image($image_url, 110);
 ?>
 

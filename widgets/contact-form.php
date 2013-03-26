@@ -3,25 +3,25 @@
 class S_Contact extends WP_Widget {
 
 	function S_Contact(){
-		$widget_ops = array( 'classname' => 's-contact', 'description' => 'Display a contact form in a widget area. The recipient email is set in the theme options.' );	
+		$widget_ops = array( 'classname' => 's-contact', 'description' => 'Display a contact form in a widget area. The recipient email is set in the theme options.' );
 		$this->WP_Widget( 's_contact', 'S Contact', $widget_ops );
 	}
-	
+
 
 	 function widget($args, $instance){  
 		extract($args);
-		
-		$title = apply_filters('widget_title', $instance['title']);		
+
+		$title = apply_filters('widget_title', $instance['title']);
 		if ( empty($title) ) $title = false;
-		
-		
+
+
         echo $before_widget; 
 		if($title):
 			echo $before_title;
 				echo $title;
-			echo $after_title;	
-		endif;	
-		
+			echo $after_title;
+		endif;
+
 ?>
 		<form method="post" action="<?php echo admin_url('admin-ajax.php'); ?>" class="contact">
 			<div class="alert"></div>
@@ -34,42 +34,42 @@ class S_Contact extends WP_Widget {
 			</fieldset>
 		</form>
 <?php
-			
-	
+
+
 		echo $after_widget;
-		
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 	function form($instance) {
-	
+
         $title = esc_attr($instance['title']); 
-?>		
+?>
 		<p>
             <label for="<?php echo $this->get_field_id('title'); ?>">
                Title:
             </label>
                 <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
         </p>
-		
+
 		<p>
 			<code><em>This widget is best used in the footer columns widget area. It will display an AJAX contact form.</em></code>
 		</p>
-		
-<?php		
+
+<?php
     }
 
 
 	function update($new_instance, $old_instance) {
         $instance=$old_instance;
-        $instance['title']=strip_tags($new_instance['title']);		
+        $instance['title']=strip_tags($new_instance['title']);
         return $instance;
 
     }
-	
+
 }
 
 
@@ -93,35 +93,35 @@ function s_send_contact(){
 		die();
 	} else if(!is_email($email)) {
 		_e('Please enter a valid email', 's');
-		die();	
+		die();
 	} else if(trim($message) == '') {
 		_e('Please enter a message', 's');
 		die();
     }
-	
-	
-	
+
+
+
 	if(get_magic_quotes_gpc())
         $message = stripslashes($message);
-		
-		
+
+
 	$address = get_option('s_email');
 	if(!$address or $address=="")
 			$address=get_option('admin_email'); 
 	 
 	$placeholders=array("%sitename%", "%name%");
 	$replacements=array(get_bloginfo('name'), $name); 
-	
-	$subject = stripslashes(get_option('s_form_subject'));			
+
+	$subject = stripslashes(get_option('s_form_subject'));
 	$subject=str_replace($placeholders, $replacements, $subject);
-	
-	
+
+
     if(wp_mail($address, $subject, $message, "From: $email\r\nReply-To: $email\r\nReturn-Path: $email\r\n"))
 		_e('Thanks! Your message was sent.', 's');
 	else
 		_e('There was an error sending your message!', 's');
-		
-		
+
+
      
 	die();
 

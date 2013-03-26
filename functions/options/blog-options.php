@@ -21,15 +21,15 @@ foreach ($all_categories as $category_list ) {
 
 $options=array(
 
-	
+
 array(
 	"type" => "checkbox-nav",
 	"name" => "Exclude Categories",
 	"id" => $cat_list,
-	"options" => $cat_options,	
+	"options" => $cat_options,
 	"desc" => "Select which categories to display and exclude from the blog page",
 	"default" => $checked_cats )
-	
+
 );
 
 $optionspage=new s_options_page($info, $options);

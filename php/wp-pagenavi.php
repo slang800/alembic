@@ -89,9 +89,9 @@ function wp_pagenavi($before = '', $after = '') {
 			$pages_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $pages_text);
 			switch(intval($pagenavi_options['style'])) {
 				case 1:
-					
+
 					if ($start_page >= 2 && $pages_to_show < $max_page) {
-						$first_page_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $pagenavi_options['first_text']);						
+						$first_page_text = str_replace("%TOTAL_PAGES%", number_format_i18n($max_page), $pagenavi_options['first_text']);
 						/*if(!empty($pagenavi_options['dotleft_text'])) {
 							echo '<span class="extend">'.$pagenavi_options['dotleft_text'].'</span>';
 						}*/
@@ -103,7 +103,7 @@ function wp_pagenavi($before = '', $after = '') {
 						}
 					}
 					previous_posts_link('&laquo;');
-					for($i = $start_page; $i  <= $end_page; $i++) {						
+					for($i = $start_page; $i  <= $end_page; $i++) {
 						if($i == $paged) {
 							$current_page_text = str_replace("%PAGE_NUMBER%", number_format_i18n($i), $pagenavi_options['current_text']);
 							echo ' <a href="#" class="current">'.$current_page_text.'</a>';
@@ -128,7 +128,7 @@ function wp_pagenavi($before = '', $after = '') {
 					}*/
 					break;
 				case 2;
-					
+
 					break;
 			}
 		}

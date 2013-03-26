@@ -3,51 +3,51 @@
 //TITLES
 function s_titles() {
 
-	
+
 
 	$separator=stripslashes(get_option('s_separator'));
-	
+
 	if(!$separator)
 		$separator="|";
-	
+
 	if(is_front_page())
-		bloginfo('name');	
-		
+		bloginfo('name');
+
 	else if (is_single() or is_page() or is_home()){
 		bloginfo('name'); 
 		wp_title($separator,true,'');
 	}
-	
+
 	else if (is_404()){
-		bloginfo('name');	
+		bloginfo('name');
 		echo " $separator ";
 		_e('404 error - page not found', 's');
 	}
-	
+
 	else{
 		bloginfo('name'); 
 		wp_title($separator,true,'');
 	}
-	
-	
+
+
 }
 
 //GET THE PORTFOLIO IMAGE
 function s_post_image(){
 	global $post;
 	$image = '';
-	
+
 	//Get the image from the post meta box
-	$image = get_post_meta($post->ID, 's_post_image', true);	
+	$image = get_post_meta($post->ID, 's_post_image', true);
 	if($image) return $image;
-	
+
 	//If the above doesn't exist, get the post thumbnail
 	$image_id = get_post_thumbnail_id($post->ID);
 	$image = wp_get_attachment_image_src($image_id, 's_thumb');
 	$image = $image[0];
 	if($image) return $image;
-	
-	
+
+
 	//If there is still no image, get the first image from the post
 	return s_get_first_image();
 
@@ -61,16 +61,16 @@ function s_get_first_image(){
 	ob_start();
 	ob_end_clean();
 	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-		
+
 	$first_img="";
-		
+
 	if(isset($matches[1][0]))
 		$first_img = $matches[1][0];
-			
+
 	return $first_img;
 }
-	
-	
+
+
 
 
 //BUILD IMAGE RESIZE
@@ -80,14 +80,14 @@ function s_build_image($img='', $w=false, $h=false, $zc=1 ){
 		$h = "&amp;h=$h";
 	else
 		$h = '';
-		
+
 	if($w)
 		$w = "&amp;w=$w";
 	else
 		$w = '';
-		
+
 	$image_url = S_THEME_DIR . "/php/timthumb.php?src=" . $img . $h . $w;
-	
+
 	return $image_url;
 
 
@@ -153,7 +153,7 @@ function s_menu(){
 
 	//If this is WordPress 3.0 and above AND if the menu location registered in functions/register-wp3.php has a menu assigned to it
 	if(function_exists('wp_nav_menu') && has_nav_menu('main_menu')):
-	
+
 		/*
 		 Display the Nav menu with:
 		  - the slug main_menu
@@ -162,7 +162,7 @@ function s_menu(){
 		  - a depth of 2 (main level and first child)
 		  - the custom walker defined below, s_menu_walker
 		*/
-		
+
 		wp_nav_menu( 
 			array( 
 				'theme_location' => 'main_menu', 
@@ -171,19 +171,19 @@ function s_menu(){
 				'depth' => 2, 
 				'walker' => new s_menu_walker()) 
 		);
-		
-	
-		
-	
+
+
+
+
 	//If either this is WP version<3.0 or if a menu isn't assigned, use wp_list_pages()
 	else:
 		echo '<ul class="sf-menu">';
 			wp_list_pages('depth=1&title_li=');
 		echo '</ul>';
-	
-	endif;		
-	
-	
+
+	endif;
+
+
 }
 
 //CUSTOM EXCERPT LENGTH
@@ -207,8 +207,8 @@ function s_excerpt($len=20, $trim="&hellip;"){
 //S MENU WITH DESCRIPTION
 class s_menu_walker extends Walker_Nav_Menu
 {
-	function start_el(&$output, $item, $depth, $args){	
-	
+	function start_el(&$output, $item, $depth, $args){
+
 		global $wp_query;
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
@@ -244,7 +244,7 @@ class s_menu_walker extends Walker_Nav_Menu
 		$item_output .= $args->after;
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		
+
 	}
 }
 
@@ -261,12 +261,12 @@ function s_breadcrumbs(){
 	//No breadcrumbs on homepage
 	if(is_front_page())
 		return;
-		
+
 
 	$breadcrumb_sep=' / '; // Separator
-			
+
 	global $post;
-?>	
+?>
 	<div class="bread_crumbs">
 
 		<a href="<?php bloginfo('url'); ?>"><?php _e('Home', 's'); ?></a>
@@ -278,25 +278,25 @@ function s_breadcrumbs(){
 $blog_page_id=get_option('page_for_posts');
 
 	//Single post
-	if(is_single()){	
+	if(is_single()){
 		//Portfolio posts
 		if(get_query_var('post_type') == 'portfolio')
 			_e('Portfolio', 's');
 		//Blog posts
 		else{
 			echo '<a href="' . get_permalink($blog_page_id) . '">';
-			echo get_the_title($blog_page_id);		
+			echo get_the_title($blog_page_id);
 			echo '</a>';
 		}
 		echo $breadcrumb_sep;
 		the_title();
-	
+
 	}
 
 	if ( is_home()) {
-		echo get_the_title($blog_page_id);	
-	}	
-	
+		echo get_the_title($blog_page_id);
+	}
+
 
 	if ( is_page() && $post->post_parent==0 ) {
 			the_title();
@@ -322,8 +322,8 @@ $blog_page_id=get_option('page_for_posts');
  
 	}
 	elseif ( is_tax() ) {
-			global $wp_query;	
-			$term = $wp_query->get_queried_object();	
+			global $wp_query;
+			$term = $wp_query->get_queried_object();
 			$taxonomy = get_taxonomy ( get_query_var('taxonomy') );
 			$term = $term->name;
 			_e('Archive for', 's');
@@ -341,7 +341,7 @@ $blog_page_id=get_option('page_for_posts');
 	} 
 	elseif ( is_year() ) {
     	echo get_the_time('Y'); 
-	} 	
+	} 
 	elseif ( is_search() ) {
 			_e('Search results for', 's');
 			echo ' &#39;' . get_search_query() . '&#39;'; 
@@ -352,13 +352,13 @@ $blog_page_id=get_option('page_for_posts');
 			single_tag_title();
 			echo '&#39;';
 	}
-	
+
 	if ( get_query_var('paged') ) {
 		printf( __( ' (Page %s) ', 's' ), get_query_var('paged') );
 	}
 ?>
 </div>
-<?php	
+<?php
 }
 
 
@@ -369,17 +369,17 @@ function s_build_cat_exclude(){
 
 	$categories = get_categories('hide_empty=0&orderby=id');
 	$exclude="";
-	
+
 	foreach($categories as $cat):
 		$cat_field = 's_cat_' . $cat->cat_ID;
 		if( get_option($cat_field) and get_option($cat_field)=='false')
-			$exclude .= "-" . $cat->cat_ID . ",";		
-	endforeach;		
-	
+			$exclude .= "-" . $cat->cat_ID . ",";
+	endforeach;
+
 	if($exclude)
 		$exclude = substr($exclude, 0, -1); //Remove the last comma
-		
-		
+
+
 	return $exclude;
 }
 

@@ -40,7 +40,7 @@
 
 .rockable_title .rockable_title_image{
 	padding:20px 10px;}
-	
+
 	.rockable_title_image img{
 		float:left;
 	}
@@ -53,8 +53,8 @@
 		padding:2px 10px;
 	}
 		.rockable_meta a{text-decoration:none;}
-	
-	
+
+
 .rockable_title h3 {
 	font-size:1.4em;
 	margin:0;
@@ -122,7 +122,7 @@
 	width: 330px; 
 	float: left;
 	padding: 35px 20px;
-}	
+}
 
 /*-----//OPTIONS GROUPS-----*/
 
@@ -143,7 +143,7 @@
 	background:#f3f3f3;
 }
 
-.rockable_options input[type="radio"], .rockable_options input[type="checkbox"]{	
+.rockable_options input[type="radio"], .rockable_options input[type="checkbox"]{
 	margin: 2px 0 0 0;
 }
 

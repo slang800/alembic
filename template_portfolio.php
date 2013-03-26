@@ -30,7 +30,7 @@ wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 		</ul>
 		<?php endif; ?>
 		</section>
-		
+
 		<div id="gallery" class="gallery clearfix">
 			<?php 
 			global $paged;
@@ -38,11 +38,11 @@ wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 
 			query_posts('post_type=portfolio&paged='.$paged); //Make sure we let WordPress know we need posts ONLY from the portfolio post type
 			if(have_posts()) : while(have_posts()) : the_post();
-			
+
 			$image_url = s_post_image(); //Use the function to fetch the portfolio image
 			if($image_url)
 			$image_url = s_build_image($image_url, 180, 220);
-			
+
 			$item_classes = '';
 			$item_cats = get_the_terms($post->ID, 'portfolio_cat');
 			if($item_cats):
@@ -64,12 +64,12 @@ wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 					<?php $date = get_post_meta($post->ID,'_date',true); ?>
 					<p><?php echo $place .','. $date; ?></p>
 				</div>
-			</div>				
+			</div>
 			<?php endwhile; ?>
 			<?php endif; ?>
 		</div>
-			
-		
+
+
   </div>
 	<div class="">
 	<?php ?>
@@ -120,9 +120,9 @@ wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
   </script>
     
   </section>
-			
-			
+
+
         </div>
 	</div>
-</section>	
+</section>
 <?php get_footer(); ?>

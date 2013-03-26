@@ -1,6 +1,5 @@
 <?php
 
-
 //Highlight
 function shortcode_highlight($atts, $content=null){
 
@@ -8,15 +7,12 @@ function shortcode_highlight($atts, $content=null){
 	  'color' => '#000',
 	  'textcolor' => '#fff'
       ), $atts ) );
-	
+
 $style = ' style="color:' . $textcolor . '; background-color:' . $color . '; padding: 2px 4px;"';
 return '<span' . $style . '">'.do_shortcode($content).'</span>';
 
 }
 add_shortcode('hilite', 'shortcode_highlight');
-
-
-
 
 //portfolio
 function shortcode_portfilio($atts){
@@ -41,30 +37,27 @@ $return = '<div class="gallery clearfix">';
 				$image_url = s_build_image($image_url, 180, 220);
 
 			$return .= '<div class="element"><div class="data">';
-			
+
 			if($image_url): 
 			$return .=	'<div class="overlay-wrap"><img class="image align-left" alt="" src="'. $image_url.'" /><span class="overlay"><a class="con" href="'. get_permalink().'">Enter</a></span></div>
 					<div>
 					<h2><a href="'. get_permalink() .'">'. get_the_title().'</a></h2>';
-					
-		
+
 			$return .=	'<p>'.esc_html($place).', '.esc_html($date).'</p>';					
 					 
 			$return .=	'</div>';
 				 endif; 
-			$return .= '</div></div>';				
+			$return .= '</div></div>';
 			endwhile; 
 			$return .= '</div>';
 			else: //If no posts are present 
-			
+
 			endif; wp_reset_query(); 
-			
+
 			return $return;
 
 
 }
-
-
 
 add_shortcode('portfolio', 'shortcode_portfilio');
 

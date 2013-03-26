@@ -315,11 +315,11 @@ body{
 	}
 section#content{
 	background:#fff;
-	}	
+	}
 .home section#content{
 	background: none;
-	}	
-header{ padding: 10px 0; background:#000000; margin-bottom:10px}	
+	}
+header{ padding: 10px 0; background:#000000; margin-bottom:10px}
 .logo {
     float: left;
     margin: 8px 0 0 40px;
@@ -418,7 +418,7 @@ section#content{
 	}
 .slider img{
 	width: 100%;
-	}	
+	}
 img{ max-width:100%;}
 .promotion p{ font-size: 1em;}
 .promotion {
@@ -455,7 +455,7 @@ img{ max-width:100%;}
 	display: block;
 	opacity: 0.9;
 	}
-.center{ text-align:center;}	
+.center{ text-align:center;}
 .outer-shadow, .promotion, .gallery li{
 	-webkit-box-shadow:  0px 0px 5px 2px rgba(0, 0, 0, .4);
   box-shadow:  0px 0px 5px 2px rgba(0, 0, 0, .4);
@@ -475,7 +475,7 @@ img{ max-width:100%;}
 .gallery{
 	margin-bottom:30px;
 	}
-	
+
 .full-bg{
 	background:#fff;
 	}
@@ -499,7 +499,7 @@ div.title h1 {
 	font-size:1.5em;
 	font-weight: normal;
 	}
-.font-large{ font-size:1.3em}	
+.font-large{ font-size:1.3em}
 .promotion2 {
     background: none repeat scroll 0 0 #ECF0F3;
     margin-bottom: 90px;
@@ -522,8 +522,8 @@ div.title h1 {
 	background:#ebebeb;
 	padding: 20px 10px;
 	color:#908c8c;
-	}	
-.gal-img{ text-align:center;}	
+	}
+.gal-img{ text-align:center;}
 .gal-thumb li{
 	margin-bottom: 35px;
 	}
@@ -585,7 +585,7 @@ body{ margin: 0 20px;}
 ------------------------- */
 @media (max-width: 480px) {
 	.gallery li{ display:block; float: none; width:auto; max-width:none;}
-	
+
 }
 
 @media only screen and (min-width: 35em) {
