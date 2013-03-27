@@ -10,7 +10,7 @@ ob_clean();
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?>>
 	<?php get_header(); ?>
 	<body <?php body_class(); ?>>
 		<div class="wrap">
@@ -24,7 +24,7 @@ ob_clean();
 						</div>
 					</div>
 					<div class="grid-55">
-						<nav class="main-nav">
+						<nav class="main-nav default">
 							<?php
 								//Menu call
 								s_menu();
