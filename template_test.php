@@ -1,8 +1,5 @@
+<?php /* Template Name: Test */ ?>
 <?php 
-/*
-Template name: portfolio
-*/
-
 get_header(); 
 wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 ?>
