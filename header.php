@@ -21,7 +21,6 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/superfish.css" media="screen">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/fonts/fonts.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/isotope.css" />
-	<link rel="stylesheet" href="<?php bloginfo( 'template_url' ); ?>/assets/css/style.css" />
 
 	<!--[if lte IE 6]>
 		<link href="<?php bloginfo('template_directory'); ?>/assets/css/ie6.css" media="screen" rel="stylesheet" type="text/css" />
