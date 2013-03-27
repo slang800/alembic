@@ -1,8 +1,5 @@
+<?php /* Template Name: Portfolio */ ?>
 <?php 
-/*
-Template name: portfolio
-*/
-
 get_header(); 
 wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 ?>
@@ -33,24 +30,24 @@ wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 
 		<div id="gallery" class="gallery clearfix">
 			<?php 
-			global $paged;
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; //For pagination
+				global $paged;
+				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; //For pagination
 
-			query_posts('post_type=portfolio&paged='.$paged); //Make sure we let WordPress know we need posts ONLY from the portfolio post type
-			if(have_posts()) : while(have_posts()) : the_post();
+				query_posts('post_type=portfolio&paged='.$paged); //Make sure we let WordPress know we need posts ONLY from the portfolio post type
+				if(have_posts()) : while(have_posts()) : the_post();
 
-			$image_url = s_post_image(); //Use the function to fetch the portfolio image
-			if($image_url)
-			$image_url = s_build_image($image_url, 180, 220);
+				$image_url = s_post_image(); //Use the function to fetch the portfolio image
+				if($image_url)
+				$image_url = s_build_image($image_url, 180, 220);
 
-			$item_classes = '';
-			$item_cats = get_the_terms($post->ID, 'portfolio_cat');
-			if($item_cats):
-			foreach($item_cats as $item_cat) {
-				$item_classes .= $item_cat->slug . ' ';
-			}
-			endif;
-			 ?>
+				$item_classes = '';
+				$item_cats = get_the_terms($post->ID, 'portfolio_cat');
+				if($item_cats):
+				foreach($item_cats as $item_cat) {
+					$item_classes .= $item_cat->slug . ' ';
+				}
+				endif;
+			?>
 			<div class="element <?php echo $item_classes; ?>" >
 				<div class="data">
 					<div class="overlay-wrap">

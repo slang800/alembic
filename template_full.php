@@ -1,3 +1,4 @@
+<?php /* Template Name: Full Width */ ?>
 <section id="content" class="grid-container">
 	<div class="clearfix inner">
 		<div class="grid-100">
