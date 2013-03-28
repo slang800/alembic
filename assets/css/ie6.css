@@ -1,0 +1,13 @@
+#sub_content ul.columns li{
+    width: 260px;
+}
+
+.jcarousel-skin-rockable .jcarousel-item {
+	padding-left: 20px;
+    margin-left: 0;
+}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	top:			70px; /* match top ul list item height */
+}
