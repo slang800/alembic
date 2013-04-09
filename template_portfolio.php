@@ -77,9 +77,6 @@
 						<?php endif; ?>
 					</div>
 				</div>
-				<div class="">
-					<?php ?>
-				</div>
 				<script>
 					jQuery(function() {
 						var jQuerycontainer = jQuery('#gallery');
