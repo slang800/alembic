@@ -1,6 +1,8 @@
 <?php
 ob_start();
-$curr_theme = wp_get_theme( TEMPLATEPATH . '/style.css' );
+get_plugins(TEMPLATEPATH . '/plugins');
+
+$curr_theme = wp_get_theme(TEMPLATEPATH . '/style.css');
 $theme_version = trim( $curr_theme['Version'] );
 if ( !$theme_version ) $theme_version = "1.0";
 
