@@ -7,10 +7,6 @@
   Author URI: https://github.com/slang800
 */
 
-/*
- * (c)2012 Star Plugins
- */
-
 function registerFiles() {
     wp_register_script('cloudzoom_js', plugins_url('/cloudzoom/cloudzoom.js', __FILE__), array('jquery'), '2.5.1');
     wp_register_style('cloudzoom_css', plugins_url('/cloudzoom/cloudzoom.css', __FILE__), false, '1.0.0', 'all');
