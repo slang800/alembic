@@ -11,8 +11,7 @@ if ( !session_id() ) session_start();
 
 $wordpress_showcase = new WordpressShowcase();
 class WordpressShowcase {
-
-    var $plugin_folder = 'wp-showcase';
+    public $plugin_folder = 'wp-showcase';
 
     function __construct() {    
         add_action('init', array(&$this, 'init'));
@@ -59,7 +58,7 @@ class WordpressShowcase {
         return apply_filters( 'wp_showcase_labels', $labels );
     }
     
-     function init() {
+    function init() {
         $labels = $this->get_labels();
         register_post_type(
             'showcase_gallery',
@@ -69,8 +68,8 @@ class WordpressShowcase {
                 'show_ui' => true,
                 'menu_position' => 100,
                 'supports' => array('title'),
-                'menu_icon' => plugins_url('images/favicon.png' , __FILE__ )
-               )
+                'menu_icon' => plugins_url($this->plugin_folder . '/images/favicon.png')
+            )
         );
         
         if( current_user_can('edit_posts') && current_user_can('edit_pages') && get_user_option('rich_editing') == 'true' ){  
@@ -152,28 +151,35 @@ class WordpressShowcase {
                 if( !isset($options['theme']) ) $options['theme'] = 'dark';
         
                 // Styles
-                wp_enqueue_style( 'colorbox', plugins_url('scripts/colorbox/colorbox.css' , __FILE__ ), array(), '1.3' );
-                if( $options['theme'] ) wp_enqueue_style( 'colorbox-theme', plugins_url('scripts/colorbox/themes/'. $options['theme'] .'.css' , __FILE__ ), array(), '1.0' );
+                wp_enqueue_style( 'colorbox', plugins_url($this->plugin_folder . '/scripts/colorbox/colorbox.css'), array(), '1.3' );
+                if( $options['theme'] ) wp_enqueue_style( 'colorbox-theme', plugins_url($this->plugin_folder . '/scripts/colorbox/themes/'. $options['theme'] .'.css'), array(), '1.0' );
                 // Scripts
-                wp_register_script( 'colorbox', plugins_url('scripts/colorbox/jquery.colorbox-min.js' , __FILE__ ), array('jquery'), '1.3' );
+                wp_register_script( 'colorbox', plugins_url($this->plugin_folder . '/scripts/colorbox/jquery.colorbox-min.js'), array('jquery'), '1.3' );
                 wp_enqueue_script( 'colorbox' );
             }
             
             // Styles
-            wp_enqueue_style( 'flexslider', plugins_url('scripts/flexslider/flexslider.css' , __FILE__ ), array(), '1.8' );
-            wp_enqueue_style( 'wp-showcase', plugins_url('styles/wp-showcase.css' , __FILE__ ), array(), '1.0' );
+            wp_enqueue_style( 'flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/flexslider.css'), array(), '1.8' );
+            wp_enqueue_style( 'wp-showcase', plugins_url($this->plugin_folder . '/styles/wp-showcase.css'), array(), '1.0' );
             
             // Scripts
-            wp_register_script( 'flexslider', plugins_url('scripts/flexslider/jquery.flexslider-min.js' , __FILE__ ), array('jquery'), '1.8' );
+            wp_register_script( 'flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/jquery.flexslider-min.js'), array('jquery'), '1.8' );
             wp_enqueue_script( 'flexslider' );
-            wp_register_script( 'wp-showcase', plugins_url('scripts/wp-showcase.js' , __FILE__ ), array('colorbox','flexslider','jquery'), '1.0' );
+            wp_register_script( 'wp-showcase', plugins_url($this->plugin_folder . '/scripts/wp-showcase.js'), array('colorbox','flexslider','jquery'), '1.0' );
             wp_enqueue_script( 'wp-showcase' );
             wp_enqueue_script( 'jquery' );
         }
     }
     
     function admin_menu() {
-        add_submenu_page( 'edit.php?post_type=showcase_gallery', 'Settings', 'Settings', 'manage_options', 'showcase-settings', array(&$this, 'settings_page') );
+        add_submenu_page(
+            'edit.php?post_type=showcase_gallery',
+            'Settings',
+            'Settings',
+            'manage_options',
+            'showcase-settings',
+            array(&$this, 'settings_page')
+        );
     }
     
     function settings_page_header() {
@@ -383,7 +389,7 @@ class WordpressShowcase {
         global $post;
 
         if(isset($post->post_type) && $post->post_type == 'showcase_gallery' || (isset($_GET['page']) && $_GET['page'] == 'showcase-settings')){
-            wp_enqueue_style( 'wp-showcase-admin', plugins_url('styles/wp-showcase-admin.css' , __FILE__ ));
+            wp_enqueue_style( 'wp-showcase-admin', plugins_url($this->plugin_folder . '/styles/wp-showcase-admin.css'));
         }
     }
     
@@ -391,11 +397,11 @@ class WordpressShowcase {
         global $post;
 
         if((isset($post->post_type) && $post->post_type == 'showcase_gallery') || (isset($_GET['page']) && $_GET['page'] == 'showcase-settings')){
-            wp_register_script( 'showcase_plupload', plugins_url('scripts/plupload/plupload.full.js' , __FILE__ ), array('jquery') );
+            wp_register_script( 'showcase_plupload', plugins_url($this->plugin_folder . '/scripts/plupload/plupload.full.js'), array('jquery') );
             wp_enqueue_script( 'showcase_plupload' ); 
-            wp_register_script( 'jquery-simplemodal', plugins_url('scripts/jquery.simplemodal.1.4.1.min.js' , __FILE__ ), array('jquery') );
+            wp_register_script( 'jquery-simplemodal', plugins_url($this->plugin_folder . '/scripts/jquery.simplemodal.1.4.1.min.js'), array('jquery') );
             wp_enqueue_script( 'jquery-simplemodal' );
-            wp_register_script( 'wp-showcase-admin', plugins_url('scripts/showcase-admin.js' , __FILE__ ), array('showcase_plupload','jquery','jquery-ui-sortable') );
+            wp_register_script( 'wp-showcase-admin', plugins_url($this->plugin_folder . '/scripts/showcase-admin.js'), array('showcase_plupload','jquery','jquery-ui-sortable') );
             wp_enqueue_script( 'wp-showcase-admin' );
             wp_enqueue_script('jquery');
             wp_enqueue_script('jquery-ui-sortable');
@@ -412,7 +418,7 @@ class WordpressShowcase {
         }
         wp_localize_script( 'jquery', 'wp_showcase', array(
             'post_id' => (isset($post->ID)) ? $post->ID : '',
-            'plugin_folder' => plugins_url('/', __FILE__),
+            'plugin_folder' => plugins_url($this->plugin_folder . '/'),
             'nonce' => wp_create_nonce('wp_showcase'),
             'galleries' => json_encode($list)
         ));
@@ -1395,7 +1401,7 @@ class WordpressShowcase {
     }
 
     function mce_add_plugin( $plugin_array ) {
-        $plugin_array['showcase'] = plugins_url('scripts/mce-showcase/showcase.js',__FILE__);
+        $plugin_array['showcase'] = plugins_url($this->plugin_folder . '/scripts/mce-showcase/showcase.js');
         return $plugin_array;
     }
     

@@ -8,12 +8,12 @@ $theme_dir_name = $theme_dir_name[0];
 
 $plugins = array("cloudzoom", "wp-showcase");
 foreach ($plugins as $plugin){
-	if(!file_exists(ABSPATH . "wp-content/plugins/$plugin.php")){
+	if(!file_exists(ABSPATH . "wp-content/plugins/$plugin")){
 		echo symlink(
-			ABSPATH . "wp-content/themes$theme_dir_name/plugins/$plugin/$plugin.php",
-			ABSPATH . "wp-content/plugins/$plugin.php"
+			ABSPATH . "wp-content/themes$theme_dir_name/plugins/$plugin",
+			ABSPATH . "wp-content/plugins/$plugin"
 		);
-		activate_plugin("$plugin.php");
+		activate_plugin("$plugin/$plugin.php");
 	}
 }
 
