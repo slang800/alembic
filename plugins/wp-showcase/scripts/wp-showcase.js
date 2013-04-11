@@ -21,11 +21,3 @@ jQuery(document).ready(function($){
 	
 });
 
-jQuery(window).load(function(){
-
-	jQuery('.wp-showcase .flexslider').flexslider({
-		slideshow: false,
-		animationDuration: 300
-	});
-	
-});

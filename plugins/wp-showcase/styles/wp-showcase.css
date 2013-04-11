@@ -6,6 +6,7 @@
 .wp-showcase li {
 	display: inline-block;
 	margin: 0 10px 10px 0;
+	vertical-align: top;
 }
 
 .wp-showcase-gallery li img {
@@ -28,6 +29,8 @@
 	font-size: 12px;
 	margin: 0 !important; 
 }
+
+.wp-showcase .flex-pauseplay { cursor: pointer; }
 
 /* For modern browsers */
 .wp-showcase .cf:before,
