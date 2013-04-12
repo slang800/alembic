@@ -1,11 +1,11 @@
 .wp-showcase ul {
 	list-style: none;
-	margin: 1em 0;
+	/*margin: 1em 0;*/
 	padding: 0;
 }
 .wp-showcase li {
 	display: inline-block;
-	margin: 0 10px 10px 0;
+	margin: 5px;
 	vertical-align: top;
 }
 
