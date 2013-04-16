@@ -179,7 +179,7 @@ class WordpressShowcase {
 			wp_enqueue_style('wp-showcase', plugins_url($this->plugin_folder . '/styles/wp-showcase.css'), array(), '1.0' );
 			
 			// Scripts
-			wp_register_script('flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/jquery.flexslider-min.js'), array('jquery'), '1.8' );
+			wp_register_script('flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/jquery.flexslider.js'), array('jquery'), '1.8' );
 			wp_enqueue_script('flexslider' );
 			wp_register_script('wp-showcase', plugins_url($this->plugin_folder . '/scripts/wp-showcase.js'), array('colorbox','flexslider','jquery'), '1.0' );
 			wp_enqueue_script('wp-showcase' );
@@ -1495,7 +1495,7 @@ class WordpressShowcase {
 					$output .= '        directionNav: '.(($options['slider_direction_nav'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				if (isset($options['slider_control_nav'])) {
-					$output .= '         controlNav: '.(($options['slider_control_nav'] == 'on') ? 'true' : 'false').',' ."\n";
+					$output .= '         controlNav: "thumbnails",' ."\n";
 				}
 				if (isset($options['slider_keyboard_nav'])) {
 					$output .= '         keyboard: '.(($options['slider_keyboard_nav'] == 'on') ? 'true' : 'false').',' ."\n";

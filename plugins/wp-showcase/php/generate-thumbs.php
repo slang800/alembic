@@ -7,7 +7,7 @@ if($options['gallery_layout'] != 'slider') {
 	}
 	
 	do_action('wp_showcase_before_gallery');
-	$output .= '<ul class="wp-showcase-gallery '. $layout .'">';
+	$output .= '<ul class="wp-showcase-gallery flex-control-nav flex-control-thumbs '. $layout .'">';
 	foreach($attachments as $attachment ){
 		$image = $attachment['thumbnail'];
 		$image_full = $attachment['full'];
@@ -35,22 +35,16 @@ if($options['gallery_layout'] != 'slider') {
 			$a_rel = $lb_options['custom-rel'];
 		}
 		
-		$output .= '<li><a href="'. $image_full .'" rel="'.$a_rel.'" class="'.$a_class.'" title="';
-		if (isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption'] ) {
-			$output .= $meta['wp_showcase']['caption'] .'<br />';
-		}
-		if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'] ) {
-			$output .= $meta['wp_showcase']['link'];
-		}
+		$output .= '<li>';
 		if ($layout == 'layout-default') {
-			$output .= '"><img src="'. $thumb_src .'"';
+			$output .= '<img src="'. $thumb_src .'"';
 		} else {
-			$output .= '"><img src="'. $image_full .'"';
+			$output .= '<img src="'. $image_full .'"';
 		}
 		if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt'] ) {
 			$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
 		}
-		$output .= ' /></a>';
+		$output .= ' />';
 		if (isset($options['show_thumb_caption']) && $options['show_thumb_caption'] == 'on' && isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption'] != '') {
 			$output .= '<p class="thumb-caption">'.$meta['wp_showcase']['caption'].'</p>';
 		}
