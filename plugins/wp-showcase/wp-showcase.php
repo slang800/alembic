@@ -1447,7 +1447,9 @@ class WordpressShowcase {
 					$meta = $attachment['meta'];
 
 					$thumb_src = $image_full;
-		
+					
+					//var_dump($attachment);
+
 					$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
 					if (is_wp_error($resized_image) ) {
 						$output .= '<p>Error: '. $resized_image->get_error_message() .'</p>';
@@ -1455,7 +1457,7 @@ class WordpressShowcase {
 						$thumb_src = $resized_image['url'];
 					}
 					
-					$output .= '<li data-thumb="' . $thumb_src . '"><img src="'. $image_full .'"';
+					$output .= '<li data-thumb="' . $thumb_src . '" data-name="' . get_the_title($attachment->ID) . '"><img src="'. $image_full .'"';
 					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt'] ) {
 						$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
 					}
@@ -1504,11 +1506,12 @@ class WordpressShowcase {
 					$output .= '        directionNav: '.(($options['slider_direction_nav'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				if (isset($options['slider_control_nav'])) {
-					$output .= '         controlNav: "thumbnails",' ."\n";
-					$output .= '         controlsContainer: "#controlsContainer",' ."\n";
+					$output .= "        controlNav: 'thumbnails',\n";
+					$output .= "        controlsContainer: '#controlsContainer',\n";
+					//$output .= "        smoothHeight: true,\n";
 				}
 				if (isset($options['slider_keyboard_nav'])) {
-					$output .= '         keyboard: '.(($options['slider_keyboard_nav'] == 'on') ? 'true' : 'false').',' ."\n";
+					$output .= "        keyboard: true,\n";
 				}
 				if (isset($options['slider_prev_text'])) {
 					$output .= '        prevText: "'.$options['slider_prev_text'].'",' ."\n";
@@ -1517,7 +1520,7 @@ class WordpressShowcase {
 					$output .= '        nextText: "'.$options['slider_next_text'].'",' ."\n";
 				}
 				if (isset($options['slider_pause_play'])) {
-					$output .= '         pausePlay: '.(($options['slider_pause_play'] == 'on') ? 'true' : 'false').',' ."\n";
+					$output .= '        pausePlay: '.(($options['slider_pause_play'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				if (isset($options['slider_pause_text'])) {
 					$output .= '        pauseText: "'.$options['slider_pause_text'].'",' ."\n";
@@ -1526,16 +1529,16 @@ class WordpressShowcase {
 					$output .= '        playText: "'.$options['slider_play_text'].'",' ."\n";
 				}
 				if (isset($options['slider_random'])) {
-					$output .= '         randomize: '.(($options['slider_random'] == 'on') ? 'true' : 'false').',' ."\n";
+					$output .= '        randomize: '.(($options['slider_random'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				if (isset($options['slider_start_slide'])) {
 					$output .= '        slideToStart: '.$options['slider_start_slide'].',' ."\n";
 				}
 				if (isset($options['slider_pause_action'])) {
-					$output .= '         pauseOnAction: '.(($options['slider_pause_action'] == 'on') ? 'true' : 'false').',' ."\n";
+					$output .= '        pauseOnAction: '.(($options['slider_pause_action'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				if (isset($options['slider_pause_hover'])) {
-					$output .= '         pauseOnHover: '.(($options['slider_pause_hover'] == 'on') ? 'true' : 'false').',' ."\n";
+					$output .= '        pauseOnHover: '.(($options['slider_pause_hover'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				$output .= '    });' ."\n";
 				$output .= '});' ."\n";
