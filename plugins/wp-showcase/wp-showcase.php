@@ -1432,9 +1432,9 @@ class WordpressShowcase {
 					<li>' . get_post_meta($post->ID, '_date', true) . '</li>
 					<li>' . get_post_meta($post->ID, '_price', true) . '</li>
 				</ul>
+				<ol id="controlsContainer"></ol>
 			';
 
-			require_once 'php/generate-thumbs.php';
 			$output .= '</div>';
 
 			
@@ -1445,8 +1445,17 @@ class WordpressShowcase {
 				foreach($attachments as $attachment ){
 					$image_full = $attachment['full'];
 					$meta = $attachment['meta'];
+
+					$thumb_src = $image_full;
+		
+					$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
+					if (is_wp_error($resized_image) ) {
+						$output .= '<p>Error: '. $resized_image->get_error_message() .'</p>';
+					} else {
+						$thumb_src = $resized_image['url'];
+					}
 					
-					$output .= '<li><img src="'. $image_full .'"';
+					$output .= '<li data-thumb="' . $thumb_src . '"><img src="'. $image_full .'"';
 					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt'] ) {
 						$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
 					}
@@ -1496,6 +1505,7 @@ class WordpressShowcase {
 				}
 				if (isset($options['slider_control_nav'])) {
 					$output .= '         controlNav: "thumbnails",' ."\n";
+					$output .= '         controlsContainer: "#controlsContainer",' ."\n";
 				}
 				if (isset($options['slider_keyboard_nav'])) {
 					$output .= '         keyboard: '.(($options['slider_keyboard_nav'] == 'on') ? 'true' : 'false').',' ."\n";
