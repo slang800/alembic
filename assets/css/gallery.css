@@ -1,5 +1,15 @@
+#portfolio-sidebar {
+  z-index: 2;
+  position: relative;
+}
+#portfolio-sidebar ul,
+#portfolio-sidebar li {
+  margin: 0;
+}
+#portfolio-sidebar .info li {
+  display: list-item;
+}
 .wp-showcase {
-/*display: inline-block*/
   padding: 15px;
   margin: auto;
   width: 85%;
@@ -11,29 +21,27 @@
 .wp-showcase li {
   border: 5px solid transparent;
 }
+#portfolio-sidebar,
+.flexslider {
+  display: inline-block;
+  vertical-align: top;
+}
+#portfolio-sidebar,
+ul.slides {
+  padding: 5px;
+  margin: 15px;
+  background: #fff;
+  box-shadow: 0 0 10px #000;
+}
 #portfolio-sidebar {
-  min-width: 150px;
-}
-#portfolio-sidebar ul,
-#portfolio-sidebar li {
-  margin: 0;
-}
-#portfolio-sidebar .info li {
-  display: list-item;
+  width: 150px;
+  margin-right: -165px;
 }
 .flexslider {
-  width: 60%;
+  padding-left: 180px;
 }
 .flexslider li {
   margin: 0;
-}
-#portfolio-sidebar,
-.flexslider {
-  vertical-align: top;
-  display: inline-block;
-  background: #fff;
-  margin: 15px;
-  padding: 5px;
 }
 .wp-showcase-gallery {
   background: none;

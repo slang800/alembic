@@ -1,5 +1,14 @@
+#portfolio-sidebar
+	z-index 2
+	position relative
+
+	ul, li
+		margin: 0
+
+	.info li
+		display: list-item
+
 .wp-showcase
-	/*display: inline-block*/
 	padding: 15px
 	margin: auto
 	width: 85%
@@ -10,28 +19,28 @@
 .wp-showcase-gallery li, .wp-showcase li
 	border: 5px solid transparent
 
+
+#portfolio-sidebar, .flexslider
+	display: inline-block
+	vertical-align: top
+
+#portfolio-sidebar, ul.slides
+	padding: 5px
+	margin: 15px
+	background: white
+	box-shadow 0 0 10px black
+
 #portfolio-sidebar
-	min-width: 150px
-
-	ul, li
-		margin: 0
-
-	.info li
-		display: list-item
+	width: 150px
+	margin-right -165px
 
 
 .flexslider
-	width: 60%
+	//width: 60%
+	padding-left 180px
 
 	li
 		margin: 0
-
-#portfolio-sidebar, .flexslider
-	vertical-align: top
-	display: inline-block
-	background: white
-	margin: 15px
-	padding: 5px
 
 .wp-showcase-gallery
 	background: none
