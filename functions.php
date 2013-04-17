@@ -1,6 +1,24 @@
 <?php
 ob_start();
-$curr_theme = wp_get_theme( TEMPLATEPATH . '/style.css' );
+
+// install & activate theme plugins
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
+preg_match('/\/[^\/]+$/', TEMPLATEPATH, $theme_dir_name);
+$theme_dir_name = $theme_dir_name[0];
+
+$plugins = array("cloudzoom", "wp-showcase");
+foreach ($plugins as $plugin){
+	if(!file_exists(ABSPATH . "wp-content/plugins/$plugin")){
+		echo symlink(
+			ABSPATH . "wp-content/themes$theme_dir_name/plugins/$plugin",
+			ABSPATH . "wp-content/plugins/$plugin"
+		);
+		activate_plugin("$plugin/$plugin.php");
+	}
+}
+
+
+$curr_theme = wp_get_theme(TEMPLATEPATH . '/style.css');
 $theme_version = trim( $curr_theme['Version'] );
 if ( !$theme_version ) $theme_version = "1.0";
 
@@ -9,7 +27,7 @@ define('S_FUNCTIONS', TEMPLATEPATH . '/functions/');
 define('S_WIDGETS', TEMPLATEPATH . '/widgets/');
 define('S_INCLUDES', TEMPLATEPATH . '/includes/');
 define('S_THEME', 'Theme options');
-define('S_THEME_DIR', get_bloginfo( 'template_directory' ));
+define('S_THEME_DIR', get_bloginfo('template_directory'));
 define('S_THEME_DOCS', S_THEME_DIR.'/functions/docs/docs.pdf');
 define('S_THEME_LOGO', S_THEME_DIR.'/functions/img/logo.png');
 define('S_MAINMENU_NAME', 'general-options');
