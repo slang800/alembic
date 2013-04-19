@@ -1261,11 +1261,11 @@ color: #fff;
 .three .footer-cols{
 	width: 33%;
 }
-.portfolio-title{ border-top: 1px solid #90816E; border-bottom: 1px solid #90816E;}
 .portfolio-title {
 border-top: 1px solid #E0E1CD;
 border-bottom: 1px solid #E0E1CD;
 display: block;
+margin: 5px;
 margin-top: 15px;
 padding-top: 0;
 line-height: 2;

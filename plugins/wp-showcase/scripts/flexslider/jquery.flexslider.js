@@ -749,6 +749,7 @@
           methods.controlNav.update("remove", slider.last);
         }
       }
+
       // update directionNav
       if (vars.directionNav) methods.directionNav.update();
 
@@ -861,13 +862,17 @@
     move: 0,                        //{NEW} Integer: Number of carousel items that should move on animation. If 0, slider will move all visible items.
 
     // Callback API
-    start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide
-    before: function(){},           //Callback: function(slider) - Fires asynchronously with each slider animation
+    start: function(slider){
+      $('#image_title').html($(slider.slides[slider.currentSlide]).attr("data-title"));
+    },            //Callback: function(slider) - Fires when the slider loads the first slide
+    before: function(slider){
+      $('#image_title').html($(slider.slides[slider.currentSlide]).attr("data-title"));
+    },           //Callback: function(slider) - Fires asynchronously with each slider animation
     after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
     end: function(){},              //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
     added: function(){},            //{NEW} Callback: function(slider) - Fires after a slide is added
     removed: function(){}           //{NEW} Callback: function(slider) - Fires after a slide is removed
-  }
+  };
 
 
   //FlexSlider: Plugin Function
@@ -883,7 +888,7 @@
         if ($slides.length === 1) {
           $slides.fadeIn(400);
           if (options.start) options.start($this);
-        } else if ($this.data('flexslider') == undefined) {
+        } else if ($this.data('flexslider') === undefined) {
           new $.flexslider(this, options);
         }
       });

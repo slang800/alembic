@@ -17,6 +17,7 @@
 .flex-control-thumbs img {
   width: 60px;
   border: 5px solid transparent;
+  cursor: pointer;
 }
 .flex-control-thumbs img.flex-active {
   border: 5px solid #d0b312;

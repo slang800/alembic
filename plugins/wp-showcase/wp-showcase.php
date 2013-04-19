@@ -466,15 +466,21 @@ class WordpressShowcase {
 		$galleries = get_posts(array('post_type' => 'showcase_gallery', 'posts_per_page' => -1) );
 		$list = array();
 		foreach($galleries as $gallery ){
-			$list[] = array('id' => $gallery->ID,
-			'name' => $gallery->post_title
+			$list[] = array(
+				'id' => $gallery->ID,
+				'name' => $gallery->post_title
 			);
 		}
-		wp_localize_script('jquery', 'wp_showcase', array('post_id' => (isset($post->ID)) ? $post->ID : '',
-		'plugin_folder' => plugins_url($this->plugin_folder . '/'),
-		'nonce' => wp_create_nonce('wp_showcase'),
-		'galleries' => json_encode($list)
-		));
+		wp_localize_script(
+			'jquery',
+			'wp_showcase',
+			array(
+				'post_id' => (isset($post->ID)) ? $post->ID : '',
+				'plugin_folder' => plugins_url($this->plugin_folder . '/'),
+				'nonce' => wp_create_nonce('wp_showcase'),
+				'galleries' => json_encode($list)
+			)
+		);
 	}
 	
 	function image_sources_header()
@@ -1021,6 +1027,13 @@ class WordpressShowcase {
 		<p><strong>Edit Image</strong></p>
 		<table class="form-table">
 		<tr valign="top">
+		<th scope="row"><?php _e('Image Title', 'showcase');
+		?></th>
+		<td><input type="text" name="showcase_meta_title" id="showcase_meta_title" value="" class="regular-text" /><br />
+		<span class="description"><?php _e('e.g. Example title', 'showcase');
+		?></span></td>
+		</tr>
+		<tr valign="top">
 		<th scope="row"><?php _e('Image Caption', 'showcase');
 		?></th>
 		<td><input type="text" name="showcase_meta_caption" id="showcase_meta_caption" value="" class="regular-text" /><br />
@@ -1273,15 +1286,12 @@ class WordpressShowcase {
 		$response['message'] = '';
 		
 		$meta = wp_get_attachment_metadata($_POST['id']);
-		if (isset($meta['wp_showcase']['caption'])) {
-			$response['caption'] = $meta['wp_showcase']['caption'];
+		foreach(array('caption', 'link', 'alt', 'title') as $field){
+			if (isset($meta['wp_showcase'][$field])) {
+				$response[$field] = $meta['wp_showcase'][$field];
+			}
 		}
-		if (isset($meta['wp_showcase']['link'])) {
-			$response['link'] = $meta['wp_showcase']['link'];
-		}
-		if (isset($meta['wp_showcase']['alt'])) {
-			$response['alt'] = $meta['wp_showcase']['alt'];
-		}
+
 		$response['message'] = 'success';
 		
 		echo json_encode($response);
@@ -1299,9 +1309,11 @@ class WordpressShowcase {
 		$response['message'] = '';
 		
 		$meta = wp_get_attachment_metadata($_POST['id']);
-		$meta['wp_showcase'] = array('caption' => strip_tags($_POST['caption']),
-		'link' => strip_tags($_POST['link']),
-		'alt' => strip_tags($_POST['alt'])
+		$meta['wp_showcase'] = array(
+			'title' => strip_tags($_POST['title']),
+			'caption' => strip_tags($_POST['caption']),
+			'link' => strip_tags($_POST['link']),
+			'alt' => strip_tags($_POST['alt'])
 		);
 		wp_update_attachment_metadata($_POST['id'], $meta );
 		
@@ -1370,18 +1382,19 @@ class WordpressShowcase {
 	
 	function get_usefullinks()
 	{
-		$links = array(array('label' => __('Website:', 'showcase'),
-		'url'   => 'http://showcase.dev7studios.com',
-		'title' => 'Showcase'
-		),
-		array('label' => __('Created by:', 'showcase'),
-		'url'   => 'http://dev7studios.com',
-		'title' => 'Dev7studios'
-		),
-		array('label' => __('Support:', 'showcase'),
-		'url'   => 'http://support.dev7studios.com/discussions',
-		'title' => 'Support Forums'
-		)
+		$links = array(
+			array('label' => __('Website:', 'showcase'),
+				'url'   => 'http://showcase.dev7studios.com',
+				'title' => 'Showcase'
+			),
+			array('label' => __('Created by:', 'showcase'),
+				'url'   => 'http://dev7studios.com',
+				'title' => 'Dev7studios'
+			),
+			array('label' => __('Support:', 'showcase'),
+				'url'   => 'http://support.dev7studios.com/discussions',
+				'title' => 'Support Forums'
+			)
 		);
 		return apply_filters('wp_showcase_useful_links', $links );
 	}
@@ -1441,14 +1454,12 @@ class WordpressShowcase {
 			// Slideshow
 			if ($options['show_slideshow'] == 'on' || $options['gallery_layout'] == 'slider') {
 				do_action('wp_showcase_before_slider');
-				$output .= '<div class="flexslider cf"><ul class="slides">';
+				$output .= '<div class="flexslider cf"><ul class="slides"><h1 id="image_title"></h1>';
 				foreach($attachments as $attachment ){
 					$image_full = $attachment['full'];
 					$meta = $attachment['meta'];
 
 					$thumb_src = $image_full;
-					
-					//var_dump($attachment);
 
 					$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
 					if (is_wp_error($resized_image) ) {
@@ -1457,21 +1468,23 @@ class WordpressShowcase {
 						$thumb_src = $resized_image['url'];
 					}
 					
-					$output .= '<li data-thumb="' . $thumb_src . '" data-name="' . get_the_title($attachment->ID) . '"><img src="'. $image_full .'"';
-					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt'] ) {
+					$output .= '<li data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img src="'. $image_full .'"';
+					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt']){
 						$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
 					}
 					$output .= ' />';
-					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) ||
-					(isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']) ) $output .= '<p class="flex-caption">';
-					if(isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption'] ) {
+					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
+						$output .= '<p class="flex-caption">';
+					}
+					if(isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']){
 						$output .= $meta['wp_showcase']['caption'] .' ';
 					}
-					if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'] ) {
+					if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']){
 						$output .= '<a href="'. $meta['wp_showcase']['link'] .'">'. $meta['wp_showcase']['link'] .'</a>';
 					}
-					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) ||
-					(isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']) ) $output .= '</p>';
+					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
+						$output .= '</p>';
+					}
 					$output .= '</li>';
 				}
 				$output .= '</ul></div>';
@@ -1506,9 +1519,9 @@ class WordpressShowcase {
 					$output .= '        directionNav: '.(($options['slider_direction_nav'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
 				if (isset($options['slider_control_nav'])) {
-					$output .= "        controlNav: 'thumbnails',\n";
-					$output .= "        controlsContainer: '#controlsContainer',\n";
-					//$output .= "        smoothHeight: true,\n";
+					$output .= "
+					        controlNav: 'thumbnails',\n
+					        controlsContainer: '#controlsContainer',\n";
 				}
 				if (isset($options['slider_keyboard_nav'])) {
 					$output .= "        keyboard: true,\n";
@@ -1540,14 +1553,12 @@ class WordpressShowcase {
 				if (isset($options['slider_pause_hover'])) {
 					$output .= '        pauseOnHover: '.(($options['slider_pause_hover'] == 'on') ? 'true' : 'false').',' ."\n";
 				}
-				$output .= '    });' ."\n";
-				$output .= '});' ."\n";
-				$output .= '</script>' ."\n";
-				
+				$output .= "
+				    });\n
+				});\n
+				</script>\n";
 			}
-			
 		}
-		
 		return $output;
 	}
 	
