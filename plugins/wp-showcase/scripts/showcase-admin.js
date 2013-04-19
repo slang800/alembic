@@ -66,6 +66,7 @@ jQuery(document).ready(function($){
     // Edit Caption
     $('#showcase-images .edit-image').live('click', function(){
         var edit = $(this);
+        $('#showcase_meta_title').val('');
         $('#showcase_meta_link').val('');
         $('#showcase_meta_caption').val('');
         $('#showcase_meta_alt').val('');
@@ -77,6 +78,7 @@ jQuery(document).ready(function($){
             { action:'showcase_load_meta', id:$('#showcase-edit-image').data('attach_id'), 
               nonce: wp_showcase.nonce }, 
             function(data){
+                $('#showcase_meta_title').val(data.title);
                 $('#showcase_meta_link').val(data.link);
                 $('#showcase_meta_caption').val(data.caption);
                 $('#showcase_meta_alt').val(data.alt);
@@ -88,9 +90,15 @@ jQuery(document).ready(function($){
     $('#showcase_meta_submit').live('click', function(){
         $('#showcase_meta_submit').val('Saving…');
         $.post(ajaxurl, 
-            { action:'showcase_edit', id:$('#showcase-edit-image').data('attach_id'), 
-              link:$('#showcase_meta_link').val(), caption:$('#showcase_meta_caption').val(),
-              alt:$('#showcase_meta_alt').val(), nonce: wp_showcase.nonce }, 
+            {
+                action:'showcase_edit',
+                id: $('#showcase-edit-image').data('attach_id'), 
+                title: $('#showcase_meta_title').val(),
+                link: $('#showcase_meta_link').val(),
+                caption: $('#showcase_meta_caption').val(),
+                alt: $('#showcase_meta_alt').val(),
+                nonce: wp_showcase.nonce
+            }, 
             function(data){
                 $('#showcase_meta_submit').val('Save Changes');
                 $.modal.close();
