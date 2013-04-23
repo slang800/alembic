@@ -2,7 +2,10 @@
 ob_start();
 
 // install & activate theme plugins
-require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+//temporarly commented out cause it was causing issues on (mt) servers... have
+//to set up symlinks manually
+/*require_once ABSPATH . 'wp-admin/includes/plugin.php';
 preg_match('/\/[^\/]+$/', TEMPLATEPATH, $theme_dir_name);
 $theme_dir_name = $theme_dir_name[0];
 
@@ -15,7 +18,7 @@ foreach ($plugins as $plugin){
 		);
 		activate_plugin("$plugin/$plugin.php");
 	}
-}
+}*/
 
 
 $curr_theme = wp_get_theme(TEMPLATEPATH . '/style.css');
