@@ -1522,5 +1522,82 @@ color: #484747;
 border-top: 0 !important;
 }
 
+/*cf_custom contact form*/
 
+#about {
+margin: 10px 0 0;
+overflow: auto;
+}
+
+#cf_custom{
+width:100%;
+}
+
+.cf_custom {
+border: 0 none !important ;
+outline: 0 none;
+display: block;
+text-transform: uppercase;
+float: left;
+}
+
+#cf_name, #cf_email, #cf_dropdown, #cf_message{
+color: #111111 !important ;
+border: 3px solid white;
+font-family:'Trade Gothic Next W01';
+text-transform: uppercase;
+font-weight: 900;
+margin: 10px;
+background-color: #fff !important;
+}
+
+#cf_name, #cf_email, #cf_dropdown{
+width:270px;
+height:30px;
+}
+
+#cf_name, #cf_email{
+padding:0 10px !important;
+}
+
+#cf_email{
+margin-right:0px;
+}
+
+#cf_dropdown{
+padding:4px 0 4px 10px !important;
+width:300px;
+height:30px;
+}
+
+#cf_message{
+max-width:940px;
+width:940px;
+height:340px;
+}
+
+#cf_submit{
+color:#000;
+font-size:45px;
+width:160px;
+display:block;
+position:relative;
+left:50%;
+margin-left:-80px;
+border-radius: 3px;
+}
+#cf_submit:hover{
+color:#666;
+}
+
+#cf_custom span.wpcf7-not-valid-tip {
+left: 70%;
+margin-top: 50px;
+position: relative;
+top: 20%;
+}
+
+#cf_custom div.wpcf7-validation-errors{
+margin-top:50px;
+}
 
