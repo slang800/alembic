@@ -41,6 +41,9 @@
   margin: 15px;
   box-shadow: 0 0 10px #000;
 }
+.slides {
+  display: inline-block;
+}
 #portfolio-sidebar {
   width: 150px;
   margin-right: -165px;
