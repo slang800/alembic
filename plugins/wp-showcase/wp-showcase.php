@@ -1454,12 +1454,17 @@ class WordpressShowcase {
 			// Slideshow
 			if ($options['show_slideshow'] == 'on' || $options['gallery_layout'] == 'slider') {
 				do_action('wp_showcase_before_slider');
-				$output .= '<div class="flexslider cf"><ul class="slides"><h1 id="image_title"></h1>';
+				$output .= '<div class="flexslider cf"><ul class="slides"><h1 id="image_title"></h1><span id="image_tags"></span>';
 				foreach($attachments as $attachment ){
 					$image_full = $attachment['full'];
 					$meta = $attachment['meta'];
 
 					$thumb_src = $image_full;
+
+					$tags = array();
+					foreach(get_the_mediatags($attachment['id']) as $tag){
+						$tags[] = $tag->name;
+					}
 
 					$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
 					if (is_wp_error($resized_image) ) {
@@ -1468,7 +1473,7 @@ class WordpressShowcase {
 						$thumb_src = $resized_image['url'];
 					}
 					
-					$output .= '<li data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img src="'. $image_full .'"';
+					$output .= '<li data-tags="' . htmlspecialchars(json_encode($tags)) . '" data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img src="'. $image_full .'"';
 					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt']){
 						$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
 					}
