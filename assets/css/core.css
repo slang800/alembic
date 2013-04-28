@@ -1601,3 +1601,17 @@ top: 20%;
 margin-top:50px;
 }
 
+/* colorchanges */
+.gallery .element .data:hover a, .gallery .element .data:hover { color: #fff;}
+.gallery .element .data:hover{
+	background: #496ea2;
+}
+
+.main-nav li ul {
+    background: none repeat scroll 0 0 #496ea2;
+}
+
+
+
+
+
