@@ -1454,7 +1454,7 @@ class WordpressShowcase {
 			// Slideshow
 			if ($options['show_slideshow'] == 'on' || $options['gallery_layout'] == 'slider') {
 				do_action('wp_showcase_before_slider');
-				$output .= '<div class="flexslider cf"><div><h1 id="image_title"></h1><span id="image_tags"></span><ul class="slides">';
+				$output .= '<div class="flexslider"><div><h1 id="image_title"></h1><span id="image_tags"></span><ul class="slides">';
 				foreach($attachments as $attachment ){
 					$image_full = $attachment['full'];
 					$meta = $attachment['meta'];
