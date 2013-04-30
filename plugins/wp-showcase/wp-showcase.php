@@ -724,6 +724,7 @@ class WordpressShowcase {
 			}
 		}
 		?>
+	<!--
 		<tr valign="top" class="showcase_non_manual">
 		<th scope="row">- <?php _e('Number of Images', 'showcase');
 		?></th>
@@ -968,6 +969,7 @@ class WordpressShowcase {
 		<span class="description"><?php _e('Pause the slideshow when hovering over slider, then resume when no longer hovering', 'showcase');
 		?></span></label></td>
 		</tr>
+	-->
 		</table>
 		<?php
 	}
