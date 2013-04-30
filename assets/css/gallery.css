@@ -14,6 +14,12 @@
   margin: auto;
   width: 85%;
 }
+.flexslider {
+  width: 100%;
+}
+.flexslider .slides {
+  width: 100%;
+}
 .flex-control-thumbs img {
   width: 60px;
   border: 5px solid transparent;

@@ -354,12 +354,13 @@ Contributing author: Tyler Smith (@mbmufffin)
 						slider.newSlides.width slider.computedW
 						slider.setProps slider.computedW, "setTotal"
 
-			smoothHeight: (dur) ->
-				if not vertical or fade
-					$obj = (if (fade) then slider else slider.viewport)
-					(if (dur) then $obj.animate(
-						height: slider.slides.eq(slider.animatingTo).height()
-					, dur) else $obj.height(slider.slides.eq(slider.animatingTo).height()))
+			smoothHeight: (dur = 500) ->
+				console.log slider.slides.eq(slider.animatingTo).height()
+				$($('.slides')[0]).animate(
+					height: slider.slides.eq(slider.animatingTo).height(),
+					dur
+				)
+
 
 			sync: (action) ->
 				$obj = $(vars.sync).data("flexslider")

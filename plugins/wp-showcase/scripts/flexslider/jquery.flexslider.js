@@ -407,17 +407,13 @@ Contributing author: Tyler Smith (@mbmufffin)
           }
         },
         smoothHeight: function(dur) {
-          var $obj;
-          if (!vertical || fade) {
-            $obj = (fade ? slider : slider.viewport);
-            if (dur) {
-              return $obj.animate({
-                height: slider.slides.eq(slider.animatingTo).height()
-              }, dur);
-            } else {
-              return $obj.height(slider.slides.eq(slider.animatingTo).height());
-            }
+          if (dur == null) {
+            dur = 500;
           }
+          console.log(slider.slides.eq(slider.animatingTo).height());
+          return $($('.slides')[0]).animate({
+            height: slider.slides.eq(slider.animatingTo).height()
+          }, dur);
         },
         sync: function(action) {
           var $obj, target;

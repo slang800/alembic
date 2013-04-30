@@ -1452,119 +1452,62 @@ class WordpressShowcase {
 
 			$output .= '</div>';
 
-			
-			// Slideshow
-			if ($options['show_slideshow'] == 'on' || $options['gallery_layout'] == 'slider') {
-				do_action('wp_showcase_before_slider');
-				$output .= '<div class="flexslider"><div><h1 id="image_title"></h1><span id="image_tags"></span><ul class="slides">';
-				foreach($attachments as $attachment ){
-					$image_full = $attachment['full'];
-					$meta = $attachment['meta'];
+			do_action('wp_showcase_before_slider');
+			$output .= '<div class="flexslider"><div><h1 id="image_title"></h1><span id="image_tags"></span><ul class="slides">';
+			foreach($attachments as $attachment ){
+				$image_full = $attachment['full'];
+				$meta = $attachment['meta'];
 
-					$thumb_src = $image_full;
+				$thumb_src = $image_full;
 
-					$tags = array();
-					foreach(get_the_mediatags($attachment['id']) as $tag){
-						$tags[] = $tag->name;
-					}
-
-					$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
-					if (is_wp_error($resized_image) ) {
-						$output .= '<p>Error: '. $resized_image->get_error_message() .'</p>';
-					} else {
-						$thumb_src = $resized_image['url'];
-					}
-					
-					$output .= '<li data-tags="' . htmlspecialchars(json_encode($tags)) . '" data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img src="'. $image_full .'"';
-					if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt']){
-						$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
-					}
-					$output .= ' />';
-					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
-						$output .= '<p class="flex-caption">';
-					}
-					if(isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']){
-						$output .= $meta['wp_showcase']['caption'] .' ';
-					}
-					if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']){
-						$output .= '<a href="'. $meta['wp_showcase']['link'] .'">'. $meta['wp_showcase']['link'] .'</a>';
-					}
-					if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
-						$output .= '</p>';
-					}
-					$output .= '</li>';
+				$tags = array();
+				foreach(get_the_mediatags($attachment['id']) as $tag){
+					$tags[] = $tag->name;
 				}
-				$output .= '</ul></div></div>';
-				do_action('wp_showcase_after_slider');
+
+				$resized_image = $this->resize_image($attachment['id'], '', 150, 150, true );
+				if (is_wp_error($resized_image) ) {
+					$output .= '<p>Error: '. $resized_image->get_error_message() .'</p>';
+				} else {
+					$thumb_src = $resized_image['url'];
+				}
+				
+				$output .= '<li data-tags="' . htmlspecialchars(json_encode($tags)) . '" data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img src="'. $image_full .'"';
+				if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt']){
+					$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
+				}
+				$output .= ' />';
+				if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
+					$output .= '<p class="flex-caption">';
+				}
+				if(isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']){
+					$output .= $meta['wp_showcase']['caption'] .' ';
+				}
+				if (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link']){
+					$output .= '<a href="'. $meta['wp_showcase']['link'] .'">'. $meta['wp_showcase']['link'] .'</a>';
+				}
+				if ((isset($meta['wp_showcase']['caption']) && $meta['wp_showcase']['caption']) || (isset($meta['wp_showcase']['link']) && $meta['wp_showcase']['link'])){
+					$output .= '</p>';
+				}
+				$output .= '</li>';
 			}
+			$output .= '</ul></div></div>';
+			do_action('wp_showcase_after_slider');
 
 			$output .= '</div>';
 			do_action('wp_showcase_after_showcase');
 			
-			// Flexslider JS
-			if ($options['gallery_layout'] == 'slider' || $options['show_slideshow'] == 'on') {
-				
-				$output .= '<script type="text/javascript">' ."\n";
-				$output .= 'jQuery(window).load(function(){' ."\n";
-				$output .= '    jQuery("#wp-showcase-'. $id .' .flexslider").flexslider({' ."\n";
-				if (isset($options['slider_animation'])) {
-					$output .= '        animation: "'. $options['slider_animation'].'",' ."\n";
-				}
-				if (isset($options['slider_direction'])) {
-					$output .= '        direction: "'.$options['slider_direction'].'",' ."\n";
-				}
-				if (isset($options['slider_animate_duration'])) {
-					$output .= '        animationSpeed: '.$options['slider_animate_duration'].',' ."\n";
-				}
-				if (isset($options['slider_slideshow'])) {
-					$output .= '        slideshow: '.(($options['slider_slideshow'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_slideshow_speed'])) {
-					$output .= '        slideshowSpeed: '.$options['slider_slideshow_speed'].',' ."\n";
-				}
-				if (isset($options['slider_direction_nav'])) {
-					$output .= '        directionNav: '.(($options['slider_direction_nav'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_control_nav'])) {
-					$output .= "
-					        controlNav: 'thumbnails',\n
-					        controlsContainer: '#controlsContainer',\n";
-				}
-				if (isset($options['slider_keyboard_nav'])) {
-					$output .= "        keyboard: true,\n";
-				}
-				if (isset($options['slider_prev_text'])) {
-					$output .= '        prevText: "'.$options['slider_prev_text'].'",' ."\n";
-				}
-				if (isset($options['slider_next_text'])) {
-					$output .= '        nextText: "'.$options['slider_next_text'].'",' ."\n";
-				}
-				if (isset($options['slider_pause_play'])) {
-					$output .= '        pausePlay: '.(($options['slider_pause_play'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_pause_text'])) {
-					$output .= '        pauseText: "'.$options['slider_pause_text'].'",' ."\n";
-				}
-				if (isset($options['slider_play_text'])) {
-					$output .= '        playText: "'.$options['slider_play_text'].'",' ."\n";
-				}
-				if (isset($options['slider_random'])) {
-					$output .= '        randomize: '.(($options['slider_random'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_start_slide'])) {
-					$output .= '        slideToStart: '.$options['slider_start_slide'].',' ."\n";
-				}
-				if (isset($options['slider_pause_action'])) {
-					$output .= '        pauseOnAction: '.(($options['slider_pause_action'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				if (isset($options['slider_pause_hover'])) {
-					$output .= '        pauseOnHover: '.(($options['slider_pause_hover'] == 'on') ? 'true' : 'false').',' ."\n";
-				}
-				$output .= "
-				    });\n
-				});\n
-				</script>\n";
-			}
+			$output .= "
+			<script type=\"text/javascript\">
+				jQuery(window).load(function(){
+					jQuery(\"#wp-showcase-". $id ." .flexslider\").flexslider({
+						controlNav: 'thumbnails',
+						controlsContainer: '#controlsContainer',
+						keyboard: true
+					});
+				});
+			</script>";
+
 		}
 		return $output;
 	}
