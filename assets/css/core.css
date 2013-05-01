@@ -1082,9 +1082,6 @@ body.home .wrap {
   margin-bottom: 0;
   font-size: 14px;
 }
-.isotope .element {
-  min-height: 330px;
-}
 .gallery {
   margin-bottom: 30px;
   width: 100%;
@@ -1095,6 +1092,9 @@ body.home .wrap {
 .gallery li a.overlay-wrap {
   margin-bottom: 20px;
   max-width: 100%;
+}
+.gallery .element .data {
+  min-height: 291px;
 }
 .gallery .element .data:hover {
   background: #9b3a16;
