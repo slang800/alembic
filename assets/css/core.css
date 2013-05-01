@@ -3,8 +3,8 @@
 @import url("jquery-ui-1.8.1.custom.css");
 /*@import url('skins/rockable/skin.css')*/
 *,
-before,
-after {
+:before,
+:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -21,8 +21,8 @@ body {
   width: 960px;
   margin: 0 auto;
 }
-a link,
-a visited {
+a:link,
+a:visited {
   color: #5c5a5a;
 }
 /* Header */
@@ -548,8 +548,8 @@ caption {
 q {
   quotes: none;
 }
-q before,
-q after {
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -677,11 +677,17 @@ img.alignnone,
   text-align: center;
   padding-top: 5px;
 }
+.alignnone img,
+img.alignnone img,
+/* not sure about this one */ img,
 .wp-caption img {
   border: 0 none;
   padding: 0;
   margin: 0;
 }
+.alignnone p.wp-caption-text,
+img.alignnone p.wp-caption-text,
+/* not sure about this one */ p.wp-caption-text,
 .wp-caption p.wp-caption-text {
   line-height: 1.5;
   font-size: 10px;
@@ -755,11 +761,31 @@ header {
   float: left;
   margin: 4px 0;
 }
+.main-nav {
+  margin-top: 20px;
+  font-family: futuramc;
+}
 .main-nav li {
   list-style: none;
   margin-left: 0;
   display: inline;
   float: left;
+}
+.main-nav li li a {
+  color: #fff;
+  font-size: 25px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.main-nav li ul {
+  background: none repeat scroll 0 0 #705f64;
+  left: 50%;
+  margin-left: -120px;
+  top: auto;
+  width: 240px;
+  display: none;
+  border-top: 20px solid #000;
 }
 .main-nav ul.sf-menu {
   float: none;
@@ -780,21 +806,15 @@ header {
   background: url("../img/dancinants.gif") bottom no-repeat;
   text-decoration: none;
 }
-.main-nav li li a {
-  color: #fff;
-  font-size: 25px;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.main-nav li ul {
-  background: none repeat scroll 0 0 #705f64;
+.main-nav li ul:before {
+  background: url("../img/nav-arrow.png") no-repeat scroll 0 0 transparent;
+  content: "";
+  height: 16px;
   left: 50%;
-  margin-left: -120px;
-  top: auto;
-  width: 240px;
-  display: none;
-  border-top: 20px solid #000;
+  margin-left: -10px;
+  position: absolute;
+  top: -16px;
+  width: 20px;
 }
 .sf-menu li:hover ul,
 .sf-menu li.sfHover ul {
@@ -805,22 +825,8 @@ header {
 .bread_crumbs {
   font-size: 12px;
 }
-.main-nav li ul before {
-  background: url("../img/nav-arrow.png") no-repeat scroll 0 0 transparent;
-  content: "";
-  height: 16px;
-  left: 50%;
-  margin-left: -10px;
-  position: absolute;
-  top: -16px;
-  width: 20px;
-}
 .sf-sub-indicator {
   display: none;
-}
-.main-nav {
-  margin-top: 20px;
-  font-family: futuramc;
 }
 ul.unstyled-h li {
   margin-left: 0;
@@ -919,15 +925,15 @@ img {
   width: 80%;
   overflow: hidden;
 }
-.promotion p {
-  font-size: 1em;
-}
 .promotion {
   background: none repeat scroll 0 0 #fff;
   margin-bottom: 20px;
   padding: 10px;
   position: relative;
   display: table;
+}
+.promotion p {
+  font-size: 1em;
 }
 .main-nav.fixed {
   position: fixed;
@@ -959,12 +965,6 @@ img {
   -ms-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-.ls-container {
-  width: 100% !important;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .overlay .con {
   color: #fff;
   margin-top: -25px;
@@ -982,11 +982,17 @@ img {
   border-radius: 100px;
   padding: 10px;
 }
-.data a:hover {
-  text-decoration: none;
+.ls-container {
+  width: 100% !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .data {
   overflow: hidden;
+}
+.data a:hover {
+  text-decoration: none;
 }
 .data:hover .overlay {
   display: block;
@@ -1062,8 +1068,8 @@ body.home .wrap {
 .outer-shadow,
 .gallery li,
 .home-top {
-  -webkit-box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.4);
-  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 5px 3px rgba(0,0,0,0.4);
+  box-shadow: 0 0 5px 3px rgba(0,0,0,0.4);
   padding: 10px;
   background: none repeat scroll 0 0 #fff;
   cursor: pointer;
@@ -1076,35 +1082,34 @@ body.home .wrap {
   margin-bottom: 0;
   font-size: 14px;
 }
-.gallery .element .data:hover a,
-.gallery .element .data:hover {
-  color: #fff;
-}
-.gallery .element .data:hover {
-  background: #9b3a16;
-}
 .isotope .element {
   min-height: 330px;
 }
-.gallery .element .data img {
+.gallery {
+  margin-bottom: 30px;
   width: 100%;
 }
-.gallery .element .data a,
-.home .gallery .element {
-  width: 33%;
-  padding: 30px;
-  min-width: 300px;
+.gallery li a {
+  color: #000;
 }
 .gallery li a.overlay-wrap {
   margin-bottom: 20px;
   max-width: 100%;
 }
-.gallery li a {
-  color: #000;
+.gallery .element .data:hover {
+  background: #9b3a16;
 }
-.gallery {
-  margin-bottom: 30px;
+.gallery .element .data:hover a,
+.gallery .element .data:hover {
+  color: #fff;
+}
+.gallery .element .data img {
   width: 100%;
+}
+.home .gallery .element {
+  width: 33%;
+  padding: 30px;
+  min-width: 300px;
 }
 .full-bg {
   background: #fff;
@@ -1136,6 +1141,8 @@ div.title h1 {
   margin-bottom: 90px;
   padding: 10px 50px 75px;
   position: relative;
+  margin-top: 20px;
+  display: table;
 }
 .contact input[type=text],
 .contact input[type=email],
@@ -1164,15 +1171,6 @@ div.title h1 {
   background: #666;
   color: #fff;
 }
-.gal-thumb li {
-  width: auto;
-  margin-left: 0;
-  list-style: none;
-}
-.promotion2 {
-  margin-top: 20px;
-  display: table;
-}
 .gal-info {
   background: #ebebeb;
   padding: 20px 10px;
@@ -1183,6 +1181,9 @@ div.title h1 {
 }
 .gal-thumb li {
   margin-bottom: 35px;
+  width: auto;
+  margin-left: 0;
+  list-style: none;
 }
 .gal-thumb img {
   border: 25px solid #ebebeb;
@@ -1304,8 +1305,8 @@ footer {
   padding: 20px 0;
   text-align: left;
 }
-footer a link,
-footer a visited {
+footer a:link,
+footer a:visited {
   color: #fff;
 }
 .circle {
@@ -1466,12 +1467,6 @@ body {
     padding: 25px 2%;
     width: 40%;
   }
-  .home-top {
-    margin-left: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
   .blog .date {
     float: none;
   }
@@ -1482,13 +1477,6 @@ body {
   #page .inner {
     padding: 20px 0;
   }
-  .grid-container {
-    overflow: hidden;
-  }
-  .home .grid-container {
-    padding: 0;
-  }
-  .social ul,
   .responsiveMenuSelect {
     width: 90%;
     margin-top: 20px;

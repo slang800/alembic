@@ -5,7 +5,7 @@ vendor-prefixes = webkit moz o ms official
 @import url(superfish.css)
 @import url(jquery-ui-1.8.1.custom.css)
 /*@import url('skins/rockable/skin.css')*/
-*, before, after
+*,:before,:after
 	box-sizing border-box
 
 body
@@ -20,7 +20,7 @@ body
 	width 960px
 	margin 0 auto
 
-a link,a visited
+a:link,a:visited
 	color #5c5a5a
 
 /* Header */
@@ -195,28 +195,28 @@ a link,a visited
 	.project_details
 		margin-bottom 15px
 
-	.project_details .avatar
-		background #FFF
-		padding 5px 5px 3px
-		position relative
-		margin-bottom 15px
+		.avatar
+			background #FFF
+			padding 5px 5px 3px
+			position relative
+			margin-bottom 15px
 
-	.project_details .avatar span
-		position absolute
-		background url('../img/slider/triangle.png') no-repeat bottom
-		padding-bottom 13px
-		top 15px
-		left -10px
-		z-index 10
+			span
+				position absolute
+				background url('../img/slider/triangle.png') no-repeat bottom
+				padding-bottom 13px
+				top 15px
+				left -10px
+				z-index 10
 
-	.project_details .avatar span a
-		background #fbd640
-		padding 5px
-		text-decoration none
-		font-weight bold
+				a
+					background #fbd640
+					padding 5px
+					text-decoration none
+					font-weight bold
 
-	.project_details p
-		line-height 22px
+		p
+			line-height 22px
 
 
 	.list_items
@@ -436,9 +436,9 @@ th,td,caption
 q
 	quotes none
 
-q before,q after
-	content ""
-	content none
+	&:before,&:after
+		content ""
+		content none
 
 sub,sup,small
 	font-size 75%
@@ -542,15 +542,15 @@ div[class*="pull-"] section
 	text-align center
 	padding-top 5px
 
-.wp-caption img
-	border 0 none
-	padding 0
-	margin 0
+	img
+		border 0 none
+		padding 0
+		margin 0
 
-.wp-caption p.wp-caption-text
-	line-height 1.5
-	font-size 10px
-	margin 0
+	p.wp-caption-text
+		line-height 1.5
+		font-size 10px
+		margin 0
 
 .wp-smiley
 	margin 0!important
@@ -614,56 +614,52 @@ header
 	float left
 	margin 4px 0
 
-.main-nav li
-	list-style none
-	margin-left 0
-	display inline
-	float left
+.main-nav
+	margin-top 20px
+	font-family futuramc
 
-.main-nav ul.sf-menu
-	float none
-	margin-left auto
-	margin-right auto
-	display table
+	li
+		list-style none
+		margin-left 0
+		display inline
+		float left
 
-.main-nav > ul > li
-	color #FFFFFF
-	font-size 25px
-	padding 20px 10px
+		li a
+			color #FFFFFF
+			font-size 25px
+			padding 10px 20px
+			text-transform uppercase
+			text-align center
 
-.main-nav > ul > li > a
-	color #FFFFFF
-	padding 5px 10px
+		ul
+			background none repeat scroll 0 0 #705F64
+			left 50%
+			margin-left -120px
+			top auto
+			width 240px
+			display none
+			border-top 20px solid #000000
 
-.main-nav > ul > li > a:hover
-	background url(../img/dancinants.gif) bottom no-repeat
-	text-decoration none
+	ul.sf-menu
+		float none
+		margin-left auto
+		margin-right auto
+		display table
 
-.main-nav li li a
-	color #FFFFFF
-	font-size 25px
-	padding 10px 20px
-	text-transform uppercase
-	text-align center
+	> ul > li
+		color #FFFFFF
+		font-size 25px
+		padding 20px 10px
 
-.main-nav li ul
-	background none repeat scroll 0 0 #705F64
-	left 50%
-	margin-left -120px
-	top auto
-	width 240px
-	display none
-	border-top 20px solid #000000
+		> a
+			color #FFFFFF
+			padding 5px 10px
 
-.sf-menu li:hover ul,.sf-menu li.sfHover ul
-	left 50%!important
-	top auto!important
-	z-index 99
+			&:hover
+				background url('../img/dancinants.gif') bottom no-repeat
+				text-decoration none
 
-.bread_crumbs
-	font-size 12px
-
-.main-nav li ul before
+.main-nav li ul:before
 	background url(../img/nav-arrow.png) no-repeat scroll 0 0 transparent
 	content ""
 	height 16px
@@ -673,12 +669,16 @@ header
 	top -16px
 	width 20px
 
+.sf-menu li:hover ul,.sf-menu li.sfHover ul
+	left 50%!important
+	top auto!important
+	z-index 99
+
+.bread_crumbs
+	font-size 12px
+
 .sf-sub-indicator
 	display none
-
-.main-nav
-	margin-top 20px
-	font-family futuramc
 
 ul.unstyled-h li
 	margin-left 0
@@ -776,15 +776,15 @@ img
 	width 80%
 	overflow hidden
 
-.promotion p
-	font-size 1em
-
 .promotion
 	background none repeat scroll 0 0 #FFFFFF
 	margin-bottom 20px
 	padding 10px
 	position relative
 	display table
+
+	p
+		font-size 1em
 
 .main-nav.fixed
 	position fixed
@@ -794,10 +794,10 @@ img
 	background rgba(0,0,0,0.8)
 	z-index 1000
 
-.main-nav.fixed ul.sf-menu
-	width 940px
-	margin-left auto
-	margin-right auto
+	ul.sf-menu
+		width 940px
+		margin-left auto
+		margin-right auto
 
 .overlay-wrap
 	position relative
@@ -812,37 +812,37 @@ img
 	width 100%
 	transition-duration .2s
 
+	.con
+		color #FFFFFF
+		margin-top -25px
+		position relative
+		top -50px
+		text-align center
+		background url(../img/plus.png) no-repeat center center #222
+		height 50px
+		width 50px
+		display block
+		text-indent -10000px
+		left 50%
+		margin-left -25px
+		border-radius 100px
+		padding 10px
+
 .ls-container
 	width 100%!important
 	box-sizing border-box
 
-.overlay .con
-	color #FFFFFF
-	margin-top -25px
-	position relative
-	top -50px
-	text-align center
-	background url(../img/plus.png) no-repeat center center #222
-	height 50px
-	width 50px
-	display block
-	text-indent -10000px
-	left 50%
-	margin-left -25px
-	border-radius 100px
-	padding 10px
-
-.data a:hover
-	text-decoration none
-
 .data
 	overflow hidden
+	
+	a:hover
+		text-decoration none
 
-.data:hover .overlay
-	display block
-	opacity 0.95
-	transition-duration .4s
-	background rgba(0,0,0,0.7)
+	&:hover .overlay
+		display block
+		opacity 0.95
+		transition-duration .4s
+		background rgba(0,0,0,0.7)
 
 .one-fourth,.two-fourth,.three-fourth
 	margin-right 3%
@@ -869,8 +869,8 @@ body.home .wrap
 #filters li
 	margin 10px
 
-#filters li a.selected
-	color #BE1C22
+	a.selected
+		color #BE1C22
 
 .gallery li
 	background none repeat scroll 0 0 #FFFFFF
@@ -897,48 +897,49 @@ body.home .wrap
 	list-style none
 
 .gallery .element .data, .outer-shadow, .gallery li, .home-top
-	box-shadow 2px 2px 5px 1px rgba(0,0,0,.4)
+	box-shadow 0 0 5px 3px rgba(0,0,0,.4)
 	padding 10px
 	background none repeat scroll 0 0 #FFFFFF
 	cursor pointer
 
-.data h2
-	margin 0
-	padding-top 5px
+.data
+	h2
+		margin 0
+		padding-top 5px
 
-.data p
-	margin-bottom 0
-	font-size 14px
-
-.gallery .element .data:hover a,.gallery .element .data:hover
-	color #fff
-
-.gallery .element .data:hover
-	background #9b3a16
+	p
+		margin-bottom 0
+		font-size 14px
 
 .isotope .element
 	min-height 330px
 
-.gallery .element .data img
+.gallery
+	margin-bottom 30px
 	width 100%
 
-.gallery .element .data a
+	li a
+		color #000
+
+		&.overlay-wrap
+			margin-bottom 20px
+			max-width 100%
+
+	.element .data
+		&:hover
+			background #9b3a16
+
+		&:hover a,&:hover
+			color #fff
+
+		img
+			width 100%
 
 .home .gallery .element
 	width 33%
 	padding 30px
 	min-width 300px
 
-.gallery li a.overlay-wrap
-	margin-bottom 20px
-	max-width 100%
-
-.gallery li a
-	color #000
-
-.gallery
-	margin-bottom 30px
-	width 100%
 
 .full-bg
 	background #fff
@@ -947,11 +948,11 @@ div.title
 	background url(../img/title-bg.png) repeat-x 0 32px #fff
 	text-align center
 
-div.title h1
-	background none repeat scroll 0 0 #FFFFFF
-	display inline-block
-	padding-left 50px
-	padding-right 50px
+	h1
+		background none repeat scroll 0 0 #FFFFFF
+		display inline-block
+		padding-left 50px
+		padding-right 50px
 
 .orange
 	color #e76d18
@@ -970,6 +971,8 @@ div.title h1
 	margin-bottom 90px
 	padding 10px 50px 75px
 	position relative
+	margin-top 20px
+	display table
 
 .contact input[type=text],.contact input[type=email],.contact textarea
 	width 90%
@@ -991,18 +994,9 @@ div.title h1
 	padding 5px 10px
 	text-decoration none
 
-.tagcloud a:hover
-	background #666
-	color #fff
-
-.gal-thumb li
-	width auto
-	margin-left 0
-	list-style none
-
-.promotion2
-	margin-top 20px
-	display table
+	&:hover
+		background #666
+		color #fff
 
 .gal-info
 	background #ebebeb
@@ -1012,11 +1006,15 @@ div.title h1
 .gal-img
 	text-align center
 
-.gal-thumb li
-	margin-bottom 35px
+.gal-thumb
+	li
+		margin-bottom 35px
+		width auto
+		margin-left 0
+		list-style none
 
-.gal-thumb img
-	border 25px solid #ebebeb
+	img
+		border 25px solid #ebebeb
 
 .welcome
 	background #f0f0f0
@@ -1116,24 +1114,25 @@ footer
 	padding 20px 0
 	text-align left
 
-footer a link,footer a visited
-	color #fff
+	a
+		&:link, &:visited
+			color #fff
 
 .circle
 	text-align center
 
 .sponsor
-	background url(../img/sponsor-bg.jpg)
+	background url('../img/sponsor-bg.jpg')
 	text-align center
 
 	a
 		margin 0 10px
 
 	.title
-		background url(../img/title-bg.png) repeat-x 0 32px
+		background url('../img/title-bg.png') repeat-x 0 32px
 
 		h1
-			background url(../img/sponsor-bg.jpg)
+			background url('../img/sponsor-bg.jpg')
 
 #back-top
 	position fixed
@@ -1194,7 +1193,7 @@ body
 	height 50px
 	display block
 	margin-bottom 7px
-	background #666 url(../img/to-top.png) no-repeat center center
+	background #666 url('../img/to-top.png') no-repeat center center
 	border-radius 100px
 	transition 1s
 
@@ -1210,8 +1209,7 @@ body
 ------------------------- */
 @media min-width 1100px
 	body
-
-		background url(../img/main-bg.jpg)
+		background url('../img/main-bg.jpg')
 
 /* Desktop
 ------------------------- */
@@ -1238,50 +1236,27 @@ body
 		padding 25px 2%
 		width 40%
 
-	.home-top
-
-		margin-left 0
-		box-sizing border-box
-
 	.blog .date
-
 		float none
 
 	.blog .entry
-
 		float none
 		width auto
 
 	#page .inner
-
 		padding 20px 0
 
-	.grid-container
-
-		overflow hidden
-
-	.home .grid-container
-
-		padding 0
-
-	.social ul
-
-
 	.responsiveMenuSelect
-
 		width 90%
 		margin-top 20px
 
 	.home .inner
-
 		padding-top 0
 
 	.cols .footer-cols
-
 		width 50%
 
 	.sidebar
-
 		margin-bottom 20px
 		margin-top 20px
 
@@ -1289,14 +1264,12 @@ body
 ------------------------- */
 @media only screen and max-width 480px
 	.gallery li
-
 		display block
 		float none
 		width auto
 		max-width none
 
 	.home .gallery .element
-
 		width auto
 		float none!important
 		clear both
@@ -1304,18 +1277,15 @@ body
 		clear both
 
 	.gallery .element
-
 		width auto
 		float none
 		float none
 		display block
 
 	.cols .footer-cols
-
 		width 100%
 
 	.one-fourth,.two-fourth,.three-fourth,.one-third,.two-third
-
 		width auto
 		float none
 		clear both
