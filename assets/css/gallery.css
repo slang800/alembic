@@ -1,4 +1,5 @@
-#portfolio-sidebar {
+#portfolio-sidebar,
+#zoom-box {
   z-index: 2;
   position: relative;
 }
@@ -12,7 +13,7 @@
 .wp-showcase {
   padding: 15px;
   margin: auto;
-  width: 85%;
+  min-width: 85%;
 }
 .flexslider {
   width: 100%;
@@ -41,7 +42,8 @@
   vertical-align: top;
 }
 #portfolio-sidebar,
-.flexslider div {
+.flexslider div,
+#zoom-box {
   background: #fff;
   padding: 5px;
   margin: 15px;
@@ -84,4 +86,24 @@
   border-radius: 10px;
   padding: 5px;
   margin: 0 5px;
+}
+#zoom-box {
+  display: none;
+}
+@media only screen and (min-width: 900px) {
+  .flexslider {
+    padding-right: 240px;
+    margin-right: -240px;
+  }
+  #zoom-box {
+    vertical-align: middle;
+    display: inline-block;
+    width: 200px;
+    min-height: 300px;
+  }
+  .cloudzoom-zoom {
+    margin-top: 15px;
+    margin-left: 5px;
+    z-index: 3;
+  }
 }

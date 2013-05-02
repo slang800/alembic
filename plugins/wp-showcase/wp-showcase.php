@@ -1448,9 +1448,7 @@ class WordpressShowcase {
 					<li>' . get_post_meta($post->ID, '_price', true) . '</li>
 				</ul>
 				<ol id="controlsContainer"></ol>
-			';
-
-			$output .= '</div>';
+			</div>';
 
 			do_action('wp_showcase_before_slider');
 			$output .= '<div class="flexslider"><div><h1 id="image_title"></h1><span id="image_tags"></span><ul class="slides">';
@@ -1472,7 +1470,7 @@ class WordpressShowcase {
 					$thumb_src = $resized_image['url'];
 				}
 				
-				$output .= '<li data-tags="' . htmlspecialchars(json_encode($tags)) . '" data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img src="'. $image_full .'"';
+				$output .= '<li data-tags="' . htmlspecialchars(json_encode($tags)) . '" data-thumb="' . $thumb_src . '" data-title="' . $meta['wp_showcase']['title'] . '"><img class="cloudzoom" data-cloudzoom="zoomPosition: \'#zoom-box\'" src="'. $image_full .'"';
 				if (isset($meta['wp_showcase']['alt']) && $meta['wp_showcase']['alt']){
 					$output .= ' alt="'. $meta['wp_showcase']['alt'] .'"';
 				}
@@ -1491,7 +1489,9 @@ class WordpressShowcase {
 				}
 				$output .= '</li>';
 			}
-			$output .= '</ul></div></div>';
+			$output .= '</ul></div></div>
+			<div id="zoom-box"></div>
+			';
 			do_action('wp_showcase_after_slider');
 
 			$output .= '</div>';
