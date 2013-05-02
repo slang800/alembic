@@ -8,8 +8,8 @@
 */
 
 function registerFiles() {
-    wp_register_script('cloudzoom_js', plugins_url('/cloudzoom/cloudzoom.js'), array('jquery'), '2.5.1');
-    wp_register_style('cloudzoom_css', plugins_url('/cloudzoom/cloudzoom.css'), false, '1.0.0', 'all');
+    wp_register_script('cloudzoom_js',S_THEME_DIR.'/plugins/cloudzoom/cloudzoom.js', array('jquery'), '2.5.1');
+    wp_register_style('cloudzoom_css', S_THEME_DIR.'/plugins/cloudzoom/cloudzoom.css', false, '1.0.0', 'all');
 }
 
 function enqueueFiles() {
@@ -25,8 +25,8 @@ add_action('wp_enqueue_scripts', 'enqueueFiles');
 // Include quickstart function into head, and
 // adjust CSS to work better with default Word Press.
 function quickStartAndCss() {
-    $pathToBlank = plugins_url('cloudzoom/blank.png');
-    $pathToAjaxLoader = plugins_url('cloudzoom/ajax-loader.gif');
+    $pathToBlank = S_THEME_DIR.'/plugins/cloudzoom/blank.png';
+    $pathToAjaxLoader = S_THEME_DIR.'/plugins/cloudzoom/ajax-loader.gif';
     if (wp_script_is('cloudzoom_js', 'done')) {
         ?>
         <style>

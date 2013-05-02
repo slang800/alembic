@@ -39,9 +39,6 @@ class WordpressShowcase {
 		add_action('wp_ajax_showcase_add_image_source', array(&$this, 'add_image_source'));
 		
 		load_plugin_textdomain('showcase', false, dirname(plugin_basename(__FILE__ ) ) .'/lang/' );
-		
-		require_once('wp-updates-plugin.php');
-		new WPUpdatesPluginUpdater('http://wp-updates.com/api/1/plugin', 117, plugin_basename(__FILE__) );
 	}
 	
 	function get_labels()
@@ -165,25 +162,25 @@ class WordpressShowcase {
 				}
 				
 				// Styles
-				wp_enqueue_style('colorbox', plugins_url($this->plugin_folder . '/scripts/colorbox/colorbox.css'), array(), '1.3' );
+				wp_enqueue_style('colorbox',S_THEME_DIR.'/plugins/wp-showcase/scripts/colorbox/colorbox.css', array(), '1.3' );
 				if ($options['theme'] ) {
-					wp_enqueue_style('colorbox-theme', plugins_url($this->plugin_folder . '/scripts/colorbox/themes/'. $options['theme'] .'.css'), array(), '1.0' );
+					wp_enqueue_style('colorbox-theme',S_THEME_DIR.'/plugins/wp-showcase/scripts/colorbox/themes/'. $options['theme'] .'.css', array(), '1.0' );
 				}
 				// Scripts
-				wp_register_script('colorbox', plugins_url($this->plugin_folder . '/scripts/colorbox/jquery.colorbox-min.js'), array('jquery'), '1.3' );
+				wp_register_script('colorbox', S_THEME_DIR.'/plugins/wp-showcase/scripts/colorbox/jquery.colorbox-min.js', array('jquery'), '1.3' );
 				wp_enqueue_script('colorbox' );
 			}
 			
 			// Styles
-			wp_enqueue_style('flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/flexslider.css'), array(), '1.8' );
-			wp_enqueue_style('wp-showcase', plugins_url($this->plugin_folder . '/styles/wp-showcase.css'), array(), '1.0' );
+			wp_enqueue_style('flexslider', S_THEME_DIR.'/plugins/wp-showcase/scripts/flexslider/flexslider.css', array(), '1.8' );
+			wp_enqueue_style('wp-showcase', S_THEME_DIR.'/plugins/wp-showcase/styles/wp-showcase.css', array(), '1.0' );
 			
 			// Scripts
-			wp_register_script('flexslider', plugins_url($this->plugin_folder . '/scripts/flexslider/jquery.flexslider.js'), array('jquery'), '1.8' );
-			wp_enqueue_script('flexslider' );
-			wp_register_script('wp-showcase', plugins_url($this->plugin_folder . '/scripts/wp-showcase.js'), array('colorbox','flexslider','jquery'), '1.0' );
-			wp_enqueue_script('wp-showcase' );
-			wp_enqueue_script('jquery' );
+			wp_register_script('flexslider', S_THEME_DIR.'/plugins/wp-showcase/scripts/flexslider/jquery.flexslider.js', array('jquery'), '1.8' );
+			wp_enqueue_script('flexslider');
+			wp_register_script('wp-showcase', S_THEME_DIR.'/plugins/wp-showcase/scripts/wp-showcase.js', array('colorbox','flexslider','jquery'), '1.0' );
+			wp_enqueue_script('wp-showcase');
+			wp_enqueue_script('jquery');
 		}
 	}
 	
@@ -505,9 +502,6 @@ class WordpressShowcase {
 				(isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on" ) ? $protocol = "https://" : $protocol = "http://";
 				$callback =  $protocol . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 				$callback = substr($callback, 0, strpos($callback, $source) + strlen($source));
-				
-				$source_dir = dirname(__FILE__) .'/includes/sources/';
-				include_once($source_dir . $source .'.php');
 				
 				$var = 'showcase_source_'. $source;
 				$obj = new $var($auth_token, $auth_token_secret);
@@ -1435,16 +1429,24 @@ class WordpressShowcase {
 		$output = '';
 		$options = get_post_meta($id, 'showcase_settings', true );
 		$attachments = $this->get_gallery_images($id );
-
 		if ($attachments) {
 			do_action('wp_showcase_before_showcase');
 			$output .= '
 			<div id="wp-showcase-'. $id .'" class="wp-showcase'. (($options['enable_lightbox'] == 'on') ? ' enable-lightbox' : '') .'">
 			<div id="portfolio-sidebar">
-				<div id="portfolio-nav">
-					<a class="arrow" href="">←</a>
-					<a class="grid" href="">⡇⡇⡇⡇⡇⡇</a>
-					<a class="arrow" href="">→</a>
+				<div id="portfolio-nav">';
+					$next_post = get_adjacent_post();
+					if (!empty( $next_post )){
+						$output .= '<a class="arrow" href="'.get_permalink($next_post->ID).'">←</a>';
+					}
+					$output .= '<a class="grid" href="/current-artists">⡇⡇⡇⡇⡇⡇</a>';
+
+					$next_post = get_adjacent_post(false, "", false);
+					if (!empty( $next_post )){
+						$output .= '<a class="arrow" href="'.get_permalink($next_post->ID).'">→</a>';
+					}
+
+			$output .= '
 				</div>
 				<h1 class="portfolio-title">' . get_the_title($post->ID) . '</h1>
 				<ul class="info">
