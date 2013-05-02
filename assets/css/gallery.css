@@ -1,25 +1,23 @@
-#portfolio-sidebar,
-#zoom-box {
-  z-index: 2;
-  position: relative;
+.wrap {
+  text-align: center;
 }
-#portfolio-sidebar ul,
-#portfolio-sidebar li {
-  margin: 0;
-}
-#portfolio-sidebar .info li {
-  display: list-item;
+.wrap > * {
+  text-align: left;
 }
 .wp-showcase {
   padding: 15px;
-  margin: auto;
-  min-width: 85%;
+  display: inline-block;
 }
 .flexslider {
-  width: 100%;
+  margin: 0;
 }
-.flexslider .slides {
-  width: 100%;
+.flexslider li {
+  margin: 0;
+}
+.flexslider .slides img {
+  width: auto;
+  max-width: 100%;
+  max-height: 80%;
 }
 .flex-control-thumbs img {
   width: 60px;
@@ -37,30 +35,25 @@
   border: 5px solid transparent;
 }
 #portfolio-sidebar,
-.flexslider {
-  display: inline-block;
-  vertical-align: top;
-}
-#portfolio-sidebar,
-.flexslider div,
-#zoom-box {
+.flexslider div {
   background: #fff;
   padding: 5px;
   margin: 15px;
   box-shadow: 0 0 10px #000;
 }
+#portfolio-sidebar {
+  z-index: 2;
+  position: relative;
+}
+#portfolio-sidebar ul,
+#portfolio-sidebar li {
+  margin: 0;
+}
+#portfolio-sidebar .info li {
+  display: list-item;
+}
 .slides {
   display: inline-block;
-}
-#portfolio-sidebar {
-  width: 150px;
-  margin-right: -165px;
-}
-.flexslider {
-  padding-left: 180px;
-}
-.flexslider li {
-  margin: 0;
 }
 .wp-showcase-gallery {
   background: none;
@@ -87,23 +80,17 @@
   padding: 5px;
   margin: 0 5px;
 }
-#zoom-box {
-  display: none;
-}
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 500px) {
+  #portfolio-sidebar,
   .flexslider {
-    padding-right: 240px;
-    margin-right: -240px;
-  }
-  #zoom-box {
-    vertical-align: middle;
     display: inline-block;
-    width: 200px;
-    min-height: 300px;
+    vertical-align: top;
   }
-  .cloudzoom-zoom {
-    margin-top: 15px;
-    margin-left: 5px;
-    z-index: 3;
+  #portfolio-sidebar {
+    width: 150px;
+    margin-right: -165px;
+  }
+  .flexslider {
+    padding-left: 180px;
   }
 }
