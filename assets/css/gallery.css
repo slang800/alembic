@@ -94,3 +94,22 @@
     padding-left: 180px;
   }
 }
+#portfolio-nav {
+  text-align: center;
+}
+#portfolio-nav a {
+  color: #333;
+}
+#portfolio-nav a:hover {
+  text-decoration: none;
+  color: #8d8b8b;
+}
+.arrow {
+  font-size: 30px;
+  vertical-align: middle;
+}
+.grid {
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: -6px;
+}

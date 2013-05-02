@@ -4,7 +4,6 @@ ob_start();
 include 'plugins/cloudzoom/cloudzoom.php';
 include 'plugins/wp-showcase/wp-showcase.php';
 
-
 $curr_theme = wp_get_theme(TEMPLATEPATH . '/style.css');
 $theme_version = trim( $curr_theme['Version'] );
 if ( !$theme_version ) $theme_version = "1.0";

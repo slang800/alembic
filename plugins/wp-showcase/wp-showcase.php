@@ -1441,6 +1441,11 @@ class WordpressShowcase {
 			$output .= '
 			<div id="wp-showcase-'. $id .'" class="wp-showcase'. (($options['enable_lightbox'] == 'on') ? ' enable-lightbox' : '') .'">
 			<div id="portfolio-sidebar">
+				<div id="portfolio-nav">
+					<a class="arrow" href="">←</a>
+					<a class="grid" href="">⡇⡇⡇⡇⡇⡇</a>
+					<a class="arrow" href="">→</a>
+				</div>
 				<h1 class="portfolio-title">' . get_the_title($post->ID) . '</h1>
 				<ul class="info">
 					<li>' . get_post_meta($post->ID, '_place', true) . '</li>
@@ -1489,8 +1494,7 @@ class WordpressShowcase {
 				}
 				$output .= '</li>';
 			}
-			$output .= '</ul></div></div>
-			';
+			$output .= '</ul></div></div>';
 			do_action('wp_showcase_after_slider');
 
 			$output .= '</div>';
