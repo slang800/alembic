@@ -1,24 +1,8 @@
 <?php
 ob_start();
 
-// install & activate theme plugins
-
-//temporarly commented out cause it was causing issues on (mt) servers... have
-//to set up symlinks manually
-/*require_once ABSPATH . 'wp-admin/includes/plugin.php';
-preg_match('/\/[^\/]+$/', TEMPLATEPATH, $theme_dir_name);
-$theme_dir_name = $theme_dir_name[0];
-
-$plugins = array("cloudzoom", "wp-showcase");
-foreach ($plugins as $plugin){
-	if(!file_exists(ABSPATH . "wp-content/plugins/$plugin")){
-		echo symlink(
-			ABSPATH . "wp-content/themes$theme_dir_name/plugins/$plugin",
-			ABSPATH . "wp-content/plugins/$plugin"
-		);
-		activate_plugin("$plugin/$plugin.php");
-	}
-}*/
+include 'plugins/cloudzoom/cloudzoom.php';
+include 'plugins/wp-showcase/wp-showcase.php';
 
 
 $curr_theme = wp_get_theme(TEMPLATEPATH . '/style.css');
