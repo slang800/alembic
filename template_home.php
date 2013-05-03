@@ -1,5 +1,5 @@
 <?php /* Template Name: Home */ ?>
-<section id="content">
+<section>
 	<div class="clearfix inner">
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 			<div class="entry">

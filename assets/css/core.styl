@@ -4,60 +4,22 @@ vendor-prefixes = webkit moz o ms official
 @import url('reset.css')
 @import url('superfish.css')
 @import url('jquery-ui-1.8.1.custom.css')
-/*@import url('skins/rockable/skin.css')*/
-//*,:before,:after
-//	box-sizing border-box
+@import 'typography.styl'
 
 body
-	font 14px 'Helvetica Neue', Arial
-	color #484747
-	background #eae7dc url(../img/bg.gif) no-repeat
-	border-top 8px solid #d0b312!important
+	background url('../img/main-bg.jpg')
 	margin 0
 	padding 0
+
+.box
+	box-shadow 0 0 5px 3px rgba(0,0,0,.4)
+	background none repeat scroll 0 0 white
+	padding 10px
 
 .container
 	width 960px
 	margin 0 auto
-
-a:link,a:visited
-	color #5c5a5a
-
-/* Header */
-#header
-	display block
-	height 125px
-	background #FFF
-	z-index -999
-
-	.inner
-		padding-top 30px
-
-	.logo
-		float left
-
-.sf-menu
-	float right
-
-.social a
-	width 33px
-	height 35px
-	display inline-block
-	background-repeat no-repeat
-	background-position left top
-	transition-duration .3s
-	text-indent -10000px
-
-.social a:hover
-	background-position 0 -40px
-
-/* Content */
-#content .statement
-	font-size 38px
-	font-weight 400
-	text-align center
-	color #000
-
+/*
 #page
 	float left
 	background #FFF
@@ -96,19 +58,59 @@ a:link,a:visited
 		.align-right, .alignright
 			float right
 			margin 10px 0 10px 15px
+*/
+a:link,a:visited
+	color #5c5a5a
 
-#comments .count
-	padding-top -5px
+/* Header */
+#header
 	display block
-	margin-bottom 15px
+	height 125px
+	background #FFF
+	z-index -999
 
-	h2
-		background #FFF
-		font-size 24px
+	.inner
+		padding-top 30px
+
+	.logo
+		float left
+
+.sf-menu
+	float right
+
+.social a
+	width 33px
+	height 35px
+	display inline-block
+	background-repeat no-repeat
+	background-position left top
+	transition-duration .3s
+	text-indent -10000px
+
+	&:hover
+		background-position 0 -40px
+
+#content
+	background #fff
+
+	.statement
+		font-size 38px
 		font-weight 400
+		text-align center
 		color #000
-		display inline
-		padding 0 15px
+
+	.count
+		padding-top -5px
+		display block
+		margin-bottom 15px
+
+		h2
+			background #FFF
+			font-size 24px
+			font-weight 400
+			color #000
+			display inline
+			padding 0 15px
 
 #comments_list
 	ul li
@@ -390,21 +392,15 @@ a:link,a:visited
 	&.alt p.copy
 		float left
 		margin-top 0
-
+/*
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp
 	border 0
 	margin 0
 	padding 0
 	font-size 100%
 
-html,body
-	height 100%
-
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section
 	display block
-
-b,strong
-	font-weight bold
 
 img
 	color transparent
@@ -427,35 +423,10 @@ th,td,caption
 	vertical-align top
 	text-align left
 
-q
-	quotes none
-
-	&:before,&:after
-		content ""
-		content none
-
-sub,sup,small
-	font-size 75%
-
-sub,sup
-	line-height 0
-	position relative
-	vertical-align baseline
-
-sub
-	bottom -.25em
-
-sup
-	top -.5em
+*/
 
 svg
 	overflow hidden
-
-body
-	font 13px/1.5 "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif
-
-pre,code
-	font-family "DejaVu Sans Mono", Monaco, Consolas, monospace
 
 hr
 	border 0 #cccccc solid
@@ -475,15 +446,12 @@ li
 p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,figure
 	margin-bottom 20px
 
-body
-	color #333333
-
 a
 	color blue
 	text-decoration none
 
-a:hover
-	text-decoration underline
+	&:hover
+		text-decoration underline
 
 h1
 	padding-top 20px
@@ -550,55 +518,18 @@ div[class*="pull-"] section
 	margin 0!important
 	max-height 1em
 
-blockquote.left
-	margin-right 20px
-	text-align right
-	margin-left 0
-	width 33%
-	float left
+blockquote
+	.left, .right
+		margin-left 20px
+		text-align left
+		margin-right 0
+		width 33%
 
-blockquote.right
-	margin-left 20px
-	text-align left
-	margin-right 0
-	width 33%
-	float right
+	.left
+		float left
 
-/*----------------------------------------------------------------*/
-/*-------------------------------Heading style ------------------*/
-h1,h2,h2,h3,h4,h5,h6
-	font-family futuramc
-
-h1
-	font-size 1.5em
-	padding-top 20px
-
-h1.font-large
-	font-size 1.8em
-	color #000
-
-h2
-	font-size 1.4em
-	padding-top 20px
-
-h3
-	font-size 1.3em
-	font-family futura_medium
-
-h4
-	font-size .9em
-	color #999999
-	margin-bottom 0
-
-/*-------------------------------Header style ------------------*/
-body
-	font normal 18px/1.2 Arial, Helvetica, sans-serif
-
-section#content
-	background #fff
-
-.home section#content
-	background none
+	.right
+		float right
 
 header
 	padding 10px 0
@@ -609,7 +540,6 @@ header
 	margin 4px 0
 
 .main-nav
-	margin-top 20px
 	font-family futuramc
 
 	li
@@ -626,13 +556,23 @@ header
 			text-align center
 
 		ul
-			background none repeat scroll 0 0 #705F64
+			background: none repeat scroll 0 0 #496ea2
 			left 50%
 			margin-left -120px
 			top auto
 			width 240px
 			display none
 			margin-top 20px
+
+			&:before
+				background url('../img/nav-arrow.png') no-repeat scroll 0 0 transparent
+				content ""
+				height 16px
+				left 50%
+				margin-left -10px
+				position absolute
+				top -16px
+				width 20px
 
 	ul.sf-menu
 		float none
@@ -653,15 +593,18 @@ header
 				background url('../img/dancinants.gif') bottom no-repeat
 				text-decoration none
 
-.main-nav li ul:before
-	background url(../img/nav-arrow.png) no-repeat scroll 0 0 transparent
-	content ""
-	height 16px
-	left 50%
-	margin-left -10px
-	position absolute
-	top -16px
-	width 20px
+	&.fixed
+		position fixed
+		top 0
+		left 0
+		width 100%
+		background rgba(0,0,0,0.8)
+		z-index 1000
+
+		ul.sf-menu
+			width 940px
+			margin-left auto
+			margin-right auto
 
 .sf-menu li:hover ul,.sf-menu li.sfHover ul
 	left 50%!important
@@ -674,35 +617,34 @@ header
 .sf-sub-indicator
 	display none
 
+ul.unstyled-v, ul.unstyled-h
+	li
+		margin-left 0
+		list-style none
+
 ul.unstyled-h li
-	margin-left 0
-	list-style none
 	float left
 	display inline
 
-ul.unstyled-v li
-	margin-left 0
-	list-style none
 
 .social ul
 	border-left 2px dotted #FFFFFF
 	display inline-block
 	float left
 	left -20px
-	margin-top 0
 	padding 20px 0 15px 30px
 	position relative
 	margin-bottom 0
 	margin-top 20px
+
+	li
+		padding 0 5px
 
 .category-list li a
 	color #737372
 	font-family futura_medium
 	line-height 1.5
 	font-size 1.4em
-
-.social ul li
-	padding 0 5px
 
 .container
 	width 940px
@@ -725,14 +667,6 @@ hr.big
 .con-bg
 	background rgba(255,255,255,0.6)
 
-h2.post-title
-	margin-bottom 0
-
-p.post-meta
-	color #333
-	font-size 12px
-	margin-bottom 15px!important
-
 .slider img
 	width 100%
 
@@ -740,19 +674,35 @@ img
 	max-width 100%
 	height auto
 
-.blog .date
-	width 20%
-	float left
+.news
+	max-width 800px
+	margin-left auto
+	margin-right auto
+
+	.entry
+		@extends .box
+		margin 10px
+		padding-top 30px
+		margin-top -30px
+
+.post-meta
+	color #333
+	font-size 12px
+	margin-bottom 15px!important
+
+.post-date, .post-header
+	height 100px
+	display inline-block
+	vertical-align middle
 
 .post-date
 	background #000
 	border-radius 100px
 	display inline-block
 	color #ccc
-	height 100px
 	width 100px
 	text-align center
-	margin-top 10px
+	margin 10px
 
 .post-date-day
 	display inline-block
@@ -765,10 +715,8 @@ img
 	font-size .8em
 	text-transform uppercase
 
-.blog .entry
-	float left
-	width 80%
-	overflow hidden
+.post-title
+	margin-bottom 0
 
 .promotion
 	background none repeat scroll 0 0 #FFFFFF
@@ -779,48 +727,6 @@ img
 
 	p
 		font-size 1em
-
-.main-nav.fixed
-	position fixed
-	top 0
-	left 0
-	width 100%
-	background rgba(0,0,0,0.8)
-	z-index 1000
-
-	ul.sf-menu
-		width 940px
-		margin-left auto
-		margin-right auto
-
-.overlay-wrap
-	position relative
-	display inline-block
-
-.overlay
-	display block
-	height 100%
-	left 0
-	position absolute
-	top 0
-	width 100%
-	transition-duration .2s
-
-	.con
-		color #FFFFFF
-		margin-top -25px
-		position relative
-		top -50px
-		text-align center
-		background url(../img/plus.png) no-repeat center center #222
-		height 50px
-		width 50px
-		display block
-		text-indent -10000px
-		left 50%
-		margin-left -25px
-		border-radius 100px
-		padding 10px
 
 .data
 	overflow hidden
@@ -898,17 +804,14 @@ body.home .wrap
 			font-size 14px
 
 .gallery .element, .home-top
-	box-shadow 0 0 5px 3px rgba(0,0,0,.4)
-	padding 10px
-	background none repeat scroll 0 0 #FFFFFF
-
+	@extends .box
 
 .full-bg
 	background #fff
 
-div.title
-	background url(../img/title-bg.png) repeat-x 0 32px #fff
+.title
 	text-align center
+	background: none
 
 	h1
 		background none repeat scroll 0 0 #FFFFFF
@@ -935,13 +838,6 @@ div.title
 	position relative
 	margin-top 20px
 	display table
-
-.contact input[type=text],.contact input[type=email],.contact textarea
-	width 90%
-	font-size 1.5em
-	font-family arial
-	text-transform uppercase
-	outline none
 
 .promotion-img
 	bottom -60px
@@ -1046,30 +942,6 @@ div.title
 .gal-slider
 	margin-top 20px
 
-/*-----------------------------form----------------------------------------*/
-input[type=text],input[type=email],input[type=url]
-	border none
-	padding 10px
-	min-width 200px
-	border 1px solid #ccc
-	margin 4px 0
-
-textarea
-	padding 10px
-	border 1px solid #ccc
-
-input[type=submit],input[type=button]
-	background #555
-	border none
-	cursor pointer
-	color #fff
-	padding 10px 20px
-
-	&:hover
-		background #333
-		transition-duration .3s
-
-/*-----------------------------Footer section------------------------------*/
 footer
 	background-color #000
 	color #fff
@@ -1146,9 +1018,6 @@ a.crl
 	border-radius 1000px
 	margin-left -50px
 
-body
-	max-width 100%
-
 /* arrow icon (span tag) */
 #back-top span
 	width 50px
@@ -1162,47 +1031,9 @@ body
 #back-top a:hover span
 	background-color #333
 
-
-/* Responsive
--------------------------------------------------- */
-/* Desktop large
-------------------------- */
-@media min-width 1100px
-	body
-		background url('../img/main-bg.jpg')
-
-/* Desktop
-------------------------- */
-@media only screen and max-width 980px
-	.main-nav.fixed ul.sf-menu
-
-		width auto
-
-/* Tablet to desktop
-------------------------- */
-//@media min-width 768px and max-width 979px
-
-/* Tablet
-------------------------- */
 @media max-width 767px
 	.social ul
 		border-left none
-
-	.gallery li
-
-		float left
-		margin 20px 3%
-		max-width 40%
-		padding 25px 2%
-		width 40%
-
-	.blog
-		.date
-			float none
-
-		.entry
-			float none
-			width auto
 
 	#page .inner
 		padding 20px 0
@@ -1221,81 +1052,9 @@ body
 		margin-bottom 20px
 		margin-top 20px
 
-.title
-	background: none
-	text-align: center
-
-body 
-	color: #484747 
-	border-top: 0 !important
-
 #about
 	margin: 10px 0 0
 	overflow: auto
-
-#cf_custom
-	width:100%
-
-.cf_custom
-	border: 0 none !important 
-	outline: 0 none
-	display: block
-	text-transform: uppercase
-	float: left
-
-#cf_name, #cf_email, #cf_dropdown, #cf_message
-	color: #111111 !important 
-	border: 3px solid white
-	font-family:'Trade Gothic Next W01'
-	text-transform: uppercase
-	font-weight: 900
-	margin: 10px
-	background-color: #fff !important
-
-#cf_name, #cf_email, #cf_dropdown
-	width:270px
-	height:30px
-
-#cf_name, #cf_email
-	padding:0 10px !important
-
-#cf_email
-	margin-right:0px
-
-#cf_dropdown
-	padding:4px 0 4px 10px !important
-	width:300px
-	height:30px
-
-#cf_message
-	max-width:940px
-	width:940px
-	height:340px
-
-#cf_submit
-	color:#000
-	font-size:45px
-	width:160px
-	display:block
-	position:relative
-	left:50%
-	margin-left:-80px
-	border-radius: 3px
-
-#cf_submit:hover
-	color:#666
-
-#cf_custom span.wpcf7-not-valid-tip
-	left: 70%
-	margin-top: 50px
-	position: relative
-	top: 20%
-
-#cf_custom div.wpcf7-validation-errors
-	margin-top:50px
-
-.main-nav li ul
-	background: none repeat scroll 0 0 #496ea2
 
 @media only screen and max-width 480px
 	.gallery
@@ -1312,7 +1071,6 @@ body
 			display block
 			clear both
 
-
 	.cols .footer-cols
 		width 100%
 
@@ -1320,4 +1078,4 @@ body
 		width auto
 		float none
 		clear both
-		display  block
+		display block
