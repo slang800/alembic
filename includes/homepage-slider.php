@@ -35,7 +35,6 @@ if(get_option('s_slider_source', 'Latest Posts') == "Latest Posts"):
 			  	<div class="links">
 			  		<a class="more" href="<?php the_permalink(); ?>"><?php _e('Read More', 's'); ?></a>
 			  		<div class="tags"><?php echo get_the_term_list( $post->ID, 'portfolio_cat', '', ', ', '' ); ?></div>
-
 			  	</div>
 			  </li>
 			  

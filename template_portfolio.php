@@ -32,50 +32,52 @@
 					</ul>
 					<?php endif; ?>
 				</section>
-				<div id="gallery" class="gallery clearfix">
+				<div id="gallery" class="gallery">
 					<?php 
-						global $paged;
-						$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; //For pagination
+					global $paged;
+					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; //For pagination
 
-						query_posts('post_type=portfolio&paged='.$paged); //Make sure we let WordPress know we need posts ONLY from the portfolio post type
-						if(have_posts()) : while(have_posts()) : the_post();
+					query_posts('post_type=portfolio&paged='.$paged);
+					//Make sure we let WordPress know we need posts ONLY from the portfolio post type
+					if(have_posts()){
+						while(have_posts()){
+							the_post();
 
-						$image_url = s_post_image(); //Use the function to fetch the portfolio image
-						if($image_url)
-						$image_url = s_build_image($image_url, 180, 220);
-
-						$item_classes = '';
-						$item_cats = get_the_terms($post->ID, 'portfolio_cat');
-						if($item_cats){
-							foreach($item_cats as $item_cat) {
-								$item_classes .= $item_cat->slug . ' ';
+							$item_classes = '';
+							$item_cats = get_the_terms($post->ID, 'portfolio_cat');
+							if($item_cats){
+								foreach($item_cats as $item_cat) {
+									$item_classes .= $item_cat->slug . ' ';
+								}
 							}
+
+							$id = $post->ID;
+							$image_url = s_post_image(); //Use the function to fetch the portfolio image
+
+							echo '<div class="element '. $item_classes . '">';
+
+							if($image_url){
+								$image_url = s_build_image($image_url, 180, 220);
+								echo '
+								<a href="'. get_permalink() .'">
+									<img class="image align-left" alt="" src="'. $image_url.'" />
+									<h2>'. get_the_title().'</h2>
+								</a>';					
+							}
+
+							$place = esc_html(get_post_meta($id,'_place',true));
+							$date = esc_html(get_post_meta($id,'_date',true));
+							if($place != "" && $date != ""){
+								echo '<p>' . $place .','. $date . '</p>';
+							} else {
+								echo '<p>' . $place . $date . '</p>';
+							}
+							echo '</div>';
 						}
+						echo '</div>';
+					}
 					?>
-					<div class="element <?php echo $item_classes; ?>" >
-						<div class="data">
-							<div class="overlay-wrap">
-								<?php if($image_url): ?>
-								<a href="<?php the_permalink(); ?>">
-									<img class="image align-left" alt="" src="<?php echo $image_url; ?>" />
-								</a>
-								<?php endif; ?>
-								<span class="overlay">
-									<a class="con" href="<?php echo get_permalink(); ?>">Enter</a>
-								</span>
-							</div>
-							<h2>
-								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-							</h2>
-							<?php $place = get_post_meta($post->ID,'_place',true); ?>
-							<?php $date = get_post_meta($post->ID,'_date',true); ?>
-							<p><?php echo $place .','. $date; ?></p>
-						</div>
-					</div>
-					<?php endwhile; ?>
-					<?php endif; ?>
-				</div>
-			</div>
+
 			<script>
 				jQuery(function() {
 					var jQuerycontainer = jQuery('#gallery');

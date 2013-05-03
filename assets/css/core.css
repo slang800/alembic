@@ -2,13 +2,6 @@
 @import url("superfish.css");
 @import url("jquery-ui-1.8.1.custom.css");
 /*@import url('skins/rockable/skin.css')*/
-*,
-:before,
-:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 body {
   font: 14px 'Helvetica Neue', Arial;
   color: #484747;
@@ -63,11 +56,6 @@ a:visited {
   font-weight: 400;
   text-align: center;
   color: #000;
-}
-/* Page */
-.bread_crumbs a {
-  color: #666;
-  font-weight: bold;
 }
 #page {
   float: left;
@@ -192,8 +180,7 @@ a:visited {
 .home-top {
   background: #fff;
   padding: 0 10px;
-  width: 100%;
-  margin-left: -10px;
+  margin: 0 10px;
 }
 /* Sidebar */
 #sidebar .project_details {
@@ -785,7 +772,7 @@ header {
   top: auto;
   width: 240px;
   display: none;
-  border-top: 20px solid #000;
+  margin-top: 20px;
 }
 .main-nav ul.sf-menu {
   float: none;
@@ -982,12 +969,6 @@ img {
   border-radius: 100px;
   padding: 10px;
 }
-.ls-container {
-  width: 100% !important;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 .data {
   overflow: hidden;
 }
@@ -1036,80 +1017,49 @@ body.home .wrap {
 #filters li a.selected {
   color: #be1c22;
 }
-.gallery li {
-  background: none repeat scroll 0 0 #fff;
-  display: inline-block;
-  list-style: none outside none;
-  width: 25%;
-  padding: 10px;
+#sidebar li {
+  list-style: none;
+}
+.gallery {
   text-align: center;
-  float: left;
-  height: 285px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  padding: 15px;
 }
 .gallery .element {
   display: inline-block;
   list-style: none outside none;
-  width: 25%;
   padding: 10px;
-  text-align: center;
-  float: left;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  width: 20%;
+  margin: 15px;
   min-width: 220px;
 }
-#sidebar li {
-  list-style: none;
+.gallery .element:hover {
+  background: #496ea2;
 }
-.gallery .element .data,
-.outer-shadow,
-.gallery li,
+.gallery .element:hover a,
+.gallery .element:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.gallery .element img {
+  width: 100%;
+}
+.gallery .element h2 {
+  margin: 0;
+  padding-top: 5px;
+}
+.gallery .element p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+.gallery .element,
 .home-top {
   -webkit-box-shadow: 0 0 5px 3px rgba(0,0,0,0.4);
   box-shadow: 0 0 5px 3px rgba(0,0,0,0.4);
   padding: 10px;
   background: none repeat scroll 0 0 #fff;
-  cursor: pointer;
-}
-.data h2 {
-  margin: 0;
-  padding-top: 5px;
-}
-.data p {
-  margin-bottom: 0;
-  font-size: 14px;
-}
-.gallery {
-  margin-bottom: 30px;
-  width: 100%;
-}
-.gallery li a {
-  color: #000;
-}
-.gallery li a.overlay-wrap {
-  margin-bottom: 20px;
-  max-width: 100%;
-}
-.gallery .element .data {
-  min-height: 291px;
-}
-.gallery .element .data:hover {
-  background: #9b3a16;
-}
-.gallery .element .data:hover a,
-.gallery .element .data:hover {
-  color: #fff;
-}
-.gallery .element .data img {
-  width: 100%;
-}
-.home .gallery .element {
-  width: 33%;
-  padding: 30px;
-  min-width: 300px;
 }
 .full-bg {
   background: #fff;
@@ -1431,11 +1381,6 @@ body {
 #back-top a:hover span {
   background-color: #333;
 }
-.home-top {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-}
 /* Responsive
 -------------------------------------------------- */
 /* Desktop large
@@ -1492,8 +1437,89 @@ body {
     margin-top: 20px;
   }
 }
-/* Landscape phones
-------------------------- */
+.title {
+  background: none;
+  text-align: center;
+}
+body {
+  color: #484747;
+  border-top: 0 !important;
+}
+#about {
+  margin: 10px 0 0;
+  overflow: auto;
+}
+#cf_custom {
+  width: 100%;
+}
+.cf_custom {
+  border: 0 none !important;
+  outline: 0 none;
+  display: block;
+  text-transform: uppercase;
+  float: left;
+}
+#cf_name,
+#cf_email,
+#cf_dropdown,
+#cf_message {
+  color: #111 !important;
+  border: 3px solid #fff;
+  font-family: 'Trade Gothic Next W01';
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 10px;
+  background-color: #fff !important;
+}
+#cf_name,
+#cf_email,
+#cf_dropdown {
+  width: 270px;
+  height: 30px;
+}
+#cf_name,
+#cf_email {
+  padding: 0 10px !important;
+}
+#cf_email {
+  margin-right: 0px;
+}
+#cf_dropdown {
+  padding: 4px 0 4px 10px !important;
+  width: 300px;
+  height: 30px;
+}
+#cf_message {
+  max-width: 940px;
+  width: 940px;
+  height: 340px;
+}
+#cf_submit {
+  color: #000;
+  font-size: 45px;
+  width: 160px;
+  display: block;
+  position: relative;
+  left: 50%;
+  margin-left: -80px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+#cf_submit:hover {
+  color: #666;
+}
+#cf_custom span.wpcf7-not-valid-tip {
+  left: 70%;
+  margin-top: 50px;
+  position: relative;
+  top: 20%;
+}
+#cf_custom div.wpcf7-validation-errors {
+  margin-top: 50px;
+}
+.main-nav li ul {
+  background: none repeat scroll 0 0 #496ea2;
+}
 @media only screen and max-width 480px {
   .gallery li {
     display: block;
@@ -1501,18 +1527,12 @@ body {
     width: auto;
     max-width: none;
   }
-  .home .gallery .element {
-    width: auto;
-    float: none !important;
-    clear: both;
-    display: block;
-    clear: both;
-  }
   .gallery .element {
     width: auto;
     float: none;
-    float: none;
+    clear: both;
     display: block;
+    clear: both;
   }
   .cols .footer-cols {
     width: 100%;
@@ -1528,11 +1548,3 @@ body {
     display: block;
   }
 }
-@media only screen and min-width 35em {
-}
-@media only screen and -webkit-min-device-pixel-ratio 15,only screen and min-resolution 144dpi {
-}
-/* ==========================================================================
-	 Print styles.
-	 Inlined to avoid required HTTP connection  h5bp.com/r
-	 ========================================================================== */

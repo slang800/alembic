@@ -2,61 +2,72 @@
 
 //Highlight
 function shortcode_highlight($atts, $content=null){
+	extract(
+		shortcode_atts(
+			array(
+				'color' => '#000',
+				'textcolor' => '#fff'
+			),
+			$atts
+		)
+	);
 
-	 extract( shortcode_atts( array(
-	  'color' => '#000',
-	  'textcolor' => '#fff'
-      ), $atts ) );
-
-$style = ' style="color:' . $textcolor . '; background-color:' . $color . '; padding: 2px 4px;"';
-return '<span' . $style . '">'.do_shortcode($content).'</span>';
+	$style = ' style="color:' . $textcolor . '; background-color:' . $color . '; padding: 2px 4px;"';
+	return '<span' . $style . '">'.do_shortcode($content).'</span>';
 
 }
 add_shortcode('hilite', 'shortcode_highlight');
 
 //portfolio
 function shortcode_portfilio($atts){
-extract( shortcode_atts( array(
-		'count' => 'something',
-	), $atts ) );
+	extract(
+		shortcode_atts(
+			array(
+				'count' => 'something',
+			),
+			$atts
+		)
+	);
 
-$return = '<div class="gallery clearfix">';
+	$return = '<div class="gallery clearfix">';
  
-			global $paged;
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
+	global $paged;
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 
-			query_posts('post_type=portfolio&posts_per_page=3'); 
-			if(have_posts()) : while(have_posts()) : the_post();
-			
+	query_posts('post_type=portfolio&posts_per_page=3'); 
+	if(have_posts()){
+		while(have_posts()){
+			the_post();
 			$id = get_the_id();
-			$place = get_post_meta($id,'_place',true);	
-			$date = get_post_meta($id,'_date',true);	
-			
 			$image_url = s_post_image(); //Use the function to fetch the portfolio image
-			if($image_url)
+
+			$return .= '<div class="element">';
+
+			if($image_url){
 				$image_url = s_build_image($image_url, 180, 220);
+				$return .=	'
+				<a href="'. get_permalink() .'">
+					<img class="image align-left" alt="" src="'. $image_url.'" />
+					<h2>'. get_the_title().'</h2>
+				</a>';					
+			}
 
-			$return .= '<div class="element"><div class="data">';
-
-			if($image_url): 
-			$return .=	'<div class="overlay-wrap"><img class="image align-left" alt="" src="'. $image_url.'" /><span class="overlay"><a class="con" href="'. get_permalink().'">Enter</a></span></div>
-					<div>
-					<h2><a href="'. get_permalink() .'">'. get_the_title().'</a></h2>';
-
-			$return .=	'<p>'.esc_html($place).', '.esc_html($date).'</p>';					
-					 
-			$return .=	'</div>';
-				 endif; 
-			$return .= '</div></div>';
-			endwhile; 
+			$place = esc_html(get_post_meta($id,'_place',true));
+			$date = esc_html(get_post_meta($id,'_date',true));
+			if($place != "" && $date != ""){
+				$return .= '<p>' . $place .','. $date . '</p>';
+			} else {
+				$return .= '<p>' . $place . $date . '</p>';
+			}
 			$return .= '</div>';
-			else: //If no posts are present 
+		}
+		$return .= '</div>';
+	} else { //If no posts are present 
 
-			endif; wp_reset_query(); 
+	}
 
-			return $return;
-
-
+	wp_reset_query(); 
+	return $return;
 }
 
 add_shortcode('portfolio', 'shortcode_portfilio');
