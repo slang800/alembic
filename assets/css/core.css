@@ -68,6 +68,113 @@ h4 {
   color: #999;
   margin-bottom: 0;
 }
+.contact input[type=text],
+.contact input[type=email],
+.contact textarea {
+  width: 90%;
+  font-size: 1.5em;
+  font-family: arial;
+  text-transform: uppercase;
+  outline: none;
+}
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+input[type=text],
+input[type=email],
+input[type=url] {
+  border: none;
+  padding: 10px;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  margin: 4px 0;
+}
+input[type=submit],
+input[type=button] {
+  background: #555;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 20px;
+}
+input[type=submit]:hover,
+input[type=button]:hover {
+  background: #333;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+#cf_custom {
+  width: 100%;
+}
+#cf_custom span.wpcf7-not-valid-tip {
+  left: 70%;
+  margin-top: 50px;
+  position: relative;
+  top: 20%;
+}
+#cf_custom div.wpcf7-validation-errors {
+  margin-top: 50px;
+}
+.cf_custom {
+  border: 0 none !important;
+  outline: 0 none;
+  display: block;
+  text-transform: uppercase;
+  float: left;
+}
+#cf_name,
+#cf_email,
+#cf_dropdown,
+#cf_message {
+  color: #111 !important;
+  border: 3px solid #fff;
+  font-family: 'Trade Gothic Next W01';
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 10px;
+  background-color: #fff !important;
+}
+#cf_name,
+#cf_email,
+#cf_dropdown {
+  width: 270px;
+  height: 30px;
+}
+#cf_name,
+#cf_email {
+  padding: 0 10px !important;
+}
+#cf_email {
+  margin-right: 0px;
+}
+#cf_dropdown {
+  padding: 4px 0 4px 10px !important;
+  width: 300px;
+  height: 30px;
+}
+#cf_message {
+  max-width: 940px;
+  width: 940px;
+  height: 340px;
+}
+#cf_submit {
+  color: #000;
+  font-size: 45px;
+  width: 160px;
+  display: block;
+  position: relative;
+  left: 50%;
+  margin-left: -80px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+#cf_submit:hover {
+  color: #666;
+}
 body {
   background: url("../img/main-bg.jpg");
   margin: 0;
