@@ -1,3 +1,5 @@
+<!-- this needs refactoring -->
+
 <div id="content" class="container">
 	<?php s_breadcrumbs(); ?>
 	<div class="clear"></div>
