@@ -1,9 +1,5 @@
-
 <?php
-$footer_cols = get_option('footer_cols');
-
-
-
+	$footer_cols = get_option('footer_cols');
 ?>
 
 <?php
@@ -22,13 +18,8 @@ $footer_cols = get_option('footer_cols');
 ?>
 
 <?php
-if($footer_cols=='four'){
- if(function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Column 4')) : 
+	if($footer_cols=='four'){
+		if(function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Column 4')) : 
 		endif; 
-}
-
-
-
+	}
 ?>
-
-			<div class="clear"></div>

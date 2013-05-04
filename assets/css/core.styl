@@ -1,7 +1,10 @@
 @import 'nib/vendor'
 vendor-prefixes = webkit moz o ms official
 
-@import url('reset.css')
+gold = #CFB212
+
+@import 'reset.css'
+@import 'nav.styl'
 @import 'typography.styl'
 @import 'forms.styl'
 
@@ -9,55 +12,30 @@ body
 	background url('../img/main-bg.jpg')
 	margin 0
 	padding 0
+	border-top 10px solid gold
+
+	&.home
+		background url('../img/top-bg.gif') repeat-x top, url('../img/main-bg.jpg')
 
 .box
-	box-shadow 0 0 5px 3px rgba(0,0,0,.4)
-	background none repeat scroll 0 0 white
+	box-shadow 0 0 5px 3px rgba(0,0,0,0.4)
+	background white
 	padding 10px
 
-.container
-	width 960px
-	margin 0 auto
-/*
-#page
-	float left
-	background #FFF
-	margin-bottom 20px
-
-	.inner
-		padding 20px 0
+.wrap
+	max-width 800px
+	margin-left auto
+	margin-right auto
 
 	.entry
-		padding-bottom 20px
+		@extends .box
+		margin 10px
 
-		.title
-			display block
-			margin-bottom 15px
+.news .entry
+	//to make the circle holding the date overlap properly
+	padding-top 30px
+	margin-top -30px
 
-			h2
-				font-weight 400
-				font-size 36px
-				margin-bottom 10px
-				color #000
-
-			span
-				color #999999
-
-		p
-			margin-bottom 20px
-			line-height 25px
-
-		.image
-			border 5px solid #eae7dd
-
-		.align-left, .alignleft
-			float left
-			margin 10px 15px 10px 0
-
-		.align-right, .alignright
-			float right
-			margin 10px 0 10px 15px
-*/
 a:link,a:visited
 	color #5c5a5a
 
@@ -65,23 +43,20 @@ a:link,a:visited
 #header
 	display block
 	height 125px
-	background #FFF
+	background white
 	z-index -999
 
 	.inner
 		padding-top 30px
 
-	.logo
-		float left
-
 #content
-	background #fff
+	background white
 
 	.statement
 		font-size 38px
 		font-weight 400
 		text-align center
-		color #000
+		color black
 
 	.count
 		padding-top -5px
@@ -89,12 +64,16 @@ a:link,a:visited
 		margin-bottom 15px
 
 		h2
-			background #FFF
+			background white
 			font-size 24px
 			font-weight 400
-			color #000
+			color black
 			display inline
 			padding 0 15px
+
+footer p.copy
+	padding 20px
+	text-align right
 
 #comments_list
 	ul li
@@ -140,7 +119,7 @@ a:link,a:visited
 	h2
 		font-size 24px
 		font-weight 400
-		color #000
+		color black
 		margin-bottom 15px
 
 	form
@@ -158,17 +137,12 @@ a:link,a:visited
 ::selection
 	background #ca3119
 	/* Safari */
-	color #fff
+	color white
 
 ::-moz-selection
 	background #ca3119
 	/* Firefox */
-	color #fff
-
-.home-top
-	background #fff
-	padding 0 10px
-	margin: 0 10px
+	color white
 
 /* Sidebar */
 #sidebar
@@ -176,7 +150,7 @@ a:link,a:visited
 		margin-bottom 15px
 
 		.avatar
-			background #FFF
+			background white
 			padding 5px 5px 3px
 			position relative
 			margin-bottom 15px
@@ -205,7 +179,7 @@ a:link,a:visited
 		h2
 			font-size 20px
 			font-weight 400
-			color #000
+			color black
 			margin-bottom 10px
 
 		ul li
@@ -214,7 +188,7 @@ a:link,a:visited
 
 	h2
 		font-size 20px
-		color #000
+		color black
 		font-weight 400
 		margin-bottom 10px
 
@@ -223,7 +197,7 @@ a:link,a:visited
 	position relative
 
 	.avatar
-		background #FFF
+		background white
 		padding 5px 5px 3px
 		position relative
 
@@ -254,7 +228,7 @@ a:link,a:visited
 	.more
 		padding 8px
 		background #fbd640
-		color #000
+		color black
 		border-radius 5px
 		font-weight bold
 
@@ -288,7 +262,7 @@ a:link,a:visited
 
 /* Sub Content */
 #sub_content
-	background #FFF
+	background white
 
 	.inner
 		padding 30px 0
@@ -318,7 +292,7 @@ a:link,a:visited
 				margin-bottom 10px
 
 			div span
-				color #000
+				color black
 				font-weight 400
 				display block
 
@@ -345,100 +319,44 @@ a:link,a:visited
 			.button
 				padding 8px
 				background #fbd640
-				color #000
+				color black
 				border-radius 5px
 				font-weight bold
 				border 0
 				width auto
 				cursor pointer
 
-/* Footer */
-#footer
-	margin-top 20px
-	clear both
-
-	.links
-		float left
-
-	p img
-		vertical-align middle
-		margin-right 10px
-
-	p.copy
-		float right
-		margin-top 20px
-		color #484747
-
-	&.alt .links
-		float right
-		width 100px
-
-	&.alt p.copy
-		float left
-		margin-top 0
-/*
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp
-	border 0
-	margin 0
-	padding 0
-	font-size 100%
-
-article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section
-	display block
-
-img
-	color transparent
-	font-size 0
-	vertical-align middle
-	-ms-interpolation-mode bicubic
-
-ul,ol
-	list-style none
-
-li
-	display list-item
-
-table
-	border-collapse collapse
-	border-spacing 0
-
-th,td,caption
-	font-weight normal
-	vertical-align top
-	text-align left
-
-*/
-
 svg
 	overflow hidden
 
-hr
-	border 0 #cccccc solid
-	border-top-width 1px
-	clear both
-	height 0
+.entry
+	h1
+		padding-top 20px
 
-ol
-	list-style decimal
+	a
+		color blue
+		text-decoration none
 
-ul
-	list-style disc
+		&:hover
+			text-decoration underline
 
-li
-	margin-left 30px
+	hr
+		border 0 #cccccc solid
+		border-top-width 1px
+		clear both
+		height 0
 
-p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,figure
-	margin-bottom 20px
+	ol
+		list-style decimal
 
-a
-	color blue
-	text-decoration none
+	ul
+		list-style disc
 
-	&:hover
-		text-decoration underline
+	li
+		margin-left 30px
 
-h1
-	padding-top 20px
+	p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,figure
+		margin-bottom 20px
 
 .example-block
 	background #eeeeee
@@ -480,8 +398,6 @@ div[class*="pull-"] section
 	display block
 	clear both
 
-.alignnone,img.alignnone
-/* not sure about this one */
 
 .wp-caption
 	margin-bottom 1.5em
@@ -515,111 +431,11 @@ blockquote
 	.right
 		float right
 
-header
-	padding 10px 0
-	background #000000
-
-
-nav, .social
-	li
-		list-style none
-		margin 0
-		display inline-block
-		padding 0 5px
-
-.social
-	border-left 2px dotted #FFF
-
-	a
-		width 35px
-		height 35px
-		display inline-block
-		background-repeat no-repeat
-		background-position left top
-		transition-duration .3s
-		text-indent -10000px
-
-		&:hover
-			background-position 0 -40px
-
-nav
-	a
-		&, &:hover, &:visited, &:link
-			padding 0
-			font-size 25px
-			color white
-			font-family futuramc
-			text-transform uppercase
-			text-decoration none
-
-	ul ul
-		margin 0
-		left 50%
-		margin-left -120px
-		width 240px
-		padding-top 16px
-		opacity 0
-		transition-duration .3s
-		transition-property opacity
-		position absolute
-		z-index -1
-
-		&:before
-			background url('../img/nav-arrow.png') no-repeat scroll 0 0 transparent
-			content ""
-			height 16px
-			left 50%
-			margin-left -10px
-			position absolute
-			top 0
-			width 20px
-
-		li
-			display block
-			background: none repeat scroll 0 0 #496ea2
-			//padding 20px 10px
-
-			> a
-				padding 5px 10px
-
-
-	> ul > li
-		position relative
-
-		&:hover
-			background url('../img/dancinants.gif') bottom no-repeat
-
-			ul
-				display block
-				opacity 1
-				z-index 99
-
-	&.fixed
-		position fixed
-		top 0
-		left 0
-		width 100%
-		background rgba(0,0,0,0.8)
-		z-index 1000
-
-.logo, nav, .social
-	padding 10px 20px
-	display inline-block
-	vertical-align middle
-
-.sf-sub-indicator
-	display none
-
 .category-list li a
 	color #737372
 	font-family futura_medium
 	line-height 1.5
 	font-size 1.4em
-
-.container
-	width 940px
-	margin-left auto
-	margin-right auto
 
 /*-------------------------------Content style ------------------*/
 .inner
@@ -644,17 +460,6 @@ img
 	max-width 100%
 	height auto
 
-.news
-	max-width 800px
-	margin-left auto
-	margin-right auto
-
-	.entry
-		@extends .box
-		margin 10px
-		padding-top 30px
-		margin-top -30px
-
 .post-meta
 	color #333
 	font-size 12px
@@ -666,7 +471,7 @@ img
 	vertical-align middle
 
 .post-date
-	background #000
+	background black
 	border-radius 100px
 	display inline-block
 	color #ccc
@@ -689,7 +494,7 @@ img
 	margin-bottom 0
 
 .promotion
-	background none repeat scroll 0 0 #FFFFFF
+	background none repeat scroll 0 0 white
 	margin-bottom 20px
 	padding 10px
 	position relative
@@ -710,6 +515,7 @@ img
 		transition-duration .4s
 		background rgba(0,0,0,0.7)
 
+/*
 .one-fourth,.two-fourth,.three-fourth
 	margin-right 3%
 	float left
@@ -726,14 +532,13 @@ img
 .last
 	margin-right 0!important
 
-body.home .wrap
-	background url(../img/top-bg.gif) repeat-x top
-
 .center
 	text-align center
+*/
 
-#filters li
+#options li
 	margin 10px
+	display inline-block
 
 	a.selected
 		color #BE1C22
@@ -745,22 +550,20 @@ body.home .wrap
 	box_margin = 30px
 	text-align center
 	padding (box_margin / 2)
+	margin 0
 
 	.element
 		display inline-block
 		list-style none outside none
 		padding 10px
 		box-sizing border-box
-		width 20%
 		margin (box_margin / 2)
 		min-width 220px
 		min-height 320px
 
 		&:hover
 			background: #496ea2
-
-		&:hover a, &:hover
-			color #fff
+			color white
 			text-decoration none
 
 		img
@@ -769,6 +572,7 @@ body.home .wrap
 		h2
 			margin 0
 			padding-top 5px
+			color #484747
 
 		p
 			margin-bottom 0
@@ -778,14 +582,14 @@ body.home .wrap
 	@extends .box
 
 .full-bg
-	background #fff
+	background white
 
 .title
 	text-align center
 	background: none
 
 	h1
-		background none repeat scroll 0 0 #FFFFFF
+		background none repeat scroll 0 0 white
 		display inline-block
 		padding-left 50px
 		padding-right 50px
@@ -825,7 +629,7 @@ body.home .wrap
 
 	&:hover
 		background #666
-		color #fff
+		color white
 
 .gal-info
 	background #ebebeb
@@ -874,7 +678,7 @@ body.home .wrap
 		transform rotate(360deg)
 		transition-duration .8s
 		background #666
-		color #fff
+		color white
 
 .copy
 	padding 20px 0
@@ -914,14 +718,14 @@ body.home .wrap
 	margin-top 20px
 
 footer
-	background-color #000
-	color #fff
+	background-color black
+	color white
 	padding 20px 0
 	text-align left
 
 	a
 		&:link, &:visited
-			color #fff
+			color white
 
 .circle
 	text-align center
@@ -954,7 +758,7 @@ footer
 		transition 1s
 
 	&:hover
-		color #000
+		color black
 
 i.promotion-btn
 	position absolute
@@ -964,7 +768,7 @@ i.promotion-btn
 	height 100%
 	opacity 0
 	background none
-	border 2px solid #000
+	border 2px solid black
 	transition-property all
 	transition-duration 275ms
 	transition-timing-function cubic-bezier(0.53,-0.67,0.73,0.74)
@@ -978,7 +782,7 @@ a:hover i.promotion-btn
 a.crl
 	width 100px
 	height 100px
-	background #000
+	background black
 	display inline-block
 	position absolute
 	border-radius 1000px
@@ -1007,6 +811,7 @@ a.crl
 	margin: 10px 0 0
 	overflow: auto
 
+/*
 @media only screen and max-width 480px
 	.gallery
 		li
@@ -1030,3 +835,4 @@ a.crl
 		float none
 		clear both
 		display block
+*/

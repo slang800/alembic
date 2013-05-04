@@ -1,4 +1,119 @@
-@import url("reset.css");
+@import 'reset.css';
+header {
+  padding: 10px 0;
+  background: #000;
+}
+nav li,
+.social li {
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+  padding: 0 5px;
+}
+.social {
+  border-left: 2px dotted #fff;
+}
+.social a {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: left top;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  text-indent: -10000px;
+}
+.social a:hover {
+  background-position: 0 -40px;
+}
+nav a {
+  padding: 0;
+}
+nav a,
+nav a:hover,
+nav a:visited,
+nav a:link {
+  font-size: 25px;
+  color: #fff;
+  font-family: futuramc;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+nav ul ul {
+  margin: 0;
+  left: 50%;
+  margin-left: -120px;
+  width: 240px;
+  padding-top: 16px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -ms-transition-property: opacity;
+  transition-property: opacity;
+  position: absolute;
+  z-index: -1;
+}
+nav ul ul:before {
+  background: url("../img/nav-arrow.png") no-repeat scroll 0 0 transparent;
+  content: "";
+  height: 16px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+nav ul ul li {
+  display: block;
+  background: none repeat scroll 0 0 #496ea2;
+  text-align: center;
+  padding: 8px 10px;
+}
+nav ul ul li a:hover {
+  text-decoration: underline;
+}
+nav > ul > li {
+  position: relative;
+}
+nav > ul > li:hover {
+  background: url("../img/dancinants.gif") bottom no-repeat;
+}
+nav > ul > li:hover ul {
+  display: block;
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+  z-index: 99;
+}
+nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+}
+#logo,
+nav,
+.social {
+  padding: 10px 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.sf-sub-indicator {
+  display: none;
+}
 body {
   font: normal 18px/1.2 Arial, Helvetica, sans-serif;
   color: #484747;
@@ -177,60 +292,32 @@ body {
   background: url("../img/main-bg.jpg");
   margin: 0;
   padding: 0;
+  border-top: 10px solid #cfb212;
+}
+body.home {
+  background: url("../img/top-bg.gif") repeat-x top, url("../img/main-bg.jpg");
 }
 .box,
-.news .entry,
+.wrap .entry,
 .gallery .element,
 .home-top {
   -webkit-box-shadow: 0 0 5px 3px rgba(0,0,0,0.4);
   box-shadow: 0 0 5px 3px rgba(0,0,0,0.4);
-  background: none repeat scroll 0 0 #fff;
+  background: #fff;
   padding: 10px;
 }
-.container {
-  width: 960px;
-  margin: 0 auto;
+.wrap {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
-/*
-#page
-	float left
-	background #FFF
-	margin-bottom 20px
-
-	.inner
-		padding 20px 0
-
-	.entry
-		padding-bottom 20px
-
-		.title
-			display block
-			margin-bottom 15px
-
-			h2
-				font-weight 400
-				font-size 36px
-				margin-bottom 10px
-				color #000
-
-			span
-				color #999999
-
-		p
-			margin-bottom 20px
-			line-height 25px
-
-		.image
-			border 5px solid #eae7dd
-
-		.align-left, .alignleft
-			float left
-			margin 10px 15px 10px 0
-
-		.align-right, .alignright
-			float right
-			margin 10px 0 10px 15px
-*/
+.wrap .entry {
+  margin: 10px;
+}
+.news .entry {
+  padding-top: 30px;
+  margin-top: -30px;
+}
 a:link,
 a:visited {
   color: #5c5a5a;
@@ -244,9 +331,6 @@ a:visited {
 }
 #header .inner {
   padding-top: 30px;
-}
-#header .logo {
-  float: left;
 }
 #content {
   background: #fff;
@@ -269,6 +353,10 @@ a:visited {
   color: #000;
   display: inline;
   padding: 0 15px;
+}
+footer p.copy {
+  padding: 20px;
+  text-align: right;
 }
 #comments_list ul li {
   margin-left: 15px;
@@ -335,11 +423,6 @@ a:visited {
   background: #ca3119;
 /* Firefox */
   color: #fff;
-}
-.home-top {
-  background: #fff;
-  padding: 0 10px;
-  margin: 0 10px;
 }
 /* Sidebar */
 #sidebar .project_details {
@@ -525,108 +608,51 @@ a:visited {
   width: auto;
   cursor: pointer;
 }
-/* Footer */
-#footer {
-  margin-top: 20px;
-  clear: both;
-}
-#footer .links {
-  float: left;
-}
-#footer p img {
-  vertical-align: middle;
-  margin-right: 10px;
-}
-#footer p.copy {
-  float: right;
-  margin-top: 20px;
-  color: #484747;
-}
-#footer.alt .links {
-  float: right;
-  width: 100px;
-}
-#footer.alt p.copy {
-  float: left;
-  margin-top: 0;
-}
-/*
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,dialog,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,meter,nav,object,ol,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,xmp
-	border 0
-	margin 0
-	padding 0
-	font-size 100%
-
-article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section
-	display block
-
-img
-	color transparent
-	font-size 0
-	vertical-align middle
-	-ms-interpolation-mode bicubic
-
-ul,ol
-	list-style none
-
-li
-	display list-item
-
-table
-	border-collapse collapse
-	border-spacing 0
-
-th,td,caption
-	font-weight normal
-	vertical-align top
-	text-align left
-
-*/
 svg {
   overflow: hidden;
 }
-hr {
+.entry h1 {
+  padding-top: 20px;
+}
+.entry a {
+  color: #00f;
+  text-decoration: none;
+}
+.entry a:hover {
+  text-decoration: underline;
+}
+.entry hr {
   border: 0 #ccc solid;
   border-top-width: 1px;
   clear: both;
   height: 0;
 }
-ol {
+.entry ol {
   list-style: decimal;
 }
-ul {
+.entry ul {
   list-style: disc;
 }
-li {
+.entry li {
   margin-left: 30px;
 }
-p,
-dl,
-hr,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ol,
-ul,
-pre,
-table,
-address,
-fieldset,
-figure {
+.entry p,
+.entry dl,
+.entry hr,
+.entry h1,
+.entry h2,
+.entry h3,
+.entry h4,
+.entry h5,
+.entry h6,
+.entry ol,
+.entry ul,
+.entry pre,
+.entry table,
+.entry address,
+.entry fieldset,
+.entry figure {
   margin-bottom: 20px;
-}
-a {
-  color: #00f;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-h1 {
-  padding-top: 20px;
 }
 .example-block {
   background: #eee;
@@ -671,25 +697,16 @@ img.aligncenter {
   display: block;
   clear: both;
 }
-.alignnone,
-img.alignnone,
-/* not sure about this one */,
 .wp-caption {
   margin-bottom: 1.5em;
   text-align: center;
   padding-top: 5px;
 }
-.alignnone img,
-img.alignnone img,
-/* not sure about this one */ img,
 .wp-caption img {
   border: 0 none;
   padding: 0;
   margin: 0;
 }
-.alignnone p.wp-caption-text,
-img.alignnone p.wp-caption-text,
-/* not sure about this one */ p.wp-caption-text,
 .wp-caption p.wp-caption-text {
   line-height: 1.5;
   font-size: 10px;
@@ -712,127 +729,11 @@ blockquote .left {
 blockquote .right {
   float: right;
 }
-header {
-  padding: 10px 0;
-  background: #000;
-}
-nav li,
-.social li {
-  list-style: none;
-  margin: 0;
-  display: inline-block;
-  padding: 0 5px;
-}
-.social {
-  border-left: 2px dotted #fff;
-}
-.social a {
-  width: 35px;
-  height: 35px;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: left top;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  -ms-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  text-indent: -10000px;
-}
-.social a:hover {
-  background-position: 0 -40px;
-}
-nav a,
-nav a:hover,
-nav a:visited,
-nav a:link {
-  padding: 0;
-  font-size: 25px;
-  color: #fff;
-  font-family: futuramc;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-nav ul ul {
-  margin: 0;
-  left: 50%;
-  margin-left: -120px;
-  width: 240px;
-  padding-top: 16px;
-  opacity: 0;
-  filter: alpha(opacity=0);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  -ms-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: opacity;
-  -moz-transition-property: opacity;
-  -o-transition-property: opacity;
-  -ms-transition-property: opacity;
-  transition-property: opacity;
-  position: absolute;
-  z-index: -1;
-}
-nav ul ul:before {
-  background: url("../img/nav-arrow.png") no-repeat scroll 0 0 transparent;
-  content: "";
-  height: 16px;
-  left: 50%;
-  margin-left: -10px;
-  position: absolute;
-  top: 0;
-  width: 20px;
-}
-nav ul ul li {
-  display: block;
-  background: none repeat scroll 0 0 #496ea2;
-}
-nav ul ul li > a {
-  padding: 5px 10px;
-}
-nav > ul > li {
-  position: relative;
-}
-nav > ul > li:hover {
-  background: url("../img/dancinants.gif") bottom no-repeat;
-}
-nav > ul > li:hover ul {
-  display: block;
-  opacity: 1;
-  -ms-filter: none;
-  filter: none;
-  z-index: 99;
-}
-nav.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.8);
-  z-index: 1000;
-}
-.logo,
-nav,
-.social {
-  padding: 10px 20px;
-  display: inline-block;
-  vertical-align: middle;
-}
-.sf-sub-indicator {
-  display: none;
-}
 .category-list li a {
   color: #737372;
   font-family: futura_medium;
   line-height: 1.5;
   font-size: 1.4em;
-}
-.container {
-  width: 940px;
-  margin-left: auto;
-  margin-right: auto;
 }
 /*-------------------------------Content style ------------------*/
 .inner {
@@ -856,16 +757,6 @@ hr.big {
 img {
   max-width: 100%;
   height: auto;
-}
-.news {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.news .entry {
-  margin: 10px;
-  padding-top: 30px;
-  margin-top: -30px;
 }
 .post-meta {
   color: #333;
@@ -930,34 +821,31 @@ img {
   transition-duration: 0.4s;
   background: rgba(0,0,0,0.7);
 }
-.one-fourth,
-.two-fourth,
-.three-fourth {
-  margin-right: 3%;
-  float: left;
-}
-.one-fourth {
-  width: 22.75%;
-}
-.two-fourth {
-  width: 48.5%;
-}
-.three-fourth {
-  width: 74.25%;
-}
-.last {
-  margin-right: 0 !important;
-}
-body.home .wrap {
-  background: url("../img/top-bg.gif") repeat-x top;
-}
-.center {
-  text-align: center;
-}
-#filters li {
+/*
+.one-fourth,.two-fourth,.three-fourth
+	margin-right 3%
+	float left
+
+.one-fourth
+	width 22.75%
+
+.two-fourth
+	width 48.5%
+
+.three-fourth
+	width 74.25%
+
+.last
+	margin-right 0!important
+
+.center
+	text-align center
+*/
+#options li {
   margin: 10px;
+  display: inline-block;
 }
-#filters li a.selected {
+#options li a.selected {
   color: #be1c22;
 }
 #sidebar li {
@@ -966,6 +854,7 @@ body.home .wrap {
 .gallery {
   text-align: center;
   padding: 15px;
+  margin: 0;
 }
 .gallery .element {
   display: inline-block;
@@ -974,16 +863,12 @@ body.home .wrap {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 20%;
   margin: 15px;
   min-width: 220px;
   min-height: 320px;
 }
 .gallery .element:hover {
   background: #496ea2;
-}
-.gallery .element:hover a,
-.gallery .element:hover {
   color: #fff;
   text-decoration: none;
 }
@@ -993,6 +878,7 @@ body.home .wrap {
 .gallery .element h2 {
   margin: 0;
   padding-top: 5px;
+  color: #484747;
 }
 .gallery .element p {
   margin-bottom: 0;
@@ -1278,31 +1164,28 @@ a.crl {
   margin: 10px 0 0;
   overflow: auto;
 }
-@media only screen and max-width 480px {
-  .gallery li {
-    display: block;
-    float: none;
-    width: auto;
-    max-width: none;
-  }
-  .gallery .element {
-    width: auto;
-    float: none;
-    clear: both;
-    display: block;
-    clear: both;
-  }
-  .cols .footer-cols {
-    width: 100%;
-  }
-  .one-fourth,
-  .two-fourth,
-  .three-fourth,
-  .one-third,
-  .two-third {
-    width: auto;
-    float: none;
-    clear: both;
-    display: block;
-  }
-}
+/*
+@media only screen and max-width 480px
+	.gallery
+		li
+			display block
+			float none
+			width auto
+			max-width none
+
+		.element
+			width auto
+			float none
+			clear both
+			display block
+			clear both
+
+	.cols .footer-cols
+		width 100%
+
+	.one-fourth,.two-fourth,.three-fourth,.one-third,.two-third
+		width auto
+		float none
+		clear both
+		display block
+*/

@@ -13,13 +13,11 @@ ob_clean();
 <html <?php language_attributes(); ?>>
 	<?php get_header(); ?>
 	<body <?php body_class(); ?>>
-		<div class="wrap">
-			<header>
-				<div class="logo">
-					<a href="<?php bloginfo('url'); ?>" >
-						<img src="<?php echo stripslashes(get_option('s_logo', S_THEME_LOGO)); ?>" alt="<?php bloginfo('title'); ?>"/>
-					</a>
-				</div>
+		<header>
+			<div class="wrap">
+				<a href="<?php bloginfo('url'); ?>" id="logo">
+					<img src="<?php echo stripslashes(get_option('s_logo', S_THEME_LOGO)); ?>" alt="<?php bloginfo('title'); ?>"/>
+				</a>
 				<nav class="main-nav">
 					<?php s_menu(); ?>
 				</nav>
@@ -40,12 +38,13 @@ ob_clean();
 						</li>
 					<?php endif; ?>
 				</ul>
-			</header>
+			</div>
+		</header>
+		<div class="wrap">
 			<?php echo $unique_content;?>
-			<?php get_footer(); ?>
 		</div>
-		<?php wp_footer(); ?>
-		<?php 
+		<?php get_footer(); ?>
+		<?php
 			if(get_option('s_footer_js_code')=="true")
 				echo stripslashes(get_option('s_footer_js'));
 		?>
