@@ -977,6 +977,7 @@ body.home .wrap {
   width: 20%;
   margin: 15px;
   min-width: 220px;
+  min-height: 320px;
 }
 .gallery .element:hover {
   background: #496ea2;
