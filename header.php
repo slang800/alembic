@@ -18,7 +18,6 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php echo $rss; ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url')?>" />
 	<link href="<?php bloginfo('template_directory'); ?>/assets/css/core.css" media="screen" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/superfish.css" media="screen">
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/fonts/fonts.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/isotope.css" />
 

@@ -1,21 +1,19 @@
 jQuery(function(){
 
 	// initialise plugins
-		jQuery('.sf-menu').superfish({
-			//useClick: true
-		});
-		jQuery("#tabs").tabs();
+	jQuery("#tabs").tabs();
 
-		jQuery('ul.columns li:last-child').addClass('last');
+	jQuery('ul.columns li:last-child').addClass('last');
 
 	//portfolio style
-	jQuery('.data').hover(function(){
-		link = jQuery(this).find('.con');
-		link.animate({top: '50%', opacity: '1'},200);
-	},
-	function(){
-		link.animate({top: '-50px', opacity: '0'},200);
-	}
+	jQuery('.data').hover(
+		function(){
+			link = jQuery(this).find('.con');
+			link.animate({top: '50%', opacity: '1'},200);
+		},
+		function(){
+			link.animate({top: '-50px', opacity: '0'},200);
+		}
 	);
 
 	// hide #back-top first
@@ -41,18 +39,18 @@ jQuery(function(){
 	});
 
 	//function to stay menu top when scroll down
-		var menu = jQuery('.main-nav'),
-		pos = menu.offset();
-		
-		jQuery(window).scroll(function(){
-			if(jQuery(this).scrollTop() > pos.top+menu.height() && menu.hasClass('default')){
-				menu.fadeOut('fast', function(){
-					jQuery(this).removeClass('default').addClass('fixed').fadeIn('fast');
-				});
-			} else if(jQuery(this).scrollTop() <= pos.top && menu.hasClass('fixed')){
-				menu.fadeOut('fast', function(){
-					jQuery(this).removeClass('fixed').addClass('default').fadeIn('fast');
-				});
-			}
-		});
+	var menu = jQuery('.main-nav'),
+	pos = menu.offset();
+
+	jQuery(window).scroll(function(){
+		if(jQuery(this).scrollTop() > pos.top+menu.height() && menu.hasClass('default')){
+			menu.fadeOut('fast', function(){
+				jQuery(this).removeClass('default').addClass('fixed').fadeIn('fast');
+			});
+		} else if(jQuery(this).scrollTop() <= pos.top && menu.hasClass('fixed')){
+			menu.fadeOut('fast', function(){
+				jQuery(this).removeClass('fixed').addClass('default').fadeIn('fast');
+			});
+		}
+	});
 });

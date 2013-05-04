@@ -54,11 +54,10 @@ add_action( 'admin_head', 's_admin_head' );
 
 //Add scripts to header
 if ( !is_admin() ) {
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'superfish', S_THEME_DIR.'/assets/js/superfish.js' );
-	wp_enqueue_script( 'jqueryui_custom', S_THEME_DIR.'/assets/js/jquery-ui-1.8.1.custom.min.js' );
-	wp_enqueue_script( 's', S_THEME_DIR.'/assets/js/main.js' );
-	wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('jqueryui_custom', S_THEME_DIR.'/assets/js/jquery-ui-1.8.1.custom.min.js' );
+	wp_enqueue_script('s', S_THEME_DIR.'/assets/js/main.js' );
+	wp_enqueue_script('comment-reply' );
 }
 
 //Add support for WP 3.0 features, thumbnails etc
