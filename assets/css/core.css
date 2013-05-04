@@ -858,6 +858,8 @@ img {
 }
 .gallery .element:hover {
   background: #496ea2;
+}
+.gallery .element:hover * {
   color: #fff;
   text-decoration: none;
 }
