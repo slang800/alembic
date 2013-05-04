@@ -2,8 +2,6 @@
 vendor-prefixes = webkit moz o ms official
 
 @import url('reset.css')
-@import url('superfish.css')
-@import url('jquery-ui-1.8.1.custom.css')
 @import 'typography.styl'
 @import 'forms.styl'
 
@@ -75,21 +73,6 @@ a:link,a:visited
 
 	.logo
 		float left
-
-.sf-menu
-	float right
-
-.social a
-	width 33px
-	height 35px
-	display inline-block
-	background-repeat no-repeat
-	background-position left top
-	transition-duration .3s
-	text-indent -10000px
-
-	&:hover
-		background-position 0 -40px
 
 #content
 	background #fff
@@ -536,63 +519,80 @@ header
 	padding 10px 0
 	background #000000
 
-.logo
-	float left
-	margin 4px 0
 
-.main-nav
-	font-family futuramc
-
+nav, .social
 	li
 		list-style none
-		margin-left 0
-		display inline
-		float left
+		margin 0
+		display inline-block
+		padding 0 5px
 
-		li a
-			color #FFFFFF
+.social
+	border-left 2px dotted #FFF
+
+	a
+		width 35px
+		height 35px
+		display inline-block
+		background-repeat no-repeat
+		background-position left top
+		transition-duration .3s
+		text-indent -10000px
+
+		&:hover
+			background-position 0 -40px
+
+nav
+	a
+		&, &:hover, &:visited, &:link
+			padding 0
 			font-size 25px
-			padding 10px 20px
+			color white
+			font-family futuramc
 			text-transform uppercase
-			text-align center
+			text-decoration none
 
-		ul
-			background: none repeat scroll 0 0 #496ea2
+	ul ul
+		margin 0
+		left 50%
+		margin-left -120px
+		width 240px
+		padding-top 16px
+		opacity 0
+		transition-duration .3s
+		transition-property opacity
+		position absolute
+		z-index -1
+
+		&:before
+			background url('../img/nav-arrow.png') no-repeat scroll 0 0 transparent
+			content ""
+			height 16px
 			left 50%
-			margin-left -120px
-			top auto
-			width 240px
-			display none
-			margin-top 20px
+			margin-left -10px
+			position absolute
+			top 0
+			width 20px
 
-			&:before
-				background url('../img/nav-arrow.png') no-repeat scroll 0 0 transparent
-				content ""
-				height 16px
-				left 50%
-				margin-left -10px
-				position absolute
-				top -16px
-				width 20px
+		li
+			display block
+			background: none repeat scroll 0 0 #496ea2
+			//padding 20px 10px
 
-	ul.sf-menu
-		float none
-		margin-left auto
-		margin-right auto
-		display table
+			> a
+				padding 5px 10px
+
 
 	> ul > li
-		color #FFFFFF
-		font-size 25px
-		padding 20px 10px
+		position relative
 
-		> a
-			color #FFFFFF
-			padding 5px 10px
+		&:hover
+			background url('../img/dancinants.gif') bottom no-repeat
 
-			&:hover
-				background url('../img/dancinants.gif') bottom no-repeat
-				text-decoration none
+			ul
+				display block
+				opacity 1
+				z-index 99
 
 	&.fixed
 		position fixed
@@ -602,44 +602,13 @@ header
 		background rgba(0,0,0,0.8)
 		z-index 1000
 
-		ul.sf-menu
-			width 940px
-			margin-left auto
-			margin-right auto
-
-.sf-menu li:hover ul,.sf-menu li.sfHover ul
-	left 50%!important
-	top auto!important
-	z-index 99
-
-.bread_crumbs
-	font-size 12px
+.logo, nav, .social
+	padding 10px 20px
+	display inline-block
+	vertical-align middle
 
 .sf-sub-indicator
 	display none
-
-ul.unstyled-v, ul.unstyled-h
-	li
-		margin-left 0
-		list-style none
-
-ul.unstyled-h li
-	float left
-	display inline
-
-
-.social ul
-	border-left 2px dotted #FFFFFF
-	display inline-block
-	float left
-	left -20px
-	padding 20px 0 15px 30px
-	position relative
-	margin-bottom 0
-	margin-top 20px
-
-	li
-		padding 0 5px
 
 .category-list li a
 	color #737372
@@ -1020,38 +989,18 @@ a.crl
 	margin-left -50px
 
 /* arrow icon (span tag) */
-#back-top span
-	width 50px
-	height 50px
-	display block
-	margin-bottom 7px
-	background #666 url('../img/to-top.png') no-repeat center center
-	border-radius 100px
-	transition 1s
+#back-top
+	span
+		width 50px
+		height 50px
+		display block
+		margin-bottom 7px
+		background #666 url('../img/to-top.png') no-repeat center center
+		border-radius 100px
+		transition 1s
 
-#back-top a:hover span
-	background-color #333
-
-@media max-width 767px
-	.social ul
-		border-left none
-
-	#page .inner
-		padding 20px 0
-
-	.responsiveMenuSelect
-		width 90%
-		margin-top 20px
-
-	.home .inner
-		padding-top 0
-
-	.cols .footer-cols
-		width 50%
-
-	.sidebar
-		margin-bottom 20px
-		margin-top 20px
+	a:hover span
+		background-color #333
 
 #about
 	margin: 10px 0 0
