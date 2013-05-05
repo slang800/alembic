@@ -2,13 +2,9 @@ header
 	padding 10px 0
 	background black
 
-
-nav, .social
-	li
-		list-style none
-		margin 0
-		display inline-block
-		padding 0 5px
+select.responsiveMenuSelect
+	width auto
+	margin 10px
 
 .social
 	border-left 2px dotted white
@@ -25,33 +21,59 @@ nav, .social
 		&:hover
 			background-position 0 -40px
 
+#logo, nav > ul
+	padding 10px 20px
+	vertical-align middle
+	display inline-block
+
+@media only screen and (max-width: 500px)
+	#logo, nav
+		display block
+		text-align center
+
+	.social
+		border-left none
+
 nav
 	a
 		padding 0
+		font-size 30px
+		font-family futuramc
 
-		&, &:hover, &:visited, &:link
-			font-size 25px
+		&:hover, &:visited, &:link
 			color white
-			font-family futuramc
-			text-transform uppercase
 			text-decoration none
 
-	ul ul
+	li
+		list-style none
 		margin 0
-		left 50%
-		margin-left -120px
-		width 240px
-		padding-top 16px
-		opacity 0
-		transition-duration .3s
-		transition-property opacity
+		display inline-block
+		transition-property padding
+		transition-duration 0.5s
+		padding 0 5px
+
+		@media only screen and (min-width: 1000px)
+			padding 0 15px
+
+	ul ul
+		arrow_height = 16px
+		sub_menu_width = 220px
+
+		margin 0
 		position absolute
+		left 50%
+		width sub_menu_width
+		margin-left -(sub_menu_width / 2)
+		padding-top arrow_height
+		opacity 0
+		transition-property opacity
+		transition-duration .3s
 		z-index -1
 
 		&:before
 			background url('../img/nav-arrow.png') no-repeat scroll 0 0 transparent
 			content ""
-			height 16px
+			height arrow_height
 			left 50%
 			margin-left -10px
 			position absolute
@@ -85,11 +107,6 @@ nav
 		width 100%
 		background rgba(0,0,0,0.8)
 		z-index 1000
-
-#logo, nav, .social
-	padding 10px 20px
-	display inline-block
-	vertical-align middle
 
 .sf-sub-indicator
 	display none

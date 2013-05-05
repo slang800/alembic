@@ -1,0 +1,116 @@
+header {
+  padding: 10px 0;
+  background: #000;
+}
+select.responsiveMenuSelect {
+  width: auto;
+  margin: 10px;
+}
+.social {
+  border-left: 2px dotted #fff;
+}
+.social a {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: left top;
+  transition-duration: 0.3s;
+  text-indent: -10000px;
+}
+.social a:hover {
+  background-position: 0 -40px;
+}
+#logo,
+nav > ul {
+  padding: 10px 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+@media only screen and (max-width: 500px) {
+  #logo,
+  nav {
+    display: block;
+    text-align: center;
+  }
+  .social {
+    border-left: none;
+  }
+}
+nav a {
+  padding: 0;
+  font-size: 30px;
+  font-family: futuramc;
+}
+nav a:hover,
+nav a:visited,
+nav a:link {
+  color: #fff;
+  text-decoration: none;
+}
+nav li {
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+  transition-property: padding;
+  transition-duration: 0.5s;
+  padding: 0 5px;
+}
+@media only screen and (min-width: 1000px) {
+  nav li {
+    padding: 0 15px;
+  }
+}
+nav ul ul {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  width: 220px;
+  margin-left: -110px;
+  padding-top: 16px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  z-index: -1;
+}
+nav ul ul:before {
+  background: url("../img/nav-arrow.png") no-repeat scroll 0 0 transparent;
+  content: "";
+  height: 16px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+nav ul ul li {
+  display: block;
+  background: none repeat scroll 0 0 #496ea2;
+  text-align: center;
+  padding: 8px 10px;
+}
+nav ul ul li a:hover {
+  text-decoration: underline;
+}
+nav > ul > li {
+  position: relative;
+}
+nav > ul > li:hover {
+  background: url("../img/dancinants.gif") bottom no-repeat;
+}
+nav > ul > li:hover ul {
+  display: block;
+  opacity: 1;
+  z-index: 99;
+}
+nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+}
+.sf-sub-indicator {
+  display: none;
+}

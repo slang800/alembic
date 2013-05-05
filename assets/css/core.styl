@@ -4,11 +4,10 @@ vendor-prefixes = webkit moz o ms official
 gold = #CFB212
 
 @import 'reset.css'
-@import 'nav.styl'
 @import 'typography.styl'
-@import 'forms.styl'
 
 body
+	min-width 300px
 	background url('../img/main-bg.jpg')
 	margin 0
 	padding 0
@@ -23,7 +22,7 @@ body
 	padding 10px
 
 .wrap
-	max-width 800px
+	max-width 1000px
 	margin-left auto
 	margin-right auto
 
@@ -541,20 +540,25 @@ img
 	margin 0
 
 	.element
-		display inline-block
-		list-style none outside none
-		padding 10px
-		box-sizing border-box
 		margin (box_margin / 2)
-		min-width 220px
-		min-height 320px
+		display inline-block
 
-		&:hover
-			background: #496ea2
+		a
+			text-decoration none
+			transition-property background, color
+			transition-duration 0.2s
+			display inline-block
+			list-style none outside none
+			padding 10px
+			box-sizing border-box
+			min-height 320px
+			width 220px
 
-			*
-				color white
-				text-decoration none
+			&:hover
+				background: #496ea2
+
+				*
+					color white
 
 		img
 			width 100%
@@ -568,8 +572,9 @@ img
 			margin-bottom 0
 			font-size 14px
 
-.gallery .element, .home-top
+.gallery .element
 	@extends .box
+	padding 0
 
 .full-bg
 	background white
@@ -791,28 +796,5 @@ a.crl
 	margin: 10px 0 0
 	overflow: auto
 
-/*
-@media only screen and max-width 480px
-	.gallery
-		li
-			display block
-			float none
-			width auto
-			max-width none
-
-		.element
-			width auto
-			float none
-			clear both
-			display block
-			clear both
-
-	.cols .footer-cols
-		width 100%
-
-	.one-fourth,.two-fourth,.three-fourth,.one-third,.two-third
-		width auto
-		float none
-		clear both
-		display block
-*/
+@import 'forms.styl'
+@import 'nav.styl'
