@@ -39,7 +39,7 @@ jQuery(function(){
 	});
 
 	//function to stay menu top when scroll down
-	var menu = jQuery('.main-nav'),
+	var menu = jQuery('#main-nav'),
 	pos = menu.offset();
 
 	jQuery(window).scroll(function(){
