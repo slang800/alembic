@@ -9,6 +9,7 @@
 	<?php if(get_option('s_favicon') and get_option('s_favicon')!=""): ?>
 	<link rel="shortcut icon" href="<?php echo stripslashes(get_option('s_favicon')); ?>" />	
 	<?php endif; ?>	
+	<?php wp_head(); ?>
 
 	<?php 
 		$rss=get_bloginfo('rss2_url');
@@ -17,9 +18,9 @@
 	?>
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php echo $rss; ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url')?>" />
-	<link href="<?php bloginfo('template_directory'); ?>/assets/css/core.css" media="screen" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/fonts/fonts.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/isotope.css" />
+	<link href="<?php bloginfo('template_directory'); ?>/assets/css/core.css" media="screen" rel="stylesheet" type="text/css" />
 
 	<!--[if lte IE 6]>
 		<link href="<?php bloginfo('template_directory'); ?>/assets/css/ie6.css" media="screen" rel="stylesheet" type="text/css" />
@@ -53,5 +54,4 @@
 			echo '<style>header{background-image:url('.$header_bg.');background-repeat: repeat;}</style>';
 		}
 	?>
-	<?php wp_head(); ?>
 </head>
