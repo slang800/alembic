@@ -14,13 +14,11 @@ ob_clean();
 	<?php get_header(); ?>
 	<body <?php body_class(); ?>>
 		<header>
-			<div class="wrap">
+			<nav class="wrap" id="main-nav">
 				<a href="<?php bloginfo('url'); ?>" id="logo">
 					<img src="<?php echo stripslashes(get_option('s_logo', S_THEME_LOGO)); ?>" alt="<?php bloginfo('title'); ?>"/>
 				</a>
-				<nav class="main-nav">
-					<?php s_menu(); ?>
-				</nav>
+				<?php s_menu(); ?>
 				<ul class="social">
 					<?php if(get_option('s_add_social1', 'true') == 'true' && get_option('s_social_link1') != ''): ?>
 						<li>
@@ -38,7 +36,7 @@ ob_clean();
 						</li>
 					<?php endif; ?>
 				</ul>
-			</div>
+			</nav>
 		</header>
 		<div class="wrap">
 			<?php echo $unique_content;?>
