@@ -41,24 +41,25 @@ function shortcode_portfilio($atts){
 			$id = get_the_id();
 			$image_url = s_post_image(); //Use the function to fetch the portfolio image
 
-			$return .= '<div class="element">';
+			$place = esc_html(get_post_meta($id,'_place',true));
+			$date = esc_html(get_post_meta($id,'_date',true));
+			if($place != "" && $date != ""){
+				$caption = '<p>' . $place .','. $date . '</p>';
+			} else {
+				$caption = '<p>' . $place . $date . '</p>';
+			}
 
+			$return .= '<div class="element">';
 			if($image_url){
 				$image_url = s_build_image($image_url, 180, 220);
 				$return .=	'
 				<a href="'. get_permalink() .'">
 					<img class="image align-left" alt="" src="'. $image_url.'" />
 					<h2>'. get_the_title().'</h2>
+					' . $caption . '
 				</a>';					
 			}
 
-			$place = esc_html(get_post_meta($id,'_place',true));
-			$date = esc_html(get_post_meta($id,'_date',true));
-			if($place != "" && $date != ""){
-				$return .= '<p>' . $place .','. $date . '</p>';
-			} else {
-				$return .= '<p>' . $place . $date . '</p>';
-			}
 			$return .= '</div>';
 		}
 		$return .= '</div>';

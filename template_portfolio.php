@@ -48,23 +48,24 @@
 				$id = $post->ID;
 				$image_url = s_post_image(); //Use the function to fetch the portfolio image
 
+				$place = esc_html(get_post_meta($id,'_place',true));
+				$date = esc_html(get_post_meta($id,'_date',true));
+				if($place != "" && $date != ""){
+					$caption = '<p>' . $place .','. $date . '</p>';
+				} else {
+					$caption = '<p>' . $place . $date . '</p>';
+				}
+
 				echo '<div class="element '. $item_classes . '">';
 
 				if($image_url){
 					$image_url = s_build_image($image_url, 180, 220);
-					echo '
+					echo '			
 					<a href="'. get_permalink() .'">
 						<img class="image align-left" alt="" src="'. $image_url.'" />
 						<h2>'. get_the_title().'</h2>
-					</a>';					
-				}
-
-				$place = esc_html(get_post_meta($id,'_place',true));
-				$date = esc_html(get_post_meta($id,'_date',true));
-				if($place != "" && $date != ""){
-					echo '<p>' . $place .','. $date . '</p>';
-				} else {
-					echo '<p>' . $place . $date . '</p>';
+						' . $caption . '
+					</a>';
 				}
 				echo '</div>';
 			}
