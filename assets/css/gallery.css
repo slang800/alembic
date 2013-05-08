@@ -80,18 +80,20 @@
   padding: 5px;
   margin: 0 5px;
 }
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 600px) {
   #portfolio-sidebar,
   .flexslider {
     display: inline-block;
     vertical-align: top;
+    box-sizing: border-box;
   }
   #portfolio-sidebar {
-    width: 150px;
-    margin-right: -165px;
+    width: 200px;
   }
   .flexslider {
-    padding-left: 180px;
+    padding-left: 245px;
+    margin-left: -246px;
+    max-width: 100%;
   }
 }
 #portfolio-nav {
