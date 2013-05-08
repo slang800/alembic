@@ -85,7 +85,7 @@ nav ul ul:before {
 }
 nav ul ul li {
   display: block;
-  background: none repeat scroll 0 0 #496ea2;
+  background: #00f;
   text-align: center;
   padding: 8px 10px;
 }

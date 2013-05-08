@@ -2,6 +2,14 @@
 vendor-prefixes = webkit moz o ms official
 
 gold = #CFB212
+blue = #496ea2
+red = #ca3119
+tan = #E0E1CD
+dark_gray = #484747
+gray = #d3d3d2
+light_gray = #eee
+yellow = #fbd640
+orange = #e76d18
 
 @import 'reset.css'
 @import 'typography.styl'
@@ -36,7 +44,7 @@ body
 	margin-top -30px
 
 a:link,a:visited
-	color #5c5a5a
+	color dark_gray
 
 /* Header */
 #header
@@ -87,7 +95,7 @@ footer
 	ul li
 		margin-left 15px
 		padding-left 15px
-		border-left 2px solid #f2f1ea
+		border-left 2px solid tan
 
 	li
 		margin-bottom 20px
@@ -100,7 +108,7 @@ footer
 
 			h3
 				font-size 20px
-				color #c3c0b4
+				color dark_gray
 				font-weight 400
 				display inline
 
@@ -143,62 +151,14 @@ footer
 			display block
 
 ::selection
-	background #ca3119
+	background red
 	/* Safari */
 	color white
 
 ::-moz-selection
-	background #ca3119
+	background red
 	/* Firefox */
 	color white
-
-/* Sidebar */
-#sidebar
-	.project_details
-		margin-bottom 15px
-
-		.avatar
-			background white
-			padding 5px 5px 3px
-			position relative
-			margin-bottom 15px
-
-			span
-				position absolute
-				background url('../img/slider/triangle.png') no-repeat bottom
-				padding-bottom 13px
-				top 15px
-				left -10px
-				z-index 10
-
-				a
-					background #fbd640
-					padding 5px
-					text-decoration none
-					font-weight bold
-
-		p
-			line-height 22px
-
-
-	.list_items
-		margin-bottom 15px
-
-		h2
-			font-size 20px
-			font-weight 400
-			color black
-			margin-bottom 10px
-
-		ul li
-			list-style-type disc
-			margin-left 17px
-
-	h2
-		font-size 20px
-		color black
-		font-weight 400
-		margin-bottom 10px
 
 /* Slider */
 .ls-container
@@ -218,14 +178,14 @@ footer
 			z-index 10
 
 			a
-				background #fbd640
+				background yellow
 				padding 5px
 				text-decoration none
 				font-weight bold
 
 	p
 		margin-top 25px
-		color #484747
+		color dark_gray
 		height 125px
 		margin-bottom 10px
 		line-height 22px
@@ -235,7 +195,7 @@ footer
 
 	.more
 		padding 8px
-		background #fbd640
+		background yellow
 		color black
 		border-radius 5px
 		font-weight bold
@@ -245,28 +205,28 @@ footer
 
 	.tags
 		margin-top 15px
-		color #666666
+		color dark_gray
 
 		a
-			color #666
+			color dark_gray
 
 .pagination
 	text-align center
 	margin 10px 0
 
 	a
-		background #EEE
+		background light_gray
 		border-radius 3px
 		padding 6px 10px
 		text-align center
 		text-decoration none
 
 		&:hover
-			background #DFDFDF
+			background gray
 
 		&.current
-			background #333!important
-			color #EEE
+			background dark_gray!important
+			color light_gray
 
 /* Sub Content */
 #sub_content
@@ -278,7 +238,6 @@ footer
 	ul.columns
 		li
 			width 270px
-			_width 260px
 			line-height 22px
 			float left
 			margin-left 30px
@@ -294,29 +253,29 @@ footer
 
 			p
 				margin-bottom 10px
-				color #484747
+				color dark_gray
 
 			div
 				margin-bottom 10px
 
-			div span
-				color black
-				font-weight 400
-				display block
+				span
+					color black
+					font-weight 400
+					display block
 
-			div p
-				margin-bottom 0
+				p
+					margin-bottom 0
 
 		form.contact
 			.alert
-				color #EF4A4A
+				color red
 
 			input,textarea
 				display block
-				border 1px solid #d3d3d2
+				border 1px solid gray
 				border-radius 5px
 				padding 8px
-				color #cccccc
+				color gray
 				font 14px 'Helvetica Neue', Arial
 				width 250px
 				margin-bottom 15px
@@ -326,7 +285,7 @@ footer
 
 			.button
 				padding 8px
-				background #fbd640
+				background yellow
 				color black
 				border-radius 5px
 				font-weight bold
@@ -349,7 +308,7 @@ svg
 			text-decoration underline
 
 	hr
-		border 0 #cccccc solid
+		border 0 gray solid
 		border-top-width 1px
 		clear both
 		height 0
@@ -367,7 +326,7 @@ svg
 		margin-bottom 20px
 
 .example-block
-	background #eeeeee
+	background light_gray
 	font-size 10px
 	overflow hidden
 	margin-bottom 20px
@@ -440,7 +399,7 @@ blockquote
 		float right
 
 .category-list li a
-	color #737372
+	color dark_gray
 	font-family futura_medium
 	line-height 1.5
 	font-size 1.4em
@@ -455,7 +414,7 @@ blockquote
 
 hr.big
 	border-width 0 0 6px
-	border-color #666666
+	border-color dark_gray
 	margin 40px 0 5px
 
 .con-bg
@@ -469,7 +428,7 @@ img
 	height auto
 
 .post-meta
-	color #333
+	color dark_gray
 	font-size 12px
 	margin-bottom 15px!important
 
@@ -482,7 +441,7 @@ img
 	background black
 	border-radius 100px
 	display inline-block
-	color #ccc
+	color gray
 	width 100px
 	text-align center
 	margin 10px
@@ -528,7 +487,7 @@ img
 	display inline-block
 
 	a.selected
-		color #BE1C22
+		color red
 
 #sidebar li
 	list-style none
@@ -555,7 +514,7 @@ img
 			width 220px
 
 			&:hover
-				background: #496ea2
+				background: blue
 
 				*
 					color white
@@ -566,7 +525,7 @@ img
 		h2
 			margin 0
 			padding-top 5px
-			color #484747
+			color dark_gray
 
 		p
 			margin-bottom 0
@@ -589,11 +548,10 @@ img
 		padding-left 50px
 		padding-right 50px
 
-.orange
-	color #e76d18
+.orange, .orange-h
+	color orange
 
 .orange-h
-	color #e76d18
 	font-family futura_medium
 	font-size 1.5em
 	font-weight normal
@@ -602,7 +560,7 @@ img
 	font-size 1.3em
 
 .promotion2
-	background none repeat scroll 0 0 #ECF0F3
+	background light_gray
 	margin-bottom 90px
 	padding 10px 50px 75px
 	position relative
@@ -616,20 +574,20 @@ img
 	position absolute
 
 .tagcloud a
-	background #ccc
+	background gray
 	border-radius 25px
 	display inline-block
 	padding 5px 10px
 	text-decoration none
 
 	&:hover
-		background #666
+		background dark_gray
 		color white
 
 .gal-info
-	background #ebebeb
+	background light_gray
 	padding 20px 10px
-	color #908c8c
+	color dark_gray
 
 .gal-img
 	text-align center
@@ -642,10 +600,9 @@ img
 		list-style none
 
 	img
-		border 25px solid #ebebeb
-
+		border 25px solid light_gray
 .welcome
-	background #f0f0f0
+	background light_gray
 	text-align center
 	padding 10px 0
 	margin-bottom 30px
@@ -653,14 +610,10 @@ img
 	font-size 1.8em
 	font-family futura_medium
 
-.bg
-	background #F5F3F0
-	padding 30px
-
 .circle
 	width 160px
 	height 160px
-	background #e9c42e
+	background yellow
 	border-radius 100px
 	line-height 160px
 	text-align center
@@ -672,7 +625,7 @@ img
 		cursor pointer
 		transform rotate(360deg)
 		transition-duration .8s
-		background #666
+		background dark_gray
 		color white
 
 .copy
@@ -688,8 +641,8 @@ img
 	width 33%
 
 .portfolio-title
-	border-top 1px solid #E0E1CD
-	border-bottom 1px solid #E0E1CD
+	border-top 1px solid tan
+	border-bottom 1px solid tan
 	display block
 	margin 5px
 	margin-top 15px
@@ -697,13 +650,13 @@ img
 	line-height 2
 
 .wp-showcase li
-	border 5px solid #eeeeee
+	border 5px solid light_gray
 
 .portfolio-content
 	padding 30px
 
 .sider-info
-	background #ebebeb
+	background light_gray
 	padding 20px
 
 .contact *
@@ -739,7 +692,7 @@ img
 		font 11px/100% Arial, Helvetica, sans-serif
 		text-transform uppercase
 		text-decoration none
-		color #bbb
+		color gray
 		transition 1s
 
 	&:hover
@@ -785,12 +738,12 @@ a.crl
 		height 50px
 		display block
 		margin-bottom 7px
-		background #666 url('../img/to-top.png') no-repeat center center
+		background dark_gray url('../img/to-top.png') no-repeat center center
 		border-radius 100px
 		transition 1s
 
 	a:hover span
-		background-color #333
+		background-color dark_gray
 
 #about
 	margin: 10px 0 0
