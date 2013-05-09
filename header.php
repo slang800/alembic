@@ -22,19 +22,6 @@
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/isotope.css" />
 	<link href="<?php bloginfo('template_directory'); ?>/assets/css/core.css" media="screen" rel="stylesheet" type="text/css" />
 
-	<!--[if lte IE 6]>
-		<link href="<?php bloginfo('template_directory'); ?>/assets/css/ie6.css" media="screen" rel="stylesheet" type="text/css" />
-	<![endif]-->
-	<!--[if lt IE 9]>
-		<script src="./assets/javascripts/html5.js"></script>
-	<![endif]-->
-	<!--[if (gt IE 8) | (IEMobile)]><!-->
-		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/unsemantic-grid-responsive.css" />
-	<!--<![endif]-->
-	<!--[if (lt IE 9) & (!IEMobile)]>
-		<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/assets/css/ie.css" />
-	<![endif]-->
-
 	<script type="text/javascript">
 		var ajaxurl="<?php echo admin_url('admin-ajax.php'); ?>";		
 	</script>
