@@ -25,58 +25,16 @@
 			</li>
 		<?php endforeach; ?>
 	</ul>
-	<?php endif; ?>
+	<?php
+	endif;
+	require_once 'functions/shortcodes.php';
+	echo shortcode_portfilio()
+	?>
 
-	<div id="gallery" class="gallery">
-		<?php 
-		global $paged;
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; //For pagination
-		query_posts('post_type=portfolio&paged='.$paged);
-		//Make sure we let WordPress know we need posts ONLY from the portfolio post type
-		if(have_posts()){
-			while(have_posts()){
-				the_post();
-
-				$item_classes = '';
-				$item_cats = get_the_terms($post->ID, 'portfolio_cat');
-				if($item_cats){
-					foreach($item_cats as $item_cat) {
-						$item_classes .= $item_cat->slug . ' ';
-					}
-				}
-
-				$id = $post->ID;
-				$image_url = s_post_image(); //Use the function to fetch the portfolio image
-
-				$place = esc_html(get_post_meta($id,'_place',true));
-				$date = esc_html(get_post_meta($id,'_date',true));
-				if($place != "" && $date != ""){
-					$caption = '<p>' . $place .','. $date . '</p>';
-				} else {
-					$caption = '<p>' . $place . $date . '</p>';
-				}
-
-				echo '<div class="element '. $item_classes . '">';
-
-				if($image_url){
-					$image_url = s_build_image($image_url, 180, 220);
-					echo '			
-					<a href="'. get_permalink() .'">
-						<img class="image align-left" alt="" src="'. $image_url.'" />
-						<h2>'. get_the_title().'</h2>
-						' . $caption . '
-					</a>';
-				}
-				echo '</div>';
-			}
-			echo '</div>';
-		}
-		?>
-	</div>
 </section>
 <script>
 	jQuery(function() {
-		var container = jQuery('#gallery');
+		var container = jQuery('.gallery');
 		container.isotope({
 			itemSelector: '.element'
 		});
