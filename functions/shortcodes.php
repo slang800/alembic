@@ -20,21 +20,12 @@ add_shortcode('hilite', 'shortcode_highlight');
 
 //portfolio
 function shortcode_portfilio($atts){
-	extract(
-		shortcode_atts(
-			array(
-				'count' => 'something',
-			),
-			$atts
-		)
-	);
-
 	$return = '<div class="gallery clearfix">';
  
 	global $paged;
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 
-	query_posts('post_type=portfolio&posts_per_page=3'); 
+	query_posts('post_type=portfolio&posts_per_page=' . $atts["count"]); 
 	if(have_posts()){
 		while(have_posts()){
 			the_post();
