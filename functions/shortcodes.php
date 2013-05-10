@@ -25,10 +25,27 @@ function shortcode_portfilio($atts){
 	global $paged;
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 
-	query_posts('post_type=portfolio&posts_per_page=' . $atts["count"]); 
+	$query = 'post_type=portfolio';
+	if($atts['count']){
+		$query .=' &posts_per_page=' . $atts["count"];
+	}
+	if($atts['orderby']){
+		$query .= 'orderby=' . $atts['orderby'];
+	}
+	query_posts($query);
+
 	if(have_posts()){
 		while(have_posts()){
 			the_post();
+
+			$item_classes = '';
+			$item_cats = get_the_terms($post->ID, 'portfolio_cat');
+			if($item_cats){
+				foreach($item_cats as $item_cat) {
+					$item_classes .= $item_cat->slug . ' ';
+				}
+			}
+
 			$id = get_the_id();
 			$image_url = s_post_image(); //Use the function to fetch the portfolio image
 
@@ -40,7 +57,7 @@ function shortcode_portfilio($atts){
 				$caption = '<p>' . $place . $date . '</p>';
 			}
 
-			$return .= '<div class="element">';
+			$return .= '<div class="element '. $item_classes . '">';
 			if($image_url){
 				$image_url = s_build_image($image_url, 180, 220);
 				$return .=	'
