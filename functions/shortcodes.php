@@ -20,8 +20,8 @@ add_shortcode('hilite', 'shortcode_highlight');
 
 //portfolio
 function shortcode_portfilio($atts){
-	$return = '<div class="gallery clearfix">';
- 
+	$return = '<div class="gallery">';
+
 	global $paged;
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 
