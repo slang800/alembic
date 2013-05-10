@@ -8,21 +8,19 @@
 
 textarea
 	padding 10px
-	border 1px solid #ccc
 
 input
 	&[type=text], &[type=email], &[type=url]
 		border none
 		padding 10px
 		min-width 200px
-		border 1px solid #ccc
 		margin 4px 0
 
 	&[type=submit], &[type=button]
 		background #555
 		border none
 		cursor pointer
-		color #fff
+		color white
 		padding 10px 20px
 
 		&:hover
@@ -42,49 +40,36 @@ input
 		margin-top:50px
 
 .cf_custom
-	border: 0 none !important 
+	border: 0 none
 	outline: 0 none
 	display: block
 	text-transform: uppercase
-	float: left
 
 #cf_name, #cf_email, #cf_dropdown, #cf_message
-	color: #111111 !important 
-	border: 3px solid white
-	font-family:'Trade Gothic Next W01'
+	color: dark_gray
+	background-color: white
+	border: 3px solid gray
+	box-sizing border-box
+	font-family: 'Trade Gothic Next W01'
 	text-transform: uppercase
 	font-weight: 900
-	margin: 10px
-	background-color: #fff !important
+	width: 100%
+
+	&:focus
+		border-color gold
 
 #cf_name, #cf_email, #cf_dropdown
-	width:270px
-	height:30px
+	height:36px
 
 #cf_name, #cf_email
-	padding:0 10px !important
-
-#cf_email
-	margin-right:0px
-
-#cf_dropdown
-	padding:4px 0 4px 10px !important
-	width:300px
-	height:30px
+	padding:0 10px
 
 #cf_message
-	max-width:940px
-	width:940px
-	height:340px
+	margin 0
+	resize: vertical
 
 #cf_submit
-	color:#000
-	font-size:45px
-	width:160px
-	display:block
-	position:relative
-	left:50%
-	margin-left:-80px
+	color black
 	border-radius: 3px
 
 	&:hover
