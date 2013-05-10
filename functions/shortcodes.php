@@ -30,7 +30,7 @@ function shortcode_portfilio($atts){
 		$query .=' &posts_per_page=' . $atts["count"];
 	}
 	if($atts['orderby']){
-		$query .= 'orderby=' . $atts['orderby'];
+		$query .= '&orderby=' . $atts['orderby'];
 	}
 	query_posts($query);
 
