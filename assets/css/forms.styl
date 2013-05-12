@@ -1,25 +1,9 @@
-.contact
-	input[type=text], input[type=email], textarea
-		width 90%
-		font-size 1.5em
-		font-family arial
-		text-transform uppercase
-		outline none
-
-textarea
-	padding 10px
 
 input
-	&[type=text], &[type=email], &[type=url]
-		border none
-		padding 10px
-		min-width 200px
-		margin 4px 0
+	border none
 
 	&[type=submit], &[type=button]
 		background #555
-		border none
-		cursor pointer
 		color white
 		padding 10px 20px
 
@@ -28,8 +12,6 @@ input
 			transition-duration .3s
 
 #cf_custom
-	width:100%
-
 	span.wpcf7-not-valid-tip
 		left: 70%
 		margin-top: 50px
@@ -39,38 +21,32 @@ input
 	div.wpcf7-validation-errors
 		margin-top:50px
 
-.cf_custom
-	border: 0 none
-	outline: 0 none
-	display: block
-	text-transform: uppercase
+#cf_message
+	resize: vertical
+
+form
+	*
+		font-family: 'Trade Gothic Next W01'
+		text-transform uppercase
+		margin 0
+		padding 0
+		position static
+
+	p
+		margin-bottom 0 !important
+
+#cf_name, #cf_email, #cf_dropdown
+	height:40px
 
 #cf_name, #cf_email, #cf_dropdown, #cf_message
+	padding 6px
+	margin 5px 0
 	color: dark_gray
 	background-color: white
 	border: 3px solid gray
 	box-sizing border-box
-	font-family: 'Trade Gothic Next W01'
-	text-transform: uppercase
 	font-weight: 900
 	width: 100%
 
 	&:focus
 		border-color gold
-
-#cf_name, #cf_email, #cf_dropdown
-	height:36px
-
-#cf_name, #cf_email
-	padding:0 10px
-
-#cf_message
-	margin 0
-	resize: vertical
-
-#cf_submit
-	color black
-	border-radius: 3px
-
-	&:hover
-		color:#666

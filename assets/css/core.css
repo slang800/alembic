@@ -887,31 +887,12 @@ a.crl {
   margin: 10px 0 0;
   overflow: auto;
 }
-.contact input[type=text],
-.contact input[type=email],
-.contact textarea {
-  width: 90%;
-  font-size: 1.5em;
-  font-family: arial;
-  text-transform: uppercase;
-  outline: none;
-}
-textarea {
-  padding: 10px;
-}
-input[type=text],
-input[type=email],
-input[type=url] {
+input {
   border: none;
-  padding: 10px;
-  min-width: 200px;
-  margin: 4px 0;
 }
 input[type=submit],
 input[type=button] {
   background: #555;
-  border: none;
-  cursor: pointer;
   color: #fff;
   padding: 10px 20px;
 }
@@ -924,9 +905,6 @@ input[type=button]:hover {
   -ms-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-#cf_custom {
-  width: 100%;
-}
 #cf_custom span.wpcf7-not-valid-tip {
   left: 70%;
   margin-top: 50px;
@@ -936,24 +914,36 @@ input[type=button]:hover {
 #cf_custom div.wpcf7-validation-errors {
   margin-top: 50px;
 }
-.cf_custom {
-  border: 0 none;
-  outline: 0 none;
-  display: block;
+#cf_message {
+  resize: vertical;
+}
+form * {
+  font-family: 'Trade Gothic Next W01';
   text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  position: static;
+}
+form p {
+  margin-bottom: 0 !important;
+}
+#cf_name,
+#cf_email,
+#cf_dropdown {
+  height: 40px;
 }
 #cf_name,
 #cf_email,
 #cf_dropdown,
 #cf_message {
+  padding: 6px;
+  margin: 5px 0;
   color: #484747;
   background-color: #fff;
   border: 3px solid #d3d3d2;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: 'Trade Gothic Next W01';
-  text-transform: uppercase;
   font-weight: 900;
   width: 100%;
 }
@@ -962,27 +952,6 @@ input[type=button]:hover {
 #cf_dropdown:focus,
 #cf_message:focus {
   border-color: #cfb212;
-}
-#cf_name,
-#cf_email,
-#cf_dropdown {
-  height: 36px;
-}
-#cf_name,
-#cf_email {
-  padding: 0 10px;
-}
-#cf_message {
-  margin: 0;
-  resize: vertical;
-}
-#cf_submit {
-  color: #000;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-#cf_submit:hover {
-  color: #666;
 }
 header {
   padding: 10px 0;
