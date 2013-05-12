@@ -1,9 +1,3 @@
-.wrap
-	text-align center
-
-	> *
-		text-align left
-
 .wp-showcase
 	padding: 15px
 	//margin: auto
@@ -96,6 +90,13 @@
 		padding-left sidebar_width + 45px
 		margin-left -(sidebar_width + 46px)
 		max-width 100%
+
+@media only screen and (max-width: 600px)
+	.wrap
+		text-align center
+
+		> *
+			text-align left
 
 #portfolio-nav
 	text-align center

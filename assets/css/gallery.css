@@ -1,9 +1,3 @@
-.wrap {
-  text-align: center;
-}
-.wrap > * {
-  text-align: left;
-}
 .wp-showcase {
   padding: 15px;
   display: inline-block;
@@ -94,6 +88,14 @@
     padding-left: 245px;
     margin-left: -246px;
     max-width: 100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .wrap {
+    text-align: center;
+  }
+  .wrap > * {
+    text-align: left;
   }
 }
 #portfolio-nav {
