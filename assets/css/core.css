@@ -96,6 +96,12 @@ body.home {
   padding-top: 30px;
   margin-top: -30px;
 }
+
+.wrap .sponsors {
+  background: #fff;
+  padding: 30px; }
+}
+
 a:link,
 a:visited {
   color: #484747;
