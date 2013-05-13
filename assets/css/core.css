@@ -599,7 +599,7 @@ img {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   min-height: 320px;
-  width: 220px;
+  width: 210px;
 }
 .gallery .element a:hover {
   background: #496ea2;
