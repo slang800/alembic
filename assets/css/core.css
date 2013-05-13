@@ -918,7 +918,7 @@ input[type=button]:hover {
   resize: vertical;
 }
 form * {
-  font-family: 'Trade Gothic Next W01';
+  font-family: "Sans-Serif";
   text-transform: uppercase;
   margin: 0;
   padding: 0;
