@@ -84,13 +84,14 @@ body.home {
   background: #fff;
   padding: 10px;
 }
+
 .wrap {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
 .wrap .entry {
-  margin: 10px;
+  margin: 0px;
 }
 .news .entry {
   padding-top: 30px;
