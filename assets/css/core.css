@@ -1088,6 +1088,19 @@ nav.fixed {
   left: 0;
   width: 100%;
   background: rgba(0,0,0,0.8);
+  
+// Lazy Additions to check and learn GH
+
+#options li {
+margin-left: 20px;
+}
+
+h2.catSort {
+margin-left: 30px;
+}
+
+// things to do: I need to give h2 a class="catSort"
+
   z-index: 1000;
 }
 .sf-sub-indicator {
