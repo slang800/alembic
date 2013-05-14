@@ -3,7 +3,7 @@
 	wp_enqueue_script('isotope', S_THEME_DIR.'/assets/js/jquery.isotope.min.js');
 ?>
 <section>
-	<?php if(!get_the_title()==''){echo '<h2>'.get_the_title().'</h2>';}?>
+	<?php if(!get_the_title()==''){echo '<h2 class="catSort">'.get_the_title().'</h2>';}?>
 	<?php/*
 		if(have_posts()) : while(have_posts()) : the_post(); 
 			the_content();
